@@ -1,9 +1,10 @@
 package com.avansprojects.antl;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.avansprojects.antl.ui.start.StartFragment;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class StartActivity extends AppCompatActivity {
 
