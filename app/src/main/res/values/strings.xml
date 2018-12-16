@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Antl</string>
+    <string name="event_overview_event_description">Event Image</string>
+    <string name="event_overview_event_name">Epic Berlin Trip</string>
+    <string name="event_overview_event_location">AlexanderPlatz</string>
+    <string name="event_overview_attending_user_icon_description">Attending user Icon</string>
+    <string name="event_overview_attending_users">13</string>
+    <string name="event_overview_day">26</string>
+    <string name="event_overview_month">DEC</string>
 </resources>
