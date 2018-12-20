@@ -141,15 +141,15 @@
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="540dp"
         android:clickable="true"
+        android:focusable="true"
         android:src="@android:drawable/ic_input_add"
         android:tint="@color/AntlAccentLight"
         app:backgroundTint="@color/AntlComplementair"
         app:layout_constraintEnd_toEndOf="@+id/cardView"
-        app:layout_constraintHorizontal_bias="0.929"
+        app:layout_constraintHorizontal_bias="0.926"
         app:layout_constraintStart_toStartOf="@+id/cardView"
         app:layout_constraintTop_toTopOf="@+id/cardView"
-        app:rippleColor="@color/AntlPrimary"
-        android:focusable="true" />
+        app:rippleColor="@color/AntlPrimary" />
 </androidx.constraintlayout.widget.ConstraintLayout>
