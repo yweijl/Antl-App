@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/destination_events"
-        android:name="com.avansprojects.antl.ui.event.EventOverviewFragment"
+        android:name="com.avansprojects.antl.ui.eventOverview.EventOverviewFragment"
         android:label="Events"
-        tools:layout="@layout/start_fragment" >
+        tools:layout="@layout/event_overview_fragment" >
         <action
             android:id="@+id/to_destination_login"
             app:destination="@id/destination_login" />
