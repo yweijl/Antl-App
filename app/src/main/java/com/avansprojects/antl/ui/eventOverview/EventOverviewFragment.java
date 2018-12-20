@@ -1,56 +1,51 @@
-package com.avansprojects.antl.ui.eventOverviewList;
+package com.avansprojects.antl.ui.eventOverview;
 
 import androidx.lifecycle.ViewModelProviders;
-
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.avansprojects.antl.R;
 import com.avansprojects.antl.dummy.DummyEvents;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class EventOverViewList extends Fragment {
+public class EventOverviewFragment extends Fragment {
 
     private EventOverViewListViewModel mViewModel;
-    private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
 
-    public static EventOverViewList newInstance() {
-        return new EventOverViewList();
+    public static EventOverviewFragment newInstance() {
+        return new EventOverviewFragment();
     }
-
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+                return inflater.inflate(R.layout.event_overview_fragment, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
         List<DummyEvents> eventsList = new DummyEvents().GetEventsList();
 
-        mAdapter = new EventOverviewAdapter(eventsList);
+        RecyclerView mRecyclerView = getView().findViewById(R.id.eventRecyclerView);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this.getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView = mRecyclerView.findViewById(R.id.eventOverviewListFragment);
+
+        mAdapter = new EventOverviewAdapter(eventsList);
         mRecyclerView.setAdapter(mAdapter);
 
         EventOverviewAdapter eventOverviewAdapter = new EventOverviewAdapter(eventsList);
         mRecyclerView.setAdapter(eventOverviewAdapter);
 
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-
-        mAdapter.notifyDataSetChanged();
-
-        return inflater.inflate(R.layout.event_overview_list_fragment, container, false);
+//        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+//        mAdapter.notifyDataSetChanged();
     }
 
     @Override

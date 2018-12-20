@@ -1,4 +1,4 @@
-package com.avansprojects.antl.ui.eventOverviewList;
+package com.avansprojects.antl.ui.eventOverview;
 
 import androidx.lifecycle.ViewModel;
 

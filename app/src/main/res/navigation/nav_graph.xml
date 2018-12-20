@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/destination_events">
+
+    <fragment
+        android:id="@+id/destination_events"
+        android:name="com.avansprojects.antl.ui.eventOverview.EventOverviewFragment"
+        android:label="Events"
+        tools:layout="@layout/event_overview_fragment" >
+        <action
+            android:id="@+id/to_destination_login"
+            app:destination="@id/destination_login" />
+    </fragment>
+    <fragment
+        android:id="@+id/destination_friends"
+		android:name="com.avansprojects.antl.ui.friend.FriendOverviewFragment"
+		android:label="Friends"
+		tools:layout="@layout/friend_fragment" />
+    <fragment
+        android:id="@+id/destination_login"
+        android:name="com.avansprojects.antl.ui.login.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/login_fragment" />
+</navigation>

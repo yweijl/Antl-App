@@ -1,6 +1,7 @@
-package com.avansprojects.antl.ui.eventOverviewList;
+package com.avansprojects.antl.ui.eventOverview;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.avansprojects.antl.R;
@@ -44,11 +45,13 @@ public class EventOverviewAdapter extends RecyclerView.Adapter<EventOverviewAdap
 
     @Override
     public void onBindViewHolder(EventCardViewHolder holder, int position) {
-        holder.eventName.setText(mEventsList.indexOf(position));
-        holder.location.setText(mEventsList.indexOf(position));
-        holder.day.setText(mEventsList.indexOf(position));
-        holder.month.setText(mEventsList.indexOf(position));
-        holder.attendingUsers.setText(mEventsList.indexOf(position));
+        DummyEvents event = mEventsList.get(position);
+
+        holder.eventName.setText(event.getName());
+        holder.location.setText(event.getLocation());
+        holder.day.setText(event.getDay());
+        holder.month.setText("Dec");
+        holder.attendingUsers.setText(event.getAttendingUsers());
     }
 
     @Override
