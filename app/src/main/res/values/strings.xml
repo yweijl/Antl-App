@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Antl</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Events">Events fragment</string>
+    <string name="antl_app_name">Antl</string>
+    <string name="antl_button_register">Register</string>
+    <string name="antl_button_login">Login</string>
+    <string name="antl_hint_password">Password</string>
+    <string name="antl_hint_username">Username</string>
 </resources>
