@@ -36,11 +36,7 @@ public class EventOverviewFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button button = getView().findViewById(R.id.button_login);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.to_destination_login);
-            }
-        });
+        button.setOnClickListener(view1 -> Navigation.findNavController(view1).navigate(R.id.to_destination_login));
     }
 
     @Override

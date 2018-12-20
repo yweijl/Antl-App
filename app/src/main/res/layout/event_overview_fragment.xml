@@ -16,7 +16,6 @@
         android:width="20sp"
         android:layout_height="20sp"
         android:layout_width="20sp"
-        android:onClick="onLoginButtonClick"
         >
 
     </com.google.android.material.button.MaterialButton>

@@ -16,27 +16,27 @@ import android.widget.Button;
 
 import com.avansprojects.antl.R;
 
-public class LoginFragment extends Fragment {
+public class RegisterFragment extends Fragment {
 
-    private LoginViewModel mViewModel;
+    private RegisterViewModel mViewModel;
 
-    public static LoginFragment newInstance() {
-        return new LoginFragment();
+    public static RegisterFragment newInstance() {
+        return new RegisterFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.login_fragment, container, false);
+        return inflater.inflate(R.layout.register_fragment, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
+        mViewModel = ViewModelProviders.of(this).get(RegisterViewModel.class);
 
-        Button button = getView().findViewById(R.id.register_button);
-        button.setOnClickListener(view1 -> Navigation.findNavController(view1).navigate(R.id.to_destination_register));
+        Button button = getView().findViewById(R.id.cancel_button);
+        button.setOnClickListener(view1 -> Navigation.findNavController(view1).navigate(R.id.to_destination_login));
     }
 
 }
