@@ -7,6 +7,6 @@
             android:id="@+id/destination_friends"
             android:title="Friends" />
     <item
-        android:id="@+id/destination_profile"
+        android:id="@+id/destination_login"
         android:title="Profile" />
     </menu>
