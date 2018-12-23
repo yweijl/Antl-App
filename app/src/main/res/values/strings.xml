@@ -15,5 +15,6 @@
     <string name="event_overview_day">26</string>
     <string name="event_overview_month">DEC</string>
     <string name="Events">Events fragment</string>
+    <string name="antl_hint_email">Email</string>
 
 </resources>
