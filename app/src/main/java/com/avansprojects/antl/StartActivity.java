@@ -2,14 +2,8 @@ package com.avansprojects.antl;
 
 import android.os.Bundle;
 import android.widget.Toolbar;
-
-import com.avansprojects.antl.ui.start.StartFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.adapters.ToolbarBindingAdapter;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
