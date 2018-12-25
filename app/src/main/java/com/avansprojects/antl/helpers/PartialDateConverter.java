@@ -17,6 +17,18 @@ public class PartialDateConverter {
     public static String getMonth(Date date){
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
-        return cal.getDisplayName(Calendar.MONTH, SHORT, Locale.getDefault());
+        String month = cal.getDisplayName(Calendar.MONTH, SHORT, Locale.getDefault());
+
+        if (month.endsWith(".")) {
+            month = month.substring(0, month.length() - 1);
+        }
+
+        return month;
+    }
+
+    public static Date setDate(int year, int month, int day){
+        Calendar cal = Calendar.getInstance();
+        cal.set(year, month, day);
+        return cal.getTime();
     }
 }

@@ -1,6 +1,5 @@
 package com.avansprojects.antl.ui.eventOverview;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -9,8 +8,7 @@ import com.avansprojects.antl.R;
 import com.avansprojects.antl.helpers.GlideApp;
 import com.avansprojects.antl.helpers.PartialDateConverter;
 import com.avansprojects.antl.infrastructure.entities.Event;
-import com.bumptech.glide.Glide;
-
+import java.util.Collections;
 import java.util.List;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
@@ -62,7 +60,7 @@ public class EventOverviewAdapter extends RecyclerView.Adapter<EventOverviewAdap
             holder.day.setText(PartialDateConverter.getDay(current.getMainDateTime()));
             holder.month.setText(PartialDateConverter.getMonth(current.getMainDateTime()));
             holder.attendingUsers.setText("13");
-            GlideApp.with(_fragment).load(R.drawable.event).centerCrop().into(holder.picture);
+            GlideApp.with(_fragment).load(current.getEventPicture()).centerCrop().into(holder.picture);
 
         } else {
             holder.eventName.setText("No Events");
@@ -70,6 +68,7 @@ public class EventOverviewAdapter extends RecyclerView.Adapter<EventOverviewAdap
     }
 
     void setEvents(List<Event> events){
+        Collections.sort(events);
         _eventsList = events;
         notifyDataSetChanged();
     }

@@ -3,6 +3,8 @@ package com.avansprojects.antl.infrastructure.database;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import com.avansprojects.antl.R;
+import com.avansprojects.antl.helpers.PartialDateConverter;
 import com.avansprojects.antl.infrastructure.daos.EventDao;
 import com.avansprojects.antl.infrastructure.daos.UserDao;
 import com.avansprojects.antl.infrastructure.entities.DateConverter;
@@ -13,9 +15,6 @@ import com.avansprojects.antl.infrastructure.entities.Group;
 import com.avansprojects.antl.infrastructure.entities.User;
 import com.avansprojects.antl.infrastructure.entities.UserEvent;
 import com.avansprojects.antl.infrastructure.entities.UserGroup;
-
-import java.util.Date;
-
 import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
@@ -72,13 +71,13 @@ public abstract class AntlDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(final Void... params) {
             _EventDao.deleteAll();
-            Event event = new Event("New years Eve", new Date() , "den haag");
+            Event event = new Event("New years Eve", PartialDateConverter.setDate(2018,12,31), "den haag", R.drawable.newyear);
             _EventDao.insert(event);
-            event = new Event("berlin trip", new Date(), "Berlijn");
+            event = new Event("berlin trip", PartialDateConverter.setDate(2019, 02,10), "Berlijn", R.drawable.event);
             _EventDao.insert(event);
-            event = new Event("B-day Party", new Date(), "Den Haag");
+            event = new Event("B-day Party", PartialDateConverter.setDate(2019,06,9), "Den Haag", R.drawable.presentation);
             _EventDao.insert(event);
-            event = new Event("Bordspellen dag", new Date(), "Den Haag");
+            event = new Event("Bordspellen dag", PartialDateConverter.setDate(2018,12,25), "Den Haag", R.drawable.boardgame);
             _EventDao.insert(event);
             return null;
         }

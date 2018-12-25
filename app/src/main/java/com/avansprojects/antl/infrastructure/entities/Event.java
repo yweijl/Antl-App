@@ -2,13 +2,12 @@ package com.avansprojects.antl.infrastructure.entities;
 
 
 import java.util.Date;
-
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "events")
-public class Event {
+public class Event implements Comparable<Event> {
     @PrimaryKey(autoGenerate = true)
     private int id;
     @ColumnInfo(name = "name")
@@ -17,11 +16,14 @@ public class Event {
     private Date mainDateTime;
     @ColumnInfo(name = "location")
     private String location;
+    @ColumnInfo(name = "eventPicture")
+    private int eventPicture;
 
-    public Event(String name, Date mainDateTime, String location) {
+    public Event(String name, Date mainDateTime, String location, int eventPicture) {
         this.name = name;
         this.mainDateTime = mainDateTime;
         this.location = location;
+        this.eventPicture = eventPicture;
     }
 
     public String getName() {
@@ -54,5 +56,18 @@ public class Event {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getEventPicture() {
+        return eventPicture;
+    }
+
+    public void setEventPicture(int eventPicture) {
+        this.eventPicture = eventPicture;
+    }
+
+    @Override
+    public int compareTo(Event o) {
+        return getMainDateTime().compareTo(o.getMainDateTime());
     }
 }
