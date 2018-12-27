@@ -2,14 +2,12 @@ package com.avansprojects.antl.infrastructure.database;
 
 import android.content.Context;
 import android.os.AsyncTask;
-
 import com.avansprojects.antl.R;
 import com.avansprojects.antl.helpers.PartialDateConverter;
 import com.avansprojects.antl.infrastructure.daos.EventDao;
 import com.avansprojects.antl.infrastructure.daos.UserDao;
 import com.avansprojects.antl.infrastructure.entities.DateConverter;
 import com.avansprojects.antl.infrastructure.entities.Event;
-import com.avansprojects.antl.infrastructure.entities.EventDate;
 import com.avansprojects.antl.infrastructure.entities.FriendShip;
 import com.avansprojects.antl.infrastructure.entities.Group;
 import com.avansprojects.antl.infrastructure.entities.User;
@@ -22,8 +20,7 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {User.class, Event.class,
-                      EventDate.class, FriendShip.class,
+@Database(entities = {User.class, Event.class, FriendShip.class,
                       Group.class, UserEvent.class,
                       UserGroup.class}, version = 1, exportSchema = false)
 @TypeConverters({DateConverter.class})
