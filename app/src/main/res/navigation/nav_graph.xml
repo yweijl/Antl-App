@@ -23,5 +23,18 @@
         android:id="@+id/destination_login"
         android:name="com.avansprojects.antl.ui.login.LoginFragment"
         android:label="Login"
-        tools:layout="@layout/login_fragment" />
+        tools:layout="@layout/login_fragment" >
+        <action
+            android:id="@+id/to_destination_register"
+            app:destination="@id/destination_register" />
+    </fragment>
+    <fragment
+        android:id="@+id/destination_register"
+        android:name="com.avansprojects.antl.ui.login.RegisterFragment"
+        android:label="Register"
+        tools:layout="@layout/register_fragment" >
+        <action
+            android:id="@+id/to_destination_login"
+            app:destination="@id/destination_login" />
+    </fragment>
 </navigation>

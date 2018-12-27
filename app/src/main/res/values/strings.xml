@@ -3,6 +3,7 @@
 
     <string name="antl_button_register">Register</string>
     <string name="antl_button_login">Login</string>
+    <string name="antl_button_cancel">Cancel</string>
     <string name="antl_hint_password">Password</string>
     <string name="antl_hint_username">Username</string>
 
@@ -14,5 +15,6 @@
     <string name="event_overview_day">26</string>
     <string name="event_overview_month">DEC</string>
     <string name="Events">Events fragment</string>
+    <string name="antl_hint_email">Email</string>
 
 </resources>
