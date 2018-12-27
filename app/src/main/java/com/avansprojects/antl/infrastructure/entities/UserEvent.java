@@ -9,7 +9,7 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
-@Entity(foreignKeys = {
+@Entity(tableName = "user_events", foreignKeys = {
         @ForeignKey(entity = User.class,
                 parentColumns = "id",
                 childColumns = "user_id"),

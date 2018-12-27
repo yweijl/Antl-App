@@ -6,12 +6,12 @@ import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(foreignKeys = @ForeignKey(entity = User.class,
+@Entity(tableName = "friendships", foreignKeys = @ForeignKey(entity = User.class,
         parentColumns = "id",
         childColumns = "user_id"),
         indices = {@Index("user_id")})
 
-public class FriendShip {
+public class Friendship {
     @PrimaryKey
     public int id;
     @ColumnInfo(name = "user_id")
