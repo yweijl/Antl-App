@@ -11,14 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.avansprojects.antl.R;
-import com.avansprojects.antl.dummy.DummyEvents;
-
-import java.util.List;
 
 public class EventOverviewFragment extends Fragment {
 
-    private EventOverViewListViewModel mViewModel;
-    private RecyclerView.Adapter mAdapter;
+    private EventOverviewViewModel _ViewModel;
 
     public static EventOverviewFragment newInstance() {
         return new EventOverviewFragment();
@@ -32,26 +28,20 @@ public class EventOverviewFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
-        List<DummyEvents> eventsList = new DummyEvents().GetEventsList();
-
+        _ViewModel = ViewModelProviders.of(this).get(EventOverviewViewModel.class);
         RecyclerView mRecyclerView = getView().findViewById(R.id.eventRecyclerView);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this.getContext());
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        EventOverviewAdapter adapter = new EventOverviewAdapter(this);
+        mRecyclerView.setAdapter(adapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-        mAdapter = new EventOverviewAdapter(eventsList);
-        mRecyclerView.setAdapter(mAdapter);
-
-        EventOverviewAdapter eventOverviewAdapter = new EventOverviewAdapter(eventsList);
-        mRecyclerView.setAdapter(eventOverviewAdapter);
-
-//        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-//        mAdapter.notifyDataSetChanged();
+        // Update the cached copy of the words in the adapter.
+        _ViewModel.getAllEvents().observe(this, adapter::setEvents);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(EventOverViewListViewModel.class);
+        _ViewModel = ViewModelProviders.of(this).get(EventOverviewViewModel.class);
         // TODO: Use the ViewModel
     }
 }

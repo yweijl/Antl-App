@@ -1,37 +1,29 @@
 package com.avansprojects.antl.ui.eventOverview;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.avansprojects.antl.R;
-import com.avansprojects.antl.dummy.DummyEvents;
+import com.avansprojects.antl.helpers.GlideApp;
+import com.avansprojects.antl.helpers.PartialDateConverter;
+import com.avansprojects.antl.infrastructure.entities.Event;
+import java.util.Collections;
 import java.util.List;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
 
 public class EventOverviewAdapter extends RecyclerView.Adapter<EventOverviewAdapter.EventCardViewHolder> {
 
-    private List<DummyEvents> mEventsList;
-
-    public EventOverviewAdapter(List<DummyEvents> mEventsList) {
-        this.mEventsList = mEventsList;
-    }
-
-    @Override
-    public EventOverviewAdapter.EventCardViewHolder onCreateViewHolder(ViewGroup parent,
-                                                                       int viewType) {
-        CardView cardView = (CardView) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.event_overview_card_fragment, parent, false);
-        return new EventCardViewHolder(cardView);
-    }
-
     class EventCardViewHolder extends RecyclerView.ViewHolder {
-        TextView eventName;
-        TextView location;
-        TextView day;
-        TextView month;
-        TextView attendingUsers;
+        private final TextView eventName;
+        private final TextView location;
+        private final TextView day;
+        private final TextView month;
+        private final TextView attendingUsers;
+        private ImageView picture;
 
         EventCardViewHolder(CardView cardView) {
             super(cardView);
@@ -40,22 +32,52 @@ public class EventOverviewAdapter extends RecyclerView.Adapter<EventOverviewAdap
             day = cardView.findViewById(R.id.eventOverviewDay);
             month = cardView.findViewById(R.id.eventOverviewMonth);
             attendingUsers = cardView.findViewById(R.id.eventOverviewAttendingUsers);
+            picture = cardView.findViewById(R.id.eventOverviewPicture);
         }
+    }
+
+    private List<Event> _eventsList;
+    private Fragment _fragment;
+
+    public EventOverviewAdapter(Fragment fragment) {
+        _fragment = fragment;
+    }
+
+    @Override
+    public EventOverviewAdapter.EventCardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        CardView cardView = (CardView) LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.event_overview_card_fragment, parent, false);
+        return new EventCardViewHolder(cardView);
     }
 
     @Override
     public void onBindViewHolder(EventCardViewHolder holder, int position) {
-        DummyEvents event = mEventsList.get(position);
+        if (_eventsList != null) {
 
-        holder.eventName.setText(event.getName());
-        holder.location.setText(event.getLocation());
-        holder.day.setText(event.getDay());
-        holder.month.setText("Dec");
-        holder.attendingUsers.setText(event.getAttendingUsers());
+            Event current = _eventsList.get(position);
+            holder.eventName.setText(current.getName());
+            holder.location.setText(current.getLocation());
+            holder.day.setText(PartialDateConverter.getDay(current.getMainDateTime()));
+            holder.month.setText(PartialDateConverter.getMonth(current.getMainDateTime()));
+            holder.attendingUsers.setText("13");
+            GlideApp.with(_fragment).load(current.getEventPicture()).centerCrop().into(holder.picture);
+
+        } else {
+            holder.eventName.setText("No Events");
+        }
+    }
+
+    void setEvents(List<Event> events){
+        Collections.sort(events);
+        _eventsList = events;
+        notifyDataSetChanged();
     }
 
     @Override
-    public int getItemCount() {
-        return mEventsList.size();
+    public int getItemCount()
+    {
+        if (_eventsList != null)
+            return _eventsList.size();
+        else return 0;
     }
 }

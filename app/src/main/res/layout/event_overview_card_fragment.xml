@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardView"
     android:layout_width="match_parent"
-    android:layout_height="191dp"
-    android:layout_marginTop="8dp"
+    android:layout_height="165dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
+
     app:cardBackgroundColor="@color/AntlAccentLight"
     app:cardCornerRadius="8dp"
     app:layout_constraintEnd_toEndOf="parent"
@@ -16,35 +19,24 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/eventCardConstraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="3dp">
-
-        <ImageView
-            android:id="@+id/eventOverviewPicture"
-            android:layout_width="286dp"
-            android:layout_height="114dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            app:layout_constraintCircleRadius="4dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/event"
-            android:contentDescription="@string/event_overview_event_description" />
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/eventOverviewName"
-            android:layout_width="wrap_content"
+            android:layout_width="185dp"
             android:layout_height="wrap_content"
             android:layout_above="@+id/eventOverviewLocation"
             android:layout_alignStart="@+id/eventOverviewLocation"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
             android:inputType="none"
+            android:maxLines="1"
             android:text="@string/event_overview_event_name"
             android:textColor="@color/AntlText"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="@+id/eventOverviewPicture"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:typeface="monospace"
+            app:layout_constraintBottom_toTopOf="@+id/eventOverviewLocation"
             app:layout_constraintStart_toStartOf="@+id/eventOverviewPicture"
             app:layout_constraintTop_toBottomOf="@+id/eventOverviewPicture" />
 
@@ -54,58 +46,55 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="8dp"
+            android:fontFamily="monospace"
             android:inputType="none"
             android:text="@string/event_overview_event_location"
             android:textColor="@color/AntlText"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/eventOverviewName"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/eventOverviewName"
             app:layout_constraintTop_toBottomOf="@+id/eventOverviewName" />
 
         <ImageView
             android:id="@+id/eventOverviewUserIcon"
             android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_height="27dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="84dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
             android:contentDescription="@string/event_overview_attending_user_icon_description"
             android:src="@drawable/users"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.981"
-            app:layout_constraintStart_toStartOf="@+id/eventOverviewLocation"
-            app:layout_constraintTop_toBottomOf="@+id/eventOverviewPicture"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintHorizontal_bias="0.673"
+            app:layout_constraintStart_toStartOf="@+id/eventOverviewName" />
 
         <TextView
             android:id="@+id/eventOverviewDay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="8dp"
+            android:layout_width="34dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="28dp"
+            android:fontFamily="monospace"
             android:text="@string/event_overview_day"
             android:textAlignment="center"
             android:textColor="@color/AntlText"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.872"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/eventOverviewMonth"
+            app:layout_constraintEnd_toEndOf="@+id/eventOverviewPicture"
+            app:layout_constraintTop_toBottomOf="@+id/eventOverviewPicture" />
 
         <TextView
             android:id="@+id/eventOverviewMonth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="monospace"
             android:text="@string/event_overview_month"
+            android:textAlignment="center"
             android:textColor="@color/AntlText"
-            android:textSize="24sp"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/eventOverviewDay"
-            app:layout_constraintHorizontal_bias="0.642"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/eventOverviewDay"
             app:layout_constraintTop_toBottomOf="@+id/eventOverviewDay" />
 
@@ -113,18 +102,22 @@
             android:id="@+id/eventOverviewAttendingUsers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="20dp"
             android:text="@string/event_overview_attending_users"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.818"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/eventOverviewUserIcon"
+            app:layout_constraintStart_toStartOf="@+id/eventOverviewUserIcon" />
+
+        <ImageView
+            android:id="@+id/eventOverviewPicture"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:contentDescription="@string/event_overview_event_description"
+            android:scaleType="fitXY"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eventOverviewMonth"
-            app:layout_constraintVertical_bias="0.559" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
