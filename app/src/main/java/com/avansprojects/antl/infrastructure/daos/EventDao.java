@@ -13,7 +13,6 @@ import androidx.room.Query;
 @Dao
 public interface EventDao {
 
-
     @Query("SELECT * FROM events")
     LiveData<List<Event>> getAllEvents();
 
