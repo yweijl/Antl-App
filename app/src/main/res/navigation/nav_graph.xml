@@ -11,14 +11,18 @@
         android:label="Events"
         tools:layout="@layout/event_overview_fragment" >
         <action
-            android:id="@+id/to_destination_login"
-            app:destination="@id/destination_login" />
+            android:id="@+id/action_destination_events_to_createEventFragment"
+            app:destination="@id/Destination_create_event" />
     </fragment>
     <fragment
         android:id="@+id/destination_friends"
 		android:name="com.avansprojects.antl.ui.friend.FriendOverviewFragment"
 		android:label="Friends"
-		tools:layout="@layout/friend_fragment" />
+		tools:layout="@layout/friend_fragment" >
+        <action
+            android:id="@+id/action_destination_friends_to_destination_register"
+            app:destination="@id/destination_register" />
+    </fragment>
     <fragment
         android:id="@+id/destination_login"
         android:name="com.avansprojects.antl.ui.login.LoginFragment"
@@ -36,5 +40,11 @@
         <action
             android:id="@+id/to_destination_login"
             app:destination="@id/destination_login" />
+    </fragment>
+    <fragment
+        android:id="@+id/Destination_create_event"
+        android:name="com.avansprojects.antl.ui.createEvent.CreateEventFragment"
+        android:label="create_event"
+        tools:layout="@layout/create_event_fragment">
     </fragment>
 </navigation>

@@ -1,11 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/createEventFragment"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/createEventName"
     android:layout_height="match_parent"
-    android:background="@color/AntlBackGround"
-    android:padding="8dp">
+    android:background="@color/AntlBackGround">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="256dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="48dp"
+        android:contentDescription="@string/create_event_name"
+        android:fontFamily="monospace"
+        android:text="@string/create_event_name"
+        android:textColor="@color/AntlAccentLight"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/enterEventName"
+        android:layout_width="259dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="@string/create_event_name_hint"
+        android:inputType="text"
+        android:maxLines="1"
+        android:textColor="@color/AntlAccentLight"
+        android:textColorHint="@color/AntlAccentLight"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/createEventNameNextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/create_event_name_next_button"
+        android:maxLines="1"
+        android:text="@string/create_event_name_next_button"
+        android:textAlignment="textEnd"
+        app:cornerRadius="25sp"
+        app:icon="@drawable/ic_arrow_right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.913"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterEventName"
+        app:layout_constraintVertical_bias="0.843"
+        app:rippleColor="@color/AntlBackGround" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

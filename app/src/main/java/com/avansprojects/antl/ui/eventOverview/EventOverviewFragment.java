@@ -5,12 +5,14 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.avansprojects.antl.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class EventOverviewFragment extends Fragment {
 
@@ -42,6 +44,8 @@ public class EventOverviewFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         _ViewModel = ViewModelProviders.of(this).get(EventOverviewViewModel.class);
+        FloatingActionButton createEventFab = getView().findViewById(R.id.createEventFab);
+        createEventFab.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_destination_events_to_createEventFragment));
         // TODO: Use the ViewModel
     }
 }
