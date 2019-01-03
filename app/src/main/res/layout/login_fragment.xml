@@ -7,8 +7,9 @@
     tools:context=".ui.login.LoginFragment">
 
     <LinearLayout
+        android:background="@color/AntlBackGround"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:orientation="vertical"
@@ -29,6 +30,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="148dp"
             android:text="@string/app_name"
+            android:textColor="@color/AntlAccentLight"
             android:textAllCaps="true"
             android:textSize="16sp" />
 
@@ -38,11 +40,12 @@
             android:hint="@string/antl_hint_username">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/username_text_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/AntlAccentLight"
                 android:inputType="text"
-                android:maxLines="1"
-                android:id="@+id/username_text_input"/>
+                android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -56,6 +59,7 @@
                 android:id="@+id/password_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/AntlAccentLight"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -68,6 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
+                android:textColor="@color/AntlAccentDark"
                 android:text="@string/antl_button_login" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -77,6 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
                 android:layout_toStartOf="@id/next_button"
+                android:textColor="@color/AntlAccentLight"
                 android:text="@string/antl_button_register" />
 
         </RelativeLayout>
