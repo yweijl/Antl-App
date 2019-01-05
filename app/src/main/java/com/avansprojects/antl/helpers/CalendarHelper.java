@@ -8,6 +8,21 @@ import static java.util.Calendar.SHORT;
 
 public class CalendarHelper {
 
+    public static int getCurrentSeconds(){
+        Calendar cal = Calendar.getInstance();
+        return cal.get(Calendar.SECOND);
+    }
+
+    public static int getCurrentMinutes(){
+        Calendar cal = Calendar.getInstance();
+        return cal.get(Calendar.MINUTE);
+    }
+
+    public static int getCurrentHours(){
+        Calendar cal = Calendar.getInstance();
+        return cal.get(Calendar.HOUR_OF_DAY);
+    }
+
     public static int getCurrentDay(){
         Calendar cal = Calendar.getInstance();
         return cal.get(Calendar.DAY_OF_MONTH);
@@ -45,5 +60,4 @@ public class CalendarHelper {
         cal.set(year, month, day);
         return cal.getTime();
     }
-
 }

@@ -5,17 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
-
-import com.avansprojects.antl.R;
-import com.avansprojects.antl.helpers.CalendarHelper;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
-
+import com.avansprojects.antl.R;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class CreateEventDateFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
+public class CreateEventDateFragment extends Fragment{
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -24,29 +20,43 @@ public class CreateEventDateFragment extends Fragment implements DatePickerDialo
     }
 
     @Override
-    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        String date = dayOfMonth+"-"+(monthOfYear+1)+"-"+year;
-        TextView firstDateTextView = getView().findViewById(R.id.firstEventDate);
-        firstDateTextView.setText(date);
-    }
-
-    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        DatePickerDialog dialog = DatePickerDialog.newInstance(
-                this, CalendarHelper.getCurrentYear(), CalendarHelper.getCurrentMonth(), CalendarHelper.getCurrentDay()
-        );
+        DatePickerFactory datePickerFactory = new DatePickerFactory(this);
 
-        dialog.setOkText(R.string.ok);
-        dialog.setCancelText(R.string.cancel);
-        dialog.setOkColor(R.style.TextColor);
-        dialog.setCancelColor(R.style.TextColor);
+        DatePickerDialog firstEventDate = datePickerFactory.getDateDialog(R.id.firstEventDate, R.id.firstEventTime);
+        DatePickerDialog secondEventDate = datePickerFactory.getDateDialog(R.id.secondEventDate, R.id.secondEventTime);
+        DatePickerDialog thirdEventDate = datePickerFactory.getDateDialog(R.id.thirdEventDate, R.id.thirdEventTime);
+        DatePickerDialog fourthEventDate = datePickerFactory.getDateDialog(R.id.fourthEventDate, R.id.fourthEventTime);
 
-        Button addDateButton = getView().findViewById(R.id.addDateToEvent);
-        addDateButton.setOnClickListener(x -> {
+        Button firstDateButton = getView().findViewById(R.id.addDateToEvent);
+        Button secondDateButton = getView().findViewById(R.id.addDateToEvent1);
+        Button thirdDateButton = getView().findViewById(R.id.addDateToEvent2);
+        Button fourthDateButton = getView().findViewById(R.id.addDateToEvent3);
+
+        firstDateButton.setOnClickListener(x -> {
             assert getFragmentManager() != null;
-            dialog.show(getFragmentManager(), "Datepickerdialog");
+            firstEventDate.show(getFragmentManager(), "Datepickerdialog");
+            secondDateButton.setVisibility(View.VISIBLE);
+
+        });
+
+        secondDateButton.setOnClickListener(x -> {
+            assert getFragmentManager() != null;
+            secondEventDate.show(getFragmentManager(), "Datepickerdialog");
+            thirdDateButton.setVisibility(View.VISIBLE);
+        });
+
+        thirdDateButton.setOnClickListener(x -> {
+            assert getFragmentManager() != null;
+            thirdEventDate.show(getFragmentManager(), "Datepickerdialog");
+            fourthDateButton.setVisibility(View.VISIBLE);
+        });
+
+        fourthDateButton.setOnClickListener(x -> {
+            assert getFragmentManager() != null;
+            fourthEventDate.show(getFragmentManager(), "Datepickerdialog");
         });
     }
 }
