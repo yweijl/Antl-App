@@ -24,4 +24,11 @@
     <string name="create_event_date">At which date is the event being held?</string>
     <string name="create_event_multiple_dates">Do you want to add extra date options to the event?</string>
     <string name="create_event_next_button">Next</string>
+
+    <string name="add_date_to_event_hint">Add a date to the event here</string>
+    <string name="add_date_to_event"><u>Add dates to the event:</u></string>
+    <string name="button_to_add_a_date_to_the_event">Button to add a date to the event</string>
+
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
 </resources>

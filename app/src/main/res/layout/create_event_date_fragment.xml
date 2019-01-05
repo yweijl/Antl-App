@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="256dp"
-        android:layout_height="76dp"
+        android:layout_width="262dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginTop="48dp"
         android:contentDescription="@string/create_event_date"
@@ -21,6 +21,91 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/addDateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:contentDescription="@string/add_date_to_event_hint"
+        android:fontFamily="monospace"
+        android:text="@string/add_date_to_event"
+        android:textColor="@color/AntlAccentLight"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/addDateToEvent"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/button_to_add_a_date_to_the_event"
+        app:icon="@android:drawable/ic_input_add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addDateText">
+    </Button>
+
+    <Button
+        android:id="@+id/addDateToEvent1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/button_to_add_a_date_to_the_event"
+        app:icon="@android:drawable/ic_input_add"
+        app:layout_constraintEnd_toEndOf="@+id/addDateToEvent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/addDateToEvent"
+        app:layout_constraintTop_toBottomOf="@+id/addDateToEvent">
+    </Button>
+
+    <Button
+        android:id="@+id/addDateToEvent2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/button_to_add_a_date_to_the_event"
+        app:icon="@android:drawable/ic_input_add"
+        app:layout_constraintEnd_toEndOf="@+id/addDateToEvent1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/addDateToEvent1"
+        app:layout_constraintTop_toBottomOf="@+id/addDateToEvent1">
+    </Button>
+
+    <Button
+        android:id="@+id/addDateToEvent3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/button_to_add_a_date_to_the_event"
+        app:icon="@android:drawable/ic_input_add"
+        app:layout_constraintEnd_toEndOf="@+id/addDateToEvent2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/addDateToEvent2"
+        app:layout_constraintTop_toBottomOf="@+id/addDateToEvent2">
+    </Button>
 
 
     <Button
@@ -28,7 +113,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/create_event_next_button"
@@ -41,8 +125,39 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.913"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterEventDescription"
-        app:layout_constraintVertical_bias="0.843"
-        app:rippleColor="@color/AntlBackGround" />
+        android:background="?attr/selectableItemBackgroundBorderless"/>
+
+    <TextView
+        android:id="@+id/firstEventDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:textColor="@color/AntlAccentLight"
+        app:layout_constraintBottom_toBottomOf="@+id/addDateToEvent"
+        app:layout_constraintStart_toEndOf="@+id/addDateToEvent"
+        app:layout_constraintTop_toTopOf="@+id/addDateToEvent"
+        tools:text="13:00 / 02-10-2019" />
+
+    <TextView
+        android:id="@+id/secondEventDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:textColor="@color/AntlAccentLight"
+        app:layout_constraintBottom_toBottomOf="@+id/addDateToEvent1"
+        app:layout_constraintStart_toEndOf="@+id/addDateToEvent1"
+        app:layout_constraintTop_toTopOf="@+id/addDateToEvent1"
+        tools:text="13:00 / 02-10-2019" />
+
+    <TextView
+        android:id="@+id/thirdEventDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:textColor="@color/AntlAccentLight"
+        app:layout_constraintBottom_toBottomOf="@+id/addDateToEvent2"
+        app:layout_constraintStart_toEndOf="@+id/addDateToEvent2"
+        app:layout_constraintTop_toTopOf="@+id/addDateToEvent2"
+        tools:text="13:00 / 02-10-2019" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,11 @@
         <!--Removing actionbar-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/AntlPrimary</item>
+    </style>
+
+    <style name="TextColor">
+        <item name="android:textColor">#EFF1F3</item>
     </style>
 
     <style name="ToolbarTheme" parent="ThemeOverlay.MaterialComponents.ActionBar">

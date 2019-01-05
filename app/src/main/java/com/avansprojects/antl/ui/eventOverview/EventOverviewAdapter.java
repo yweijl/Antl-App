@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.avansprojects.antl.R;
 import com.avansprojects.antl.helpers.GlideApp;
-import com.avansprojects.antl.helpers.PartialDateConverter;
+import com.avansprojects.antl.helpers.CalendarHelper;
 import com.avansprojects.antl.infrastructure.entities.Event;
 import java.util.Collections;
 import java.util.List;
@@ -57,8 +57,8 @@ public class EventOverviewAdapter extends RecyclerView.Adapter<EventOverviewAdap
             Event current = _eventsList.get(position);
             holder.eventName.setText(current.getName());
             holder.location.setText(current.getLocation());
-            holder.day.setText(PartialDateConverter.getDay(current.getMainDateTime()));
-            holder.month.setText(PartialDateConverter.getMonth(current.getMainDateTime()));
+            holder.day.setText(CalendarHelper.getDayFromDate(current.getMainDateTime()));
+            holder.month.setText(CalendarHelper.getCurrentMonthAbbreviationFromDate(current.getMainDateTime()));
             holder.attendingUsers.setText("13");
             GlideApp.with(_fragment).load(current.getEventPicture()).centerCrop().into(holder.picture);
 

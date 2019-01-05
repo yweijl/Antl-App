@@ -22,7 +22,7 @@ public class CreateEventFragment extends Fragment {
 
     private CreateEventViewModel mViewModel;
 
-    private static final int NUM_PAGES = 2;
+    private static final int NUM_PAGES = 3;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
 
@@ -51,11 +51,6 @@ public class CreateEventFragment extends Fragment {
         // TODO: Use the ViewModel
     }
 
-    /**
-     * A simple pager adapter that represents 5 ScreenSlidePageFragment objects, in
-     * sequence.
-     */
-
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
         public ScreenSlidePagerAdapter(FragmentManager fm) {
             super(fm);
@@ -65,10 +60,12 @@ public class CreateEventFragment extends Fragment {
         public Fragment getItem(int position) {
 
             switch (position) {
-                case 0: // Fragment # 0 - This will show FirstFragment
+                case 0:
                     return new CreateEventNameFragment();
-                case 1: // Fragment # 0 - This will show FirstFragment different title
+                case 1:
                     return new CreateEventDescriptionFragment();
+                case 2:
+                    return new CreateEventDateFragment();
                 default:
                     return null;
             }

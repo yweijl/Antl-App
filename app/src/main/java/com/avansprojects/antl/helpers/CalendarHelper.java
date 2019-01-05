@@ -6,15 +6,30 @@ import java.util.Locale;
 
 import static java.util.Calendar.SHORT;
 
-public class PartialDateConverter {
+public class CalendarHelper {
 
-    public static String getDay(Date date){
+    public static int getCurrentDay(){
+        Calendar cal = Calendar.getInstance();
+        return cal.get(Calendar.DAY_OF_MONTH);
+    }
+
+    public static int getCurrentMonth(){
+        Calendar cal = Calendar.getInstance();
+        return cal.get(Calendar.MONTH);
+    }
+
+    public static int getCurrentYear(){
+        Calendar cal = Calendar.getInstance();
+        return cal.get(Calendar.YEAR);
+    }
+
+    public static String getDayFromDate(Date date){
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         return Integer.toString(cal.get(Calendar.DAY_OF_MONTH));
     }
 
-    public static String getMonth(Date date){
+    public static String getCurrentMonthAbbreviationFromDate(Date date){
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         String month = cal.getDisplayName(Calendar.MONTH, SHORT, Locale.getDefault());
@@ -22,7 +37,6 @@ public class PartialDateConverter {
         if (month.endsWith(".")) {
             month = month.substring(0, month.length() - 1);
         }
-
         return month;
     }
 
@@ -31,4 +45,5 @@ public class PartialDateConverter {
         cal.set(year, month, day);
         return cal.getTime();
     }
+
 }
