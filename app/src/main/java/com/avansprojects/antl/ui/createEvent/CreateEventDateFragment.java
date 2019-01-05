@@ -38,17 +38,19 @@ public class CreateEventDateFragment extends Fragment{
         firstDateButton.setOnClickListener(x -> {
             assert getFragmentManager() != null;
             firstEventDate.show(getFragmentManager(), "Datepickerdialog");
-
+            secondDateButton.setVisibility(View.VISIBLE);
         });
 
         secondDateButton.setOnClickListener(x -> {
             assert getFragmentManager() != null;
             secondEventDate.show(getFragmentManager(), "Datepickerdialog");
+            thirdDateButton.setVisibility(View.VISIBLE);
         });
 
         thirdDateButton.setOnClickListener(x -> {
             assert getFragmentManager() != null;
             thirdEventDate.show(getFragmentManager(), "Datepickerdialog");
+            fourthDateButton.setVisibility(View.VISIBLE);
         });
 
         fourthDateButton.setOnClickListener(x -> {
