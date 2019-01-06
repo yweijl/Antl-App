@@ -3,13 +3,16 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Base.Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/AntlPrimary</item>
+        <item name="colorPrimary">@color/colorAccent</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <!--Removing actionbar-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:statusBarColor">@color/AntlPrimary</item>
+        <item name="android:statusBarColor">@color/AntlBackGround</item>
+        <item name="android:textColorPrimary">@color/AntlAccentLight</item>
+        <item name="android:colorBackground">@color/AntlBackGround</item>
+        <item name="android:navigationBarColor">@android:color/background_dark</item>
     </style>
 
     <style name="TextColor">

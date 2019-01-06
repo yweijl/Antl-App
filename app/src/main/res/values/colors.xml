@@ -9,4 +9,12 @@
     <color name="AntlAccentLight">#EFF1F3</color>
     <color name="AntlAccentDark">#696773</color>
     <color name="AntlText">#272727</color>
+    <color name="QueenBlue">#114b5f</color>
+    <color name="QueenBlueDarker">#304964</color>
+    <color name="MidnightGreen">#114b5f</color>
+    <color name="MidnightGreenLighter">#285d6f</color>
+    <color name="Nyanza">#E4FDE1</color>
+    <color name="FieryRose">#F45B69</color>
+    <color name="Wine">#6B2737</color>
+    <color name="limeGreen">#009fb8</color>
 </resources>

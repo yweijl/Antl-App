@@ -30,11 +30,11 @@
         android:focusable="true"
         android:src="@android:drawable/ic_input_add"
         android:tint="@color/AntlAccentLight"
-        app:backgroundTint="@color/AntlComplementair"
+        app:backgroundTint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="@+id/eventRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:rippleColor="@color/AntlPrimary" />
+        android:background="?attr/selectableItemBackgroundBorderless"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
