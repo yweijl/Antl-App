@@ -25,8 +25,6 @@ import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
-import static android.app.Activity.RESULT_OK;
-
 public class CreateEventImageFragment extends Fragment {
 
     String mCurrentPhotoPath;
@@ -59,14 +57,6 @@ public class CreateEventImageFragment extends Fragment {
             }
         });
     }
-//
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
-//            Bundle extras = data.getExtras();
-//            GlideApp.with(this).load(extras.get("data")).centerCrop().into(mImageView);
-//        }
-//    }
 
     private File createImageFile() throws IOException {
         // Create an image file name
