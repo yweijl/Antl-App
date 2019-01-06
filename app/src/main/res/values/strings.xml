@@ -36,4 +36,5 @@
     <string name="friendsMenu">Friends</string>
     <string name="profileMenu">Profile</string>
     <string name="antl">Antl.</string>
+    <string name="save">save</string>
 </resources>
