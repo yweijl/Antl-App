@@ -8,7 +8,7 @@ import com.avansprojects.antl.infrastructure.daos.EventDao;
 import com.avansprojects.antl.infrastructure.daos.UserDao;
 import com.avansprojects.antl.infrastructure.entities.DateConverter;
 import com.avansprojects.antl.infrastructure.entities.Event;
-import com.avansprojects.antl.infrastructure.entities.FriendShip;
+import com.avansprojects.antl.infrastructure.entities.Relationship;
 import com.avansprojects.antl.infrastructure.entities.Group;
 import com.avansprojects.antl.infrastructure.entities.User;
 import com.avansprojects.antl.infrastructure.entities.UserEvent;
@@ -20,7 +20,7 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {User.class, Event.class, FriendShip.class,
+@Database(entities = {User.class, Event.class, Relationship.class,
                       Group.class, UserEvent.class,
                       UserGroup.class}, version = 1, exportSchema = false)
 @TypeConverters({DateConverter.class})
