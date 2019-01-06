@@ -1,8 +1,7 @@
-package com.avansprojects.antl.ui.createEvent;
+package com.avansprojects.antl.helpers;
 
 import android.widget.TextView;
 import com.avansprojects.antl.R;
-import com.avansprojects.antl.helpers.CalendarHelper;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 import androidx.fragment.app.Fragment;
@@ -16,21 +15,19 @@ public class DatePickerFactory {
     }
 
     public DatePickerDialog getDateDialog(int dateViewId, int timeViewId) {
-        DateDialog dialog = new DateDialog();
-        return dialog.getInstance(dateViewId, timeViewId);
+        return new DateDialog().getInstance(dateViewId, timeViewId);
     }
 
-    public TimePickerDialog getTimeDialog(int textViewId) {
-        TimeDialog dialog = new TimeDialog();
-        return dialog.getInstance(textViewId);
+    public TimePickerDialog getTimeDialog(int timeViewId) {
+        return new TimeDialog().getInstance(timeViewId);
     }
 
     public class TimeDialog implements TimePickerDialog.OnTimeSetListener{
 
-        private int _textViewId;
+        private int _timeViewId;
 
-        private TimePickerDialog getInstance(int textViewId){
-            _textViewId = textViewId;
+        private TimePickerDialog getInstance(int timeViewId){
+            _timeViewId = timeViewId;
             TimePickerDialog dialog = TimePickerDialog.newInstance(
                     this, CalendarHelper.getCurrentHours(), CalendarHelper.getCurrentMinutes(), true
             );
@@ -46,7 +43,7 @@ public class DatePickerFactory {
         @Override
         public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
             String time = hourOfDay+" : "+minute+"    /";
-            TextView timeTextView = _fragment.getView().findViewById(_textViewId);
+            TextView timeTextView = _fragment.getView().findViewById(_timeViewId);
             timeTextView.setText(time);
         }
     }

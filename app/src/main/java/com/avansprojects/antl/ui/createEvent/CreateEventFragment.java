@@ -3,26 +3,22 @@ package com.avansprojects.antl.ui.createEvent;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.lifecycle.ViewModelProviders;
-
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.avansprojects.antl.R;
 
 public class CreateEventFragment extends Fragment {
 
     private CreateEventViewModel mViewModel;
 
-    private static final int NUM_PAGES = 3;
+    private static final int NUM_PAGES = 4;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
 
@@ -66,6 +62,8 @@ public class CreateEventFragment extends Fragment {
                     return new CreateEventDescriptionFragment();
                 case 2:
                     return new CreateEventDateFragment();
+                case 3:
+                    return new CreateEventImageFragment();
                 default:
                     return null;
             }
