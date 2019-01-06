@@ -14,11 +14,8 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_activity);
-        Toolbar toolbar = findViewById(R.id.toolbar);
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-
         setupBottomBarNav(navController);
-
     }
 
     private void setupBottomBarNav(NavController navController)

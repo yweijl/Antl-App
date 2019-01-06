@@ -31,4 +31,8 @@
 
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
+    <string name="create_event_previous_button_desc">Go to previous page of create event</string>
+    <string name="eventsMenu">Events</string>
+    <string name="friendsMenu">Friends</string>
+    <string name="profileMenu">Profile</string>
 </resources>

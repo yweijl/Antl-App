@@ -45,6 +45,5 @@
         android:id="@+id/Destination_create_event"
         android:name="com.avansprojects.antl.ui.createEvent.CreateEventFragment"
         android:label="create_event"
-        tools:layout="@layout/create_event_name_fragment">
-    </fragment>
+        tools:layout="@layout/create_event_name_fragment"></fragment>
 </navigation>

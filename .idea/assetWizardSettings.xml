@@ -78,11 +78,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="height" value="18" />
-                            <entry key="outputName" value="ic_arrow_right" />
-                            <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="C:\Users\weijl\Downloads\arrow-right.svg" />
-                            <entry key="width" value="18" />
+                            <entry key="outputName" value="ic_arrow_left" />
+                            <entry key="sourceFile" value="C:\Users\weijl\Downloads\arrow-left.svg" />
                           </map>
                         </option>
                       </PersistentState>

@@ -12,6 +12,9 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+
 import com.avansprojects.antl.R;
 
 public class CreateEventFragment extends Fragment {
@@ -35,6 +38,17 @@ public class CreateEventFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
+
+        Button _nextButton = getActivity().findViewById(R.id.createEventNextButton);
+        _nextButton.setOnClickListener(v -> {
+            mPager.setCurrentItem(getItem(+1), true);
+        });
+
+        ImageButton _backButton = getActivity().findViewById(R.id.createEventBackButton);
+        _backButton.setOnClickListener(v -> {
+            mPager.setCurrentItem(getItem(-1), true);
+        });
+
         mPager = getView().findViewById(R.id.CreateEventPager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getFragmentManager());
         mPager.setAdapter(mPagerAdapter);
@@ -43,8 +57,13 @@ public class CreateEventFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         mViewModel = ViewModelProviders.of(this).get(CreateEventViewModel.class);
         // TODO: Use the ViewModel
+    }
+
+    private int getItem(int i) {
+        return mPager.getCurrentItem() + i;
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
@@ -54,7 +73,6 @@ public class CreateEventFragment extends Fragment {
 
         @Override
         public Fragment getItem(int position) {
-
             switch (position) {
                 case 0:
                     return new CreateEventNameFragment();

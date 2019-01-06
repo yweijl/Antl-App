@@ -10,8 +10,8 @@
         android:id="@+id/textView"
         android:layout_width="262dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="@string/create_event_date"
         android:fontFamily="monospace"
         android:text="@string/create_event_date"
@@ -104,24 +104,7 @@
         app:layout_constraintStart_toStartOf="@+id/addDateToEvent2"
         app:layout_constraintTop_toBottomOf="@+id/addDateToEvent2"></Button>
 
-    <Button
-        android:id="@+id/createEventDateNextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:contentDescription="@string/create_event_next_button"
-        android:maxLines="1"
-        android:text="@string/create_event_next_button"
-        android:textAlignment="textEnd"
-        app:cornerRadius="25sp"
-        app:icon="@drawable/ic_arrow_right"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.913"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="?attr/selectableItemBackgroundBorderless"/>
+
 
     <TextView
         android:id="@+id/firstEventTime"
