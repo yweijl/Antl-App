@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.avansprojects.antl.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class EventOverviewFragment extends Fragment {
@@ -30,6 +31,8 @@ public class EventOverviewFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
+        BottomNavigationView menu = getActivity().findViewById(R.id.bottom_nav);
+        menu.setVisibility(View.VISIBLE);
         _ViewModel = ViewModelProviders.of(this).get(EventOverviewViewModel.class);
         RecyclerView mRecyclerView = getView().findViewById(R.id.eventRecyclerView);
         EventOverviewAdapter adapter = new EventOverviewAdapter(this);

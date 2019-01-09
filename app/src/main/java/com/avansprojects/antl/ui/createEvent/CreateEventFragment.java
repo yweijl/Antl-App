@@ -21,6 +21,8 @@ import android.widget.TextView;
 import com.avansprojects.antl.R;
 import com.avansprojects.antl.helpers.CalendarHelper;
 import com.avansprojects.antl.infrastructure.entities.Event;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.Date;
 
 public class CreateEventFragment extends Fragment {
@@ -56,15 +58,12 @@ public class CreateEventFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
+        BottomNavigationView menu = getActivity().findViewById(R.id.bottom_nav);
+        menu.setVisibility(View.INVISIBLE);
         setEventButtons();
         setEventAdapter();
     }
 
-    @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        MenuItem item=menu.findItem(R.id.menu_group);
-        item.setVisible(false);
-    }
 
     private void setEventAdapter() {
         mPager = getView().findViewById(R.id.CreateEventPager);
@@ -152,6 +151,14 @@ public class CreateEventFragment extends Fragment {
     }
 
     private void setButtonVisibility(int position) {
+        if (position == 0){
+            mBackButton.setVisibility(View.INVISIBLE);
+        }
+
+        if (position == 1){
+            mBackButton.setVisibility(View.VISIBLE);
+        }
+
         if (position == 3) {
             mNextButton.setVisibility(View.GONE);
             mSaveButton.setVisibility(View.VISIBLE);

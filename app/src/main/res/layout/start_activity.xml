@@ -19,7 +19,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nav_host_fragment"
-        app:itemIconTint="@color/AntlBackGround"
+        app:itemIconTint="@color/FieryRose"
         app:menu="@menu/menu_navigation" />
 
     <fragment
