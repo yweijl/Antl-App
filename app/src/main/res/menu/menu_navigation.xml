@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/menu_group">
         <item
             android:id="@+id/destination_events"
-            android:title="@string/eventsMenu" />
+            android:icon="@drawable/antl_logo"
+            android:title="@string/eventsMenu"
+            android:visible="true" />
         <item
             android:id="@+id/destination_friends"
-            android:title="@string/friendsMenu" />
-    <item
-        android:id="@+id/destination_login"
-        android:title="@string/profileMenu" />
+            android:title="@string/friendsMenu"
+            android:icon="@drawable/users"/>
+        <item
+            android:id="@+id/destination_login"
+            android:title="@string/profileMenu"
+            android:icon="@drawable/ic_launcher_background"/>
+    </group>
 </menu>

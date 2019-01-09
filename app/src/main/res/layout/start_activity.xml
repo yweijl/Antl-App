@@ -12,13 +12,14 @@
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:windowSoftInputMode="adjustNothing"
+        android:layout_gravity="bottom"
         android:background="@color/AntlAccentLight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/nav_host_fragment"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nav_host_fragment"
+        app:itemIconTint="@color/AntlBackGround"
         app:menu="@menu/menu_navigation" />
 
     <fragment
