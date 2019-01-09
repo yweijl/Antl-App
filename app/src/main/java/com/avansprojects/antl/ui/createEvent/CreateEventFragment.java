@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
@@ -15,13 +16,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import com.avansprojects.antl.R;
+import com.avansprojects.antl.helpers.CalendarHelper;
+import com.avansprojects.antl.infrastructure.entities.Event;
+import java.util.Date;
 
 public class CreateEventFragment extends Fragment {
 
     private CreateEventViewModel mViewModel;
-
     private static final int NUM_PAGES = 4;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
@@ -53,9 +55,9 @@ public class CreateEventFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
-        findEventViews();
         setEventButtons();
         setEventAdapter();
+//        bindTextViews(mPager.getCurrentItem());
     }
 
     private void setEventAdapter() {
@@ -65,34 +67,56 @@ public class CreateEventFragment extends Fragment {
     }
 
     private void setEventButtons() {
-
-        _saveButton = getActivity().findViewById(R.id.createEventNextButton);
-        _saveButton.setOnClickListener(v -> { });
+        _saveButton = getActivity().findViewById(R.id.saveEventButton);
+        _saveButton.setOnClickListener(v -> {
+            try {
+                saveEvent();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            Navigation.findNavController(v).navigate(R.id.action_Destination_create_event_pop);
+        });
 
         _nextButton = getActivity().findViewById(R.id.createEventNextButton);
         _nextButton.setOnClickListener(v -> {
-            int newPosition = getItem(+1);
+            bindTextViews(mPager.getCurrentItem());
+            int newPosition = setNewViewPagerPosition(+1);
             setButtonVisibility(newPosition);
             mPager.setCurrentItem(newPosition, true);
         });
 
         _backButton = getActivity().findViewById(R.id.createEventBackButton);
         _backButton.setOnClickListener(v -> {
-            mPager.setCurrentItem(getItem(-1), true);
+            bindTextViews(mPager.getCurrentItem());
+            int newPosition = setNewViewPagerPosition(-1);
+            setButtonVisibility(newPosition);
+            mPager.setCurrentItem(newPosition, true);
         });
     }
 
-    private void findEventViews() {
-        _nameTextView = getView().findViewById(R.id.enterEventName);
-        _DescriptionTextView = getView().findViewById(R.id.enterEventDescription);
-        _firstDateTextView = getView().findViewById(R.id.firstEventDate);
-        _secondDateTextView = getView().findViewById(R.id.secondEventDate);
-        _thirdDateTextView = getView().findViewById(R.id.thirdEventDate);
-        _fourthDateTextView = getView().findViewById(R.id.fourthEventDate);
-        _firstTimeTextView = getView().findViewById(R.id.firstEventTime);
-        _secondTimeTextView = getView().findViewById(R.id.secondEventTime);
-        _thirdTimeTextView = getView().findViewById(R.id.thirdEventTime);
-        _fourthTimeTextView = getView().findViewById(R.id.fourthEventTime);
+    private void bindTextViews(int position) {
+        switch (position){
+            case 0:
+                _nameTextView = mPager.findViewById(R.id.enterEventName);
+            break;
+            case 1:
+            _DescriptionTextView = mPager.findViewById(R.id.enterEventDescription);
+            break;
+            case 2:
+                _firstDateTextView = mPager.findViewById(R.id.firstEventDate);
+                _secondDateTextView = mPager.findViewById(R.id.secondEventDate);
+                _thirdDateTextView = mPager.findViewById(R.id.thirdEventDate);
+                _fourthDateTextView = mPager.findViewById(R.id.fourthEventDate);
+                _firstTimeTextView = mPager.findViewById(R.id.firstEventTime);
+                _secondTimeTextView = mPager.findViewById(R.id.secondEventTime);
+                _thirdTimeTextView = mPager.findViewById(R.id.thirdEventTime);
+                _fourthTimeTextView = mPager.findViewById(R.id.fourthEventTime);
+            break;
+            case 3:
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
@@ -101,6 +125,26 @@ public class CreateEventFragment extends Fragment {
 
         mViewModel = ViewModelProviders.of(this).get(CreateEventViewModel.class);
         // TODO: Use the ViewModel
+    }
+
+    private Date getEventDate() throws Exception{
+        return CalendarHelper.joinDateTime(
+                _firstDateTextView.getText().toString(),
+                _firstTimeTextView.getText().toString());
+    }
+
+    private void saveEvent() throws Exception{
+        Event event = getEventFromInput();
+        mViewModel.insert(event);
+    }
+
+    private Event getEventFromInput() throws Exception {
+        String eventName = _nameTextView.getText().toString();
+        return new Event(
+                eventName,
+                getEventDate(),
+                "Tijdelijke locatie",
+                _pictureLocation);
     }
 
     private void setButtonVisibility(int position) {
@@ -112,12 +156,12 @@ public class CreateEventFragment extends Fragment {
                 _nextButton.setVisibility(View.VISIBLE);
             }
             if (_saveButton.getVisibility() == View.VISIBLE) {
-                _nextButton.setVisibility(View.GONE);
+                _saveButton.setVisibility(View.GONE);
             }
         }
     }
 
-    private int getItem(int position) {
+    private int setNewViewPagerPosition(int position) {
         return mPager.getCurrentItem() + position;
     }
 

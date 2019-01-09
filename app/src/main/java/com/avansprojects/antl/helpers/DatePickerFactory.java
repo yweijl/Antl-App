@@ -4,6 +4,9 @@ import android.widget.TextView;
 import com.avansprojects.antl.R;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
+
+import java.util.Objects;
+
 import androidx.fragment.app.Fragment;
 
 public class DatePickerFactory {
@@ -42,7 +45,7 @@ public class DatePickerFactory {
 
         @Override
         public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
-            String time = hourOfDay+" : "+minute+"    /";
+            String time = hourOfDay+":"+minute;
             TextView timeTextView = _fragment.getView().findViewById(_timeViewId);
             timeTextView.setText(time);
         }
@@ -72,7 +75,7 @@ public class DatePickerFactory {
         @Override
         public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
             String date = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
-            TextView dateTextView = _fragment.getView().findViewById(_dateViewId);
+            TextView dateTextView = Objects.requireNonNull(_fragment.getView()).findViewById(_dateViewId);
             dateTextView.setText(date);
             TimePickerDialog eventTime = getTimeDialog(_timeViewId);
 
