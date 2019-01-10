@@ -7,11 +7,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.avansprojects.antl.R;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 
 public class EventDateAdapter extends RecyclerView.Adapter<EventDateAdapter.EventDateCardViewHolder> {
 
@@ -22,33 +23,40 @@ public class EventDateAdapter extends RecyclerView.Adapter<EventDateAdapter.Even
 
         EventDateCardViewHolder(CardView cardView) {
             super(cardView);
-            mEventDate = cardView.findViewById(R.id.firstEventDate);
+            mEventDate = cardView.findViewById(R.id.eventDate);
             mRemoveDateButton = cardView.findViewById(R.id.removeDateFromEvent);
             mAddDateButton = cardView.findViewById(R.id.addDateToEvent);
 
             mAddDateButton.setOnClickListener(view -> {
-                mEventDateList.add("");
+                i = getAdapterPosition();
+                mEventDateList.add(Integer.toString(i));
                 notifyItemInserted(getAdapterPosition() + 1);
                 notifyItemRangeChanged(getAdapterPosition(), mEventDateList.size());
+                notifyDataSetChanged();
             });
 
             mRemoveDateButton.setOnClickListener(view -> {
+                i = getAdapterPosition();
                 mEventDateList.remove(getAdapterPosition());
-                notifyItemRemoved(getAdapterPosition());
+                notifyItemRemoved(getAdapterPosition() - 1);
                 notifyItemRangeChanged(getAdapterPosition(), mEventDateList.size());
+                notifyDataSetChanged();
+                if (mEventDateList.size() == 0){
+                    mEventDateList.add(Integer.toString(i));
+                }
             });
         }
     }
 
-    private List<String> mEventDateList;
+    private int i;
+    private List<String> mEventDateList = new ArrayList<String>(){{add("Insert Date here");}};
 
-    public EventDateAdapter(List<String> eventDateList) {
-        mEventDateList = eventDateList;
+    public EventDateAdapter(){
     }
 
     public void addItem() {
         mEventDateList.add("");
-        notifyItemInserted(mEventDateList.size() - 1);
+        notifyItemInserted(mEventDateList.size());
     }
 
     @Override
@@ -60,10 +68,15 @@ public class EventDateAdapter extends RecyclerView.Adapter<EventDateAdapter.Even
 
     @Override
     public void onBindViewHolder(EventDateCardViewHolder holder, int position) {
-
-        if (mEventDateList != null) {
-            holder.mEventDate.setText(mEventDateList.get(position));
+        if (mEventDateList.size() - 1 == position ) {
+            holder.mAddDateButton.setVisibility(View.VISIBLE);
+            holder.mRemoveDateButton.setVisibility(View.GONE);
+        } else {
+            holder.mAddDateButton.setVisibility(View.GONE);
+            holder.mRemoveDateButton.setVisibility(View.VISIBLE);
         }
+            String test = mEventDateList.get(position);
+            holder.mEventDate.setText(test);
     }
 
     void setEvents(List<String> dateList){

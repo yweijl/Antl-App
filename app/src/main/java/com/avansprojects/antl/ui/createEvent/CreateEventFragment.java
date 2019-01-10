@@ -115,8 +115,7 @@ public class CreateEventFragment extends Fragment {
                 mDescriptionTextView = mPager.findViewById(R.id.enterEventDescription);
             break;
             case 2:
-                mFirstDateTextView = mPager.findViewById(R.id.firstEventDate);
-                mFirstTimeTextView = mPager.findViewById(R.id.firstEventTime);
+                mFirstDateTextView = mPager.findViewById(R.id.eventDate);
             break;
             case 3:
                 break;

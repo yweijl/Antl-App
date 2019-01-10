@@ -35,15 +35,15 @@ public class CreateEventDateFragment extends Fragment{
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
         RecyclerView mRecyclerView = getView().findViewById(R.id.eventDateRecyclerView);
-        EventDateAdapter adapter = new EventDateAdapter(new ArrayList<>());
+        EventDateAdapter adapter = new EventDateAdapter();
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         adapter.addItem();
 
         DatePickerFactory datePickerFactory = new DatePickerFactory(this);
 
-        DatePickerFactory.DateDialog firstDateDialog = datePickerFactory.getDateDialog(R.id.firstEventDate);
-        DatePickerDialog firstEventDate = firstDateDialog.getInstance();
+//        DatePickerFactory.DateDialog firstDateDialog = datePickerFactory.getDateDialog(R.id.firstEventDate);
+//        DatePickerDialog firstEventDate = firstDateDialog.getInstance();
         Button firstDateButton = getView().findViewById(R.id.addDateToEvent);
     }
 

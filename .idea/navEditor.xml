@@ -45,6 +45,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_destination_events_to_Destination_create_event">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="to_destination_login">
                               <value>
                                 <LayoutPositions />
