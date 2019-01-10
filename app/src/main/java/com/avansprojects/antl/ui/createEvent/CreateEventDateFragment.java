@@ -5,9 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+
 import com.avansprojects.antl.helpers.DatePickerFactory;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.avansprojects.antl.R;
+import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;

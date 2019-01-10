@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -24,6 +25,8 @@ import com.avansprojects.antl.infrastructure.entities.Event;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Date;
+
+import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class CreateEventFragment extends Fragment {
 
@@ -85,6 +88,10 @@ public class CreateEventFragment extends Fragment {
         mNextButton = getActivity().findViewById(R.id.createEventNextButton);
         mNextButton.setOnClickListener(v -> {
             bindTextViews(mPager.getCurrentItem());
+            InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(INPUT_METHOD_SERVICE);
+            if (imm.isActive()){
+                imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+            }
             int newPosition = setNewViewPagerPosition(+1);
             setButtonVisibility(newPosition);
             mPager.setCurrentItem(newPosition, true);
