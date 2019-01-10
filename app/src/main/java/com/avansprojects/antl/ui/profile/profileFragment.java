@@ -1,4 +1,4 @@
-package com.avansprojects.antl.ui.friend;
+package com.avansprojects.antl.ui.profile;
 
 import androidx.lifecycle.ViewModelProviders;
 
@@ -14,24 +14,24 @@ import android.view.ViewGroup;
 
 import com.avansprojects.antl.R;
 
-public class FriendOverviewFragment extends Fragment {
+public class profileFragment extends Fragment {
 
-    private FriendViewModel mViewModel;
+    private ProfileViewModel mViewModel;
 
-    public static FriendOverviewFragment newInstance() {
-        return new FriendOverviewFragment();
+    public static profileFragment newInstance() {
+        return new profileFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.friend_fragment, container, false);
+        return inflater.inflate(R.layout.profile_fragment, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(FriendViewModel.class);
+        mViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
         // TODO: Use the ViewModel
     }
 

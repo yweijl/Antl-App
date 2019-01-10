@@ -16,5 +16,7 @@
     <string name="event_overview_month">DEC</string>
     <string name="Events">Events fragment</string>
     <string name="antl_hint_email">Email</string>
+    <string name="friend_overview_friend_name">Friend</string>
+    <string name="antl_button_next">next</string>
 
 </resources>

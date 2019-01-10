@@ -2,6 +2,8 @@ package com.avansprojects.antl.ui.login;
 
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,18 +14,18 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.avansprojects.antl.AntlApp;
 import com.avansprojects.antl.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class LoginFragment extends Fragment {
 
-    private LoginViewModel _ViewModel;
-    private TextView _User;
-    private TextView _Password;
+    private LoginViewModel mViewModel;
+    private TextView mUser;
+    private TextView mPassword;
 
     public static LoginFragment newInstance() {
         return new LoginFragment();
@@ -39,19 +41,28 @@ public class LoginFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        _ViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
-        _User = getView().findViewById(R.id.username_text_input);
-        _Password = getView().findViewById(R.id.password_edit_text);
+        mViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
+        mUser = getView().findViewById(R.id.username_text_input);
+        mPassword = getView().findViewById(R.id.password_edit_text);
+
+        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_nav);
+        bottomNavigationView.setVisibility(View.GONE);
 
         Button registerButton = getView().findViewById(R.id.register_button);
-        registerButton.setOnClickListener(view -> Navigation.findNavController(view).navigate(R.id.to_destination_register));
+        registerButton.setOnClickListener(view -> {
+            SharedPreferences.Editor edit;
+            edit = AntlApp.getContext().getSharedPreferences("antlPrefs", Context.MODE_PRIVATE).edit();
+            edit.putString("token", "");
+            edit.commit();
+
+            Navigation.findNavController(view).navigate(R.id.to_destination_register);
+        });
 
         Button loginButton = getView().findViewById(R.id.next_button);
-        loginButton.setOnClickListener((View view) -> {
-            _ViewModel.setUser(_User.getText());
-            _ViewModel.setPassword(_Password.getText());
-            _ViewModel.Login();
+        loginButton.setOnClickListener(view -> {
+            mViewModel.setUser(mUser.getText());
+            mViewModel.setPassword(mPassword.getText());
+            mViewModel.Login(view);
         });
     }
-
 }
