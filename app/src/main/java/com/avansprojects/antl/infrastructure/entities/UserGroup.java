@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Index;
 
-@Entity(primaryKeys= {"user_id", "group_id"},
+@Entity(tableName = "user_groups", primaryKeys= {"user_id", "group_id"},
         indices = {@Index("user_id"), @Index("group_id")},
         foreignKeys = {
         @ForeignKey(entity = User.class,

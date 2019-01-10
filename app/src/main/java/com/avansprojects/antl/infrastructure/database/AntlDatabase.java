@@ -3,7 +3,7 @@ package com.avansprojects.antl.infrastructure.database;
 import android.content.Context;
 import android.os.AsyncTask;
 import com.avansprojects.antl.R;
-import com.avansprojects.antl.helpers.PartialDateConverter;
+import com.avansprojects.antl.helpers.CalendarHelper;
 import com.avansprojects.antl.infrastructure.daos.EventDao;
 import com.avansprojects.antl.infrastructure.daos.RelationshipDao;
 import com.avansprojects.antl.infrastructure.daos.UserDao;
@@ -74,13 +74,13 @@ public abstract class AntlDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(final Void... params) {
             _EventDao.deleteAll();
-            Event event = new Event("New years Eve", PartialDateConverter.setDate(2018,12,31), "den haag", R.drawable.newyear);
+            Event event = new Event("New years Eve", CalendarHelper.setDate(2018,12,31), "den haag", R.drawable.newyear);
             _EventDao.insert(event);
-            event = new Event("berlin trip", PartialDateConverter.setDate(2019, 02,10), "Berlijn", R.drawable.event);
+            event = new Event("berlin trip", CalendarHelper.setDate(2019, 2,10), "Berlijn", R.drawable.event);
             _EventDao.insert(event);
-            event = new Event("B-day Party", PartialDateConverter.setDate(2019,06,9), "Den Haag", R.drawable.presentation);
+            event = new Event("B-day Party", CalendarHelper.setDate(2019,6,9), "Den Haag", R.drawable.presentation);
             _EventDao.insert(event);
-            event = new Event("Bordspellen dag", PartialDateConverter.setDate(2018,12,25), "Den Haag", R.drawable.boardgame);
+            event = new Event("Bordspellen dag", CalendarHelper.setDate(2018,12,25), "Den Haag", R.drawable.boardgame);
             _EventDao.insert(event);
 
             _RelationshipDao.deleteAll();

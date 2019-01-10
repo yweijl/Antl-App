@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@+id/destination_events">
+    app:startDestination="@id/destination_events">
 
     <fragment
         android:id="@+id/destination_events"
@@ -13,7 +13,9 @@
         <action
             android:id="@+id/to_destination_login"
             app:destination="@id/destination_login"
-            app:popUpTo="@id/destination_login" app:popUpToInclusive="true"/>
+            app:popUpTo="@id/destination_login" app:popUpToInclusive="true"/><action android:id="@+id/action_destination_events_to_Destination_create_event" app:destination="@id/Destination_create_event"/>
+            android:id="@+id/action_destination_events_to_createEventFragment"
+            app:destination="@id/Destination_create_event" app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim"/>
     </fragment>
     <fragment
         android:id="@+id/destination_friends"
@@ -51,4 +53,14 @@
         android:id="@+id/go_to_login"
         app:destination="@+id/destination_login"
         app:popUpTo="@+id/nav_graph" />
+    <fragment
+        android:id="@+id/Destination_create_event"
+        android:name="com.avansprojects.antl.ui.createEvent.CreateEventFragment"
+        android:label="create_event"
+        tools:layout="@layout/create_event_name_fragment"><action android:id="@+id/action_Destination_create_event_pop" app:popUpTo="@id/Destination_create_event" app:popUpToInclusive="true" app:exitAnim="@anim/nav_default_exit_anim"/>
+        <action
+            android:id="@+id/action_Destination_create_event_to_destination_events"
+            app:destination="@id/destination_events"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" /></fragment>
 </navigation>
