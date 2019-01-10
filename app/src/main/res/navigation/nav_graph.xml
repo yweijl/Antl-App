@@ -3,22 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/destination_events">
+    app:startDestination="@+id/destination_events">
 
     <fragment
         android:id="@+id/destination_events"
         android:name="com.avansprojects.antl.ui.eventOverview.EventOverviewFragment"
         android:label="Events"
-        tools:layout="@layout/event_overview_fragment" >
+        tools:layout="@layout/event_overview_fragment">
         <action
             android:id="@+id/to_destination_login"
-            app:destination="@id/destination_login" app:popUpTo="@id/destination_login"/>
+            app:destination="@id/destination_login"
+            app:popUpTo="@id/destination_login" app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/destination_friends"
-		android:name="com.avansprojects.antl.ui.friendOverview.FriendOverviewFragment"
-		android:label="Friends"
-		tools:layout="@layout/friend_fragment" >
+        android:name="com.avansprojects.antl.ui.friendOverview.FriendOverviewFragment"
+        android:label="Friends"
+        tools:layout="@layout/friend_fragment">
         <action
             android:id="@+id/to_destination_friend_add"
             app:destination="@id/destination_friend_add" />
@@ -27,19 +28,16 @@
         android:id="@+id/destination_login"
         android:name="com.avansprojects.antl.ui.login.LoginFragment"
         android:label="Login"
-        tools:layout="@layout/login_fragment" >
+        tools:layout="@layout/login_fragment">
         <action
             android:id="@+id/to_destination_register"
             app:destination="@id/destination_register" />
-        <action
-            android:id="@+id/to_destination_events"
-            app:destination="@id/destination_events" />
     </fragment>
     <fragment
         android:id="@+id/destination_register"
         android:name="com.avansprojects.antl.ui.login.RegisterFragment"
         android:label="Register"
-        tools:layout="@layout/register_fragment" >
+        tools:layout="@layout/register_fragment">
         <action
             android:id="@+id/to_destination_login"
             app:destination="@id/destination_login" />
@@ -49,5 +47,8 @@
         android:name="com.avansprojects.antl.ui.friendAddMenu.friendAdd"
         android:label="friend_add_fragment"
         tools:layout="@layout/friend_add_fragment" />
-    <action android:id="@+id/go_to_login" app:popUpTo="@id/destination_login"/>
+    <action
+        android:id="@+id/go_to_login"
+        app:destination="@+id/destination_login"
+        app:popUpTo="@+id/nav_graph" />
 </navigation>

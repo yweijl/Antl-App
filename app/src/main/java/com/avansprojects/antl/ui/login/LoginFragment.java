@@ -2,6 +2,8 @@ package com.avansprojects.antl.ui.login;
 
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.avansprojects.antl.AntlApp;
 import com.avansprojects.antl.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -46,7 +49,14 @@ public class LoginFragment extends Fragment {
         bottomNavigationView.setVisibility(View.GONE);
 
         Button registerButton = getView().findViewById(R.id.register_button);
-        registerButton.setOnClickListener(view -> Navigation.findNavController(view).navigate(R.id.to_destination_register));
+        registerButton.setOnClickListener(view -> {
+            SharedPreferences.Editor edit;
+            edit = AntlApp.getContext().getSharedPreferences("antlPrefs", Context.MODE_PRIVATE).edit();
+            edit.putString("token", "");
+            edit.commit();
+
+            Navigation.findNavController(view).navigate(R.id.to_destination_register);
+        });
 
         Button loginButton = getView().findViewById(R.id.next_button);
         loginButton.setOnClickListener(view -> {

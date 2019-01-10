@@ -5,12 +5,18 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.avansprojects.antl.AntlApp;
 import com.avansprojects.antl.R;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class EventOverviewFragment extends Fragment {
 
@@ -28,6 +34,16 @@ public class EventOverviewFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
+        // Remove login page from backstack
+        // Navigation.findNavController(getView()).popBackStack(R.id.destination_events, false);
+
+        // Check if logged in
+        String token = AntlApp.getContext().getSharedPreferences("antlPrefs", MODE_PRIVATE).getString("token", "");
+        if (token.isEmpty())
+        {
+            Navigation.findNavController(getView()).navigate(R.id.go_to_login);
+        }
+
         _ViewModel = ViewModelProviders.of(this).get(EventOverviewViewModel.class);
         RecyclerView mRecyclerView = getView().findViewById(R.id.eventRecyclerView);
         EventOverviewAdapter adapter = new EventOverviewAdapter(this);

@@ -24,13 +24,6 @@ public class StartActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
         setupBottomBarNav(navController);
-
-        String token = AntlApp.getContext().getSharedPreferences("antlPrefs", MODE_PRIVATE).getString("token", "");
-        if (token.isEmpty())
-        {
-            navController.navigate(R.id.to_destination_login);
-            mBottomNav.setVisibility(View.INVISIBLE);
-        }
     }
 
     private void setupBottomBarNav(NavController navController)

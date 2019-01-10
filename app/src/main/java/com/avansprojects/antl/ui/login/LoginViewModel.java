@@ -53,7 +53,7 @@ public class LoginViewModel extends ViewModel {
                     Log.d(this.getClass().toString(), "Message received: " + result);
 
                     NavController navController = Navigation.findNavController(view);
-                    navController.navigate(R.id.to_destination_events);
+                    navController.navigateUp();
                 }
             }
 
