@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.avansprojects.antl.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class LoginFragment extends Fragment {
 
@@ -41,15 +42,17 @@ public class LoginFragment extends Fragment {
         mUser = getView().findViewById(R.id.username_text_input);
         mPassword = getView().findViewById(R.id.password_edit_text);
 
+        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_nav);
+        bottomNavigationView.setVisibility(View.GONE);
+
         Button registerButton = getView().findViewById(R.id.register_button);
         registerButton.setOnClickListener(view -> Navigation.findNavController(view).navigate(R.id.to_destination_register));
 
         Button loginButton = getView().findViewById(R.id.next_button);
-        loginButton.setOnClickListener((View view) -> {
+        loginButton.setOnClickListener(view -> {
             mViewModel.setUser(mUser.getText());
             mViewModel.setPassword(mPassword.getText());
-            mViewModel.Login();
+            mViewModel.Login(view);
         });
     }
-
 }

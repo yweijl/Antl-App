@@ -12,7 +12,7 @@
         tools:layout="@layout/event_overview_fragment" >
         <action
             android:id="@+id/to_destination_login"
-            app:destination="@id/destination_login" />
+            app:destination="@id/destination_login" app:popUpTo="@id/destination_login"/>
     </fragment>
     <fragment
         android:id="@+id/destination_friends"
@@ -31,6 +31,9 @@
         <action
             android:id="@+id/to_destination_register"
             app:destination="@id/destination_register" />
+        <action
+            android:id="@+id/to_destination_events"
+            app:destination="@id/destination_events" />
     </fragment>
     <fragment
         android:id="@+id/destination_register"
@@ -46,4 +49,5 @@
         android:name="com.avansprojects.antl.ui.friendAddMenu.friendAdd"
         android:label="friend_add_fragment"
         tools:layout="@layout/friend_add_fragment" />
+    <action android:id="@+id/go_to_login" app:popUpTo="@id/destination_login"/>
 </navigation>
