@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "users")
+@Entity (tableName = ("users"))
 public class User {
     @PrimaryKey
     public int id;
@@ -22,4 +22,8 @@ public class User {
     public long webServerId;
     @ColumnInfo(name = "gender")
     public String gender;
+
+    public User(int id){
+        this.id = id;
+    }
 }

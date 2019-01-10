@@ -46,7 +46,7 @@ public class RegisterFragment extends Fragment {
         _Email.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
         Button button = getView().findViewById(R.id.cancel_button);
-        button.setOnClickListener(view1 -> Navigation.findNavController(view1).navigate(R.id.to_destination_login));
+        button.setOnClickListener(view -> Navigation.findNavController(view).navigate(R.id.to_destination_login));
 
         Button button1 = getView().findViewById(R.id.next_button);
         button1.setOnClickListener(view -> {

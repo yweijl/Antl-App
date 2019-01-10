@@ -45,12 +45,24 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_destination_events_to_createEventFragment">
+                            <entry key="to_destination_login">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="destination_friend_add">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -66,7 +78,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_destination_friends_to_destination_register">
+                            <entry key="to_destination_friend_add">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -116,6 +128,11 @@
                           </map>
                         </option>
                       </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="go_to_login">
+                    <value>
+                      <LayoutPositions />
                     </value>
                   </entry>
                 </map>

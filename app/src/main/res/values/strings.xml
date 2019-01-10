@@ -16,6 +16,8 @@
     <string name="event_overview_day">26</string>
     <string name="event_overview_month">DEC</string>
     <string name="Events">Events fragment</string>
+    <string name="friend_overview_friend_name">Friend</string>
+    <string name="antl_button_next">next</string>
 
     <string name="create_event_name">What is the name of the event?</string>
     <string name="create_event_name_hint">Enter event here</string>
