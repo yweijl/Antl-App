@@ -1,4 +1,4 @@
-package com.avansprojects.antl.ui.friend;
+package com.avansprojects.antl.ui.friendOverview;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import com.avansprojects.antl.R;
 import com.avansprojects.antl.infrastructure.entities.Relationship;
 
-import java.util.Collections;
 import java.util.List;
 
 import androidx.cardview.widget.CardView;
@@ -25,7 +24,7 @@ public class FriendOverviewAdapter extends RecyclerView.Adapter<FriendCardViewHo
     @Override
     public FriendCardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         CardView cardView = (CardView) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.event_overview_card_fragment, parent, false);
+                .inflate(R.layout.friend_overview_card_fragment, parent, false);
         return new FriendCardViewHolder(cardView);
     }
 
@@ -34,7 +33,7 @@ public class FriendOverviewAdapter extends RecyclerView.Adapter<FriendCardViewHo
         if (_relationshipList != null) {
 
             Relationship current = _relationshipList.get(position);
-            holder.friendName.setText(current.getUserIdOne());
+            holder.friendName.setText(String.valueOf(current.getUserIdOne()));
 
         } else {
             holder.friendName.setText("No Friends");

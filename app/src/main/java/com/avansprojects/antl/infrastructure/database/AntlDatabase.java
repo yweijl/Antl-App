@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import com.avansprojects.antl.R;
 import com.avansprojects.antl.helpers.PartialDateConverter;
 import com.avansprojects.antl.infrastructure.daos.EventDao;
+import com.avansprojects.antl.infrastructure.daos.RelationshipDao;
 import com.avansprojects.antl.infrastructure.daos.UserDao;
 import com.avansprojects.antl.infrastructure.entities.DateConverter;
 import com.avansprojects.antl.infrastructure.entities.Event;
@@ -29,6 +30,7 @@ public abstract class AntlDatabase extends RoomDatabase {
 
     public abstract UserDao userDao();
     public abstract EventDao eventDao();
+    public abstract RelationshipDao relationshipDao();
 
     private static volatile AntlDatabase INSTANCE;
 
@@ -60,9 +62,13 @@ public abstract class AntlDatabase extends RoomDatabase {
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
 
         private final EventDao _EventDao;
+        private final RelationshipDao _RelationshipDao;
+        private final UserDao _UserDao;
 
         PopulateDbAsync(AntlDatabase db) {
             _EventDao = db.eventDao();
+            _RelationshipDao = db.relationshipDao();
+            _UserDao = db.userDao();
         }
 
         @Override
@@ -76,6 +82,15 @@ public abstract class AntlDatabase extends RoomDatabase {
             _EventDao.insert(event);
             event = new Event("Bordspellen dag", PartialDateConverter.setDate(2018,12,25), "Den Haag", R.drawable.boardgame);
             _EventDao.insert(event);
+
+            _RelationshipDao.deleteAll();
+            _UserDao.deleteAll();
+            User userOne = new User(1);
+            _UserDao.insert(userOne);
+            User userTwo = new User(3);
+            _UserDao.insert(userTwo);
+            Relationship relationship = new Relationship(userOne.id, userTwo.id);
+            _RelationshipDao.insert(relationship);
             return null;
         }
     }

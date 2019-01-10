@@ -16,9 +16,13 @@
     </fragment>
     <fragment
         android:id="@+id/destination_friends"
-		android:name="com.avansprojects.antl.ui.friend.FriendOverviewFragment"
+		android:name="com.avansprojects.antl.ui.friendOverview.FriendOverviewFragment"
 		android:label="Friends"
-		tools:layout="@layout/friend_fragment" />
+		tools:layout="@layout/friend_fragment" >
+        <action
+            android:id="@+id/to_destination_friend_add"
+            app:destination="@id/destination_friend_add" />
+    </fragment>
     <fragment
         android:id="@+id/destination_login"
         android:name="com.avansprojects.antl.ui.login.LoginFragment"
@@ -37,4 +41,9 @@
             android:id="@+id/to_destination_login"
             app:destination="@id/destination_login" />
     </fragment>
+    <fragment
+        android:id="@+id/destination_friend_add"
+        android:name="com.avansprojects.antl.ui.friendAddMenu.friendAdd"
+        android:label="friend_add_fragment"
+        tools:layout="@layout/friend_add_fragment" />
 </navigation>

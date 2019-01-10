@@ -1,4 +1,4 @@
-package com.avansprojects.antl.ui.friend;
+package com.avansprojects.antl.ui.friendOverview;
 
 import android.widget.TextView;
 
@@ -8,7 +8,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class FriendCardViewHolder extends RecyclerView.ViewHolder {
-    final TextView friendName;
+    public final TextView friendName;
 
     FriendCardViewHolder(CardView cardView) {
         super(cardView);
