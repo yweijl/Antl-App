@@ -17,20 +17,23 @@ public class DatePickerFactory {
         this._fragment = _fragment;
     }
 
-    public DatePickerDialog getDateDialog(int dateViewId, int timeViewId) {
-        return new DateDialog().getInstance(dateViewId, timeViewId);
+    public DateDialog getDateDialog(int dateViewId) {
+        return new DateDialog(dateViewId);
     }
 
-    public TimePickerDialog getTimeDialog(int timeViewId) {
-        return new TimeDialog().getInstance(timeViewId);
+    public TimeDialog getTimeDialog(int timeViewId) {
+        return new TimeDialog(timeViewId);
     }
 
     public class TimeDialog implements TimePickerDialog.OnTimeSetListener{
 
         private int _timeViewId;
 
-        private TimePickerDialog getInstance(int timeViewId){
-            _timeViewId = timeViewId;
+        public TimeDialog(int _timeViewId) {
+            this._timeViewId = _timeViewId;
+        }
+
+        public TimePickerDialog getInstance(){
             TimePickerDialog dialog = TimePickerDialog.newInstance(
                     this, CalendarHelper.getCurrentHours(), CalendarHelper.getCurrentMinutes(), true
             );
@@ -54,11 +57,12 @@ public class DatePickerFactory {
     public class DateDialog implements DatePickerDialog.OnDateSetListener {
 
         private int _dateViewId;
-        private int _timeViewId;
 
-        private DatePickerDialog getInstance(int dateViewId, int timeViewId) {
-            _dateViewId = dateViewId;
-            _timeViewId = timeViewId;
+        public DateDialog(int _dateViewId) {
+            this._dateViewId = _dateViewId;
+        }
+
+        public DatePickerDialog getInstance() {
 
             DatePickerDialog dialog = DatePickerDialog.newInstance(
                     this, CalendarHelper.getCurrentYear(), CalendarHelper.getCurrentMonth(), CalendarHelper.getCurrentDay()
@@ -77,10 +81,7 @@ public class DatePickerFactory {
             String date = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
             TextView dateTextView = Objects.requireNonNull(_fragment.getView()).findViewById(_dateViewId);
             dateTextView.setText(date);
-            TimePickerDialog eventTime = getTimeDialog(_timeViewId);
-
-            assert _fragment.getFragmentManager() != null;
-            eventTime.show(_fragment.getFragmentManager(), "TimePickerDialog");
+            DatePickerFactory.this.notify();
         }
     }
 }

@@ -116,13 +116,7 @@ public class CreateEventFragment extends Fragment {
             break;
             case 2:
                 mFirstDateTextView = mPager.findViewById(R.id.firstEventDate);
-                mSecondDateTextView = mPager.findViewById(R.id.secondEventDate);
-                mThirdDateTextView = mPager.findViewById(R.id.thirdEventDate);
-                mFourthDateTextView = mPager.findViewById(R.id.fourthEventDate);
                 mFirstTimeTextView = mPager.findViewById(R.id.firstEventTime);
-                mSecondTimeTextView = mPager.findViewById(R.id.secondEventTime);
-                mThirdTimeTextView = mPager.findViewById(R.id.thirdEventTime);
-                mFourthTimeTextView = mPager.findViewById(R.id.fourthEventTime);
             break;
             case 3:
                 break;
