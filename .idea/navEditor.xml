@@ -24,6 +24,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_Destination_create_event_to_destination_events">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>

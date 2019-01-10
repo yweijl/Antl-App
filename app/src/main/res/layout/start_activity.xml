@@ -19,7 +19,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nav_host_fragment"
-        app:itemIconTint="@color/FieryRose"
+        app:itemIconTint="@color/colorAccent"
         app:menu="@menu/menu_navigation" />
 
     <fragment
@@ -40,10 +40,12 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@color/limeGreen"
+        android:background="@color/AntlAccentLight"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:title="@string/antl"
+        app:titleTextColor="@color/colorAccent"
+        app:navigationIcon="@drawable/ic_ant"
         app:layout_constraintBottom_toTopOf="@+id/nav_host_fragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

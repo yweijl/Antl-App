@@ -3,16 +3,16 @@
     <group android:id="@+id/menu_group">
         <item
             android:id="@+id/destination_events"
-            android:icon="@drawable/antl_logo"
+            android:icon="@drawable/ic_calendar_day"
             android:title="@string/eventsMenu"
             android:visible="true" />
         <item
             android:id="@+id/destination_friends"
             android:title="@string/friendsMenu"
-            android:icon="@drawable/users"/>
+            android:icon="@drawable/ic_users"/>
         <item
             android:id="@+id/destination_login"
             android:title="@string/profileMenu"
-            android:icon="@drawable/ic_launcher_background"/>
+            android:icon="@drawable/ic_user"/>
     </group>
 </menu>

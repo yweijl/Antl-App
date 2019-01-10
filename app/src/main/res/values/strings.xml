@@ -32,9 +32,9 @@
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
     <string name="create_event_previous_button_desc">Go to previous page of create event</string>
-    <string name="eventsMenu">Events</string>
-    <string name="friendsMenu">Friends</string>
-    <string name="profileMenu">Profile</string>
+    <string name="eventsMenu">events</string>
+    <string name="friendsMenu">friends</string>
+    <string name="profileMenu">profile</string>
     <string name="antl">Antl.</string>
     <string name="save">save</string>
 </resources>
