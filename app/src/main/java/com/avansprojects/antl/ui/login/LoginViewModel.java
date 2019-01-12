@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.avansprojects.antl.AntlApp;
 import com.avansprojects.antl.R;
+import com.avansprojects.antl.helpers.Authentication;
 import com.avansprojects.antl.retrofit.AntlRetrofit;
 import com.avansprojects.antl.ui.login.dto.LoginRequestDTO;
 import com.avansprojects.antl.ui.login.services.LoginService;
@@ -29,39 +30,8 @@ public class LoginViewModel extends ViewModel {
 
     public void Login(View view) {
 
-        Retrofit retrofit = AntlRetrofit.getRetrofit();
-
         LoginRequestDTO loginRequest = new LoginRequestDTO(_userName, _passWord);
-        LoginService service = retrofit.create(LoginService.class);
-        Call<String> call = service.login(loginRequest);
-        retrofit2.Response<String> result = null;
-        call.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                String result = response.toString();
-
-                if (response.code() == 200) {
-                    result = response.body();
-
-                    SharedPreferences.Editor edit;
-                    edit = AntlApp.getContext().getSharedPreferences("antlPrefs", Context.MODE_PRIVATE).edit();
-                    edit.putString("token", result);
-                    Log.i("Login", result);
-                    edit.commit();
-                    Log.i("SharedToken", AntlApp.getContext().getSharedPreferences("antlPrefs", Context.MODE_PRIVATE).getString("token", "No token"));
-
-                    Log.d(this.getClass().toString(), "Message received: " + result);
-
-                    NavController navController = Navigation.findNavController(view);
-                    navController.navigateUp();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable throwable) {
-                Log.e(this.getClass().toString(), throwable.toString());
-            }
-        });
+        Authentication.login(view, loginRequest);
     }
 
     public void setUser(CharSequence text) {

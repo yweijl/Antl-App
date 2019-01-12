@@ -2,8 +2,8 @@ package com.avansprojects.antl.ui.friendOverview;
 
 import android.app.Application;
 
-import com.avansprojects.antl.infrastructure.entities.Relationship;
-import com.avansprojects.antl.infrastructure.repositories.RelationshipRepository;
+import com.avansprojects.antl.infrastructure.entities.Contact;
+import com.avansprojects.antl.infrastructure.repositories.ContactRepository;
 
 import java.util.List;
 
@@ -14,18 +14,18 @@ import androidx.lifecycle.LiveData;
 public class FriendOverviewViewModel extends AndroidViewModel {
     // TODO: Implement the ViewModel
 
-    private RelationshipRepository relationshipRepository;
-    private LiveData<List<Relationship>> allRelationships;
+    private ContactRepository mContactRepository;
+    private LiveData<List<Contact>> allContacts;
 
     public FriendOverviewViewModel(@NonNull Application application) {
         super(application);
-        relationshipRepository = new RelationshipRepository(application);
-        allRelationships = relationshipRepository.getAllRelationships();
+        mContactRepository = new ContactRepository(application);
+        allContacts = mContactRepository.getAllRelationships();
     }
 
-    public LiveData<List<Relationship>> getAllRelationships() {
-        return allRelationships;
+    public LiveData<List<Contact>> getAllContacts() {
+        return allContacts;
     }
 
-    public void insert(Relationship relationship) { relationshipRepository.insert(relationship); }
+    public void insert(Contact relationship) { mContactRepository.insert(relationship); }
 }

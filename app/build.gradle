@@ -30,6 +30,8 @@ android {
 dependencies {
     annotationProcessor "androidx.room:room-compiler:$rootProject.roomVersion"
     annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.6.0'
+    implementation 'com.auth0.android:jwtdecode:1.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0-alpha1'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-alpha1'
     implementation "android.arch.navigation:navigation-fragment:$rootProject.navigationVersion"

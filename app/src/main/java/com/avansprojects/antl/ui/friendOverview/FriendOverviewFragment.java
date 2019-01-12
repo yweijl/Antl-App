@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.avansprojects.antl.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -42,7 +41,7 @@ public class FriendOverviewFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
         // Update the cached copy of the words in the adapter.
-        mViewModel.getAllRelationships().observe(this, adapter::setRelationships);
+        mViewModel.getAllContacts().observe(this, adapter::setRelationships);
     }
 
     @Override
