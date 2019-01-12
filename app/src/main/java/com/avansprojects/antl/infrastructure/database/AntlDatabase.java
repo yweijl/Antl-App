@@ -5,10 +5,12 @@ import android.os.AsyncTask;
 import com.avansprojects.antl.R;
 import com.avansprojects.antl.helpers.CalendarHelper;
 import com.avansprojects.antl.infrastructure.daos.EventDao;
+import com.avansprojects.antl.infrastructure.daos.EventDateDao;
 import com.avansprojects.antl.infrastructure.daos.RelationshipDao;
 import com.avansprojects.antl.infrastructure.daos.UserDao;
 import com.avansprojects.antl.infrastructure.entities.DateConverter;
 import com.avansprojects.antl.infrastructure.entities.Event;
+import com.avansprojects.antl.infrastructure.entities.EventDate;
 import com.avansprojects.antl.infrastructure.entities.Relationship;
 import com.avansprojects.antl.infrastructure.entities.Group;
 import com.avansprojects.antl.infrastructure.entities.User;
@@ -22,8 +24,8 @@ import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 @Database(entities = {User.class, Event.class, Relationship.class,
-                      Group.class, UserEvent.class,
-                      UserGroup.class}, version = 1, exportSchema = false)
+        EventDate.class, Group.class, UserEvent.class, UserGroup.class},
+        version = 1, exportSchema = false)
 @TypeConverters({DateConverter.class})
 
 public abstract class AntlDatabase extends RoomDatabase {
@@ -31,6 +33,7 @@ public abstract class AntlDatabase extends RoomDatabase {
     public abstract UserDao userDao();
     public abstract EventDao eventDao();
     public abstract RelationshipDao relationshipDao();
+    public abstract EventDateDao eventDateDao();
 
     private static volatile AntlDatabase INSTANCE;
 

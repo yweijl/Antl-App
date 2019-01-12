@@ -13,34 +13,34 @@ import androidx.lifecycle.LiveData;
 
 public class EventRepository {
 
-    private EventDao _EventDao;
-    private LiveData<List<Event>> _AllEvents;
+    private EventDao mEventDao;
+    private LiveData<List<Event>> mAllEvents;
 
     public EventRepository(Application application) {
         AntlDatabase db = AntlDatabase.getDatabase(application);
-        _EventDao = db.eventDao();
-        _AllEvents = _EventDao.getAllEvents();
+        mEventDao = db.eventDao();
+        mAllEvents = mEventDao.getAllEvents();
     }
 
     public void insert(Event event) {
-        new insertAsyncTask(_EventDao).execute(event);
+        new insertAsyncTask(mEventDao).execute(event);
     }
 
     public LiveData<List<Event>> getAllEvents() {
-        return _AllEvents;
+        return mAllEvents;
     }
 
     private static class insertAsyncTask extends AsyncTask<Event, Void, Void> {
 
-        private EventDao _AsyncTaskDao;
+        private EventDao mAsyncTaskDao;
 
         insertAsyncTask(EventDao dao) {
-            _AsyncTaskDao = dao;
+            mAsyncTaskDao = dao;
         }
 
         @Override
         protected Void doInBackground(final Event... params) {
-            _AsyncTaskDao.insert(params[0]);
+            mAsyncTaskDao.insert(params[0]);
             return null;
         }
     }

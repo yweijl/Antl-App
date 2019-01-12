@@ -42,20 +42,20 @@ public class CalendarHelper {
         return cal.get(Calendar.YEAR);
     }
 
-    public static Date joinDateTime(String dateString, String timeString) throws Exception{
+    public static Date joinDateTime(Date date, Date time){
+        Calendar calendar = Calendar.getInstance();
 
-            Date date = new SimpleDateFormat("dd-MM-yyyy").parse(dateString);
-            Date time = new SimpleDateFormat("HH:mm").parse(timeString);
+        calendar.set(getNumericYearFromDate(date),
+                getNumericMonthFromDate(date),
+                getNumericDayFromDate(date),
+                getNumericHoursFromDate(time),
+                getNumericMinutesFromDate(time));
+        return calendar.getTime();
+    }
 
-            Calendar calendar = Calendar.getInstance();
-            calendar.set(
-                    getNumericYearFromDate(date),
-                    getNumericMonthFromDate(date),
-                    getNumericDayFromDate(date),
-                    getNumericHoursFromDate(time),
-                    getNumericMinutesFromDate(time)
-            );
-            return calendar.getTime();
+    public static String DateTimeToString(Date date){
+
+        return new SimpleDateFormat("dd-MM-YYYY - HH:MM").format(date);
     }
 
     public static int getNumericMinutesFromDate(Date date){
@@ -108,6 +108,13 @@ public class CalendarHelper {
     public static Date setDate(int year, int month, int day){
         Calendar cal = Calendar.getInstance();
         cal.set(year, month, day);
+        return cal.getTime();
+    }
+
+    public static Date setTime(int hourOfDay, int minute) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
+        cal.set(Calendar.MINUTE, minute);
         return cal.getTime();
     }
 }

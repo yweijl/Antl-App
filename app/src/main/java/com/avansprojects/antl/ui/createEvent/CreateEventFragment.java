@@ -11,8 +11,6 @@ import androidx.navigation.Navigation;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -20,7 +18,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import com.avansprojects.antl.R;
-import com.avansprojects.antl.helpers.CalendarHelper;
 import com.avansprojects.antl.infrastructure.entities.Event;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -36,14 +33,7 @@ public class CreateEventFragment extends Fragment {
     private PagerAdapter mPagerAdapter;
     private TextView mNameTextView;
     private TextView mDescriptionTextView;
-    private TextView mFirstDateTextView;
-    private TextView mSecondDateTextView;
-    private TextView mThirdDateTextView;
-    private TextView mFourthDateTextView;
-    private TextView mFirstTimeTextView;
-    private TextView mSecondTimeTextView;
-    private TextView mThirdTimeTextView;
-    private TextView mFourthTimeTextView;
+    private TextView mDateTextView;
     private Button mNextButton;
     private Button mSaveButton;
     private ImageButton mBackButton;
@@ -62,7 +52,7 @@ public class CreateEventFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
         BottomNavigationView menu = getActivity().findViewById(R.id.bottom_nav);
-        menu.setVisibility(View.INVISIBLE);
+        menu.setVisibility(View.GONE);
         setEventButtons();
         setEventAdapter();
     }
@@ -89,8 +79,9 @@ public class CreateEventFragment extends Fragment {
         mNextButton.setOnClickListener(v -> {
             bindTextViews(mPager.getCurrentItem());
             InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(INPUT_METHOD_SERVICE);
+
             if (imm.isActive()){
-                imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+                imm.hideSoftInputFromWindow(getActivity().getWindow().getDecorView().getRootView().getWindowToken(), 0);
             }
             int newPosition = setNewViewPagerPosition(+1);
             setButtonVisibility(newPosition);
@@ -115,7 +106,7 @@ public class CreateEventFragment extends Fragment {
                 mDescriptionTextView = mPager.findViewById(R.id.enterEventDescription);
             break;
             case 2:
-                mFirstDateTextView = mPager.findViewById(R.id.eventDate);
+                mDateTextView = mPager.findViewById(R.id.eventDate);
             break;
             case 3:
                 break;
@@ -131,18 +122,18 @@ public class CreateEventFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
-    private Date getEventDate() throws Exception{
-        return CalendarHelper.joinDateTime(
-                mFirstDateTextView.getText().toString(),
-                mFirstTimeTextView.getText().toString());
+    private Date getEventDate(){
+
+        return new Date();
     }
 
-    private void saveEvent() throws Exception{
+    private void saveEvent() {
+
         Event event = createEventFromInput();
         mViewModel.insert(event);
     }
 
-    private Event createEventFromInput() throws Exception {
+    private Event createEventFromInput() {
         return new Event(
                 mNameTextView.getText().toString(),
                 getEventDate(),

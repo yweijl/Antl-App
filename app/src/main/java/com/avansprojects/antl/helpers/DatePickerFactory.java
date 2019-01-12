@@ -1,38 +1,44 @@
 package com.avansprojects.antl.helpers;
 
-import android.widget.TextView;
 import com.avansprojects.antl.R;
+import com.avansprojects.antl.listeners.DatePickerListener;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
-
-import java.util.Objects;
+import java.util.Date;
 
 import androidx.fragment.app.Fragment;
 
 public class DatePickerFactory {
 
-    private Fragment _fragment;
+    private Fragment mFragment;
+    private DatePickerListener mListener;
+    private Date mDate;
+    private Date mTime;
 
-    public DatePickerFactory(Fragment _fragment) {
-        this._fragment = _fragment;
+    public DatePickerFactory(Fragment fragment, DatePickerListener datePickerListener) {
+        mFragment = fragment;
+        mListener = datePickerListener;
     }
 
-    public DateDialog getDateDialog(int dateViewId) {
-        return new DateDialog(dateViewId);
+    public void getInstance() {
+
+        assert mFragment.getFragmentManager() != null;
+
+        DateDialog dateDialog = new DateDialog();
+        DatePickerDialog datePicker = dateDialog.getInstance();
+        datePicker.show(mFragment.getFragmentManager(), "DatePickerDialog");
     }
 
-    public TimeDialog getTimeDialog(int timeViewId) {
-        return new TimeDialog(timeViewId);
+    public Date getDateTime(){
+        return CalendarHelper.joinDateTime(mDate, mTime);
     }
+
+    public void setTime(int hourOfDay, int minute) {
+        mTime = CalendarHelper.setTime(hourOfDay, minute);
+    }
+
 
     public class TimeDialog implements TimePickerDialog.OnTimeSetListener{
-
-        private int _timeViewId;
-
-        public TimeDialog(int _timeViewId) {
-            this._timeViewId = _timeViewId;
-        }
-
         public TimePickerDialog getInstance(){
             TimePickerDialog dialog = TimePickerDialog.newInstance(
                     this, CalendarHelper.getCurrentHours(), CalendarHelper.getCurrentMinutes(), true
@@ -48,19 +54,12 @@ public class DatePickerFactory {
 
         @Override
         public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
-            String time = hourOfDay+":"+minute;
-            TextView timeTextView = _fragment.getView().findViewById(_timeViewId);
-            timeTextView.setText(time);
+            mTime = CalendarHelper.setTime(hourOfDay, minute);
+            mListener.getDateTimeFromPicker(getDateTime());
         }
     }
 
     public class DateDialog implements DatePickerDialog.OnDateSetListener {
-
-        private int _dateViewId;
-
-        public DateDialog(int _dateViewId) {
-            this._dateViewId = _dateViewId;
-        }
 
         public DatePickerDialog getInstance() {
 
@@ -78,10 +77,11 @@ public class DatePickerFactory {
 
         @Override
         public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-            String date = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
-            TextView dateTextView = Objects.requireNonNull(_fragment.getView()).findViewById(_dateViewId);
-            dateTextView.setText(date);
-            DatePickerFactory.this.notify();
+            mDate = CalendarHelper.setDate(year, monthOfYear, dayOfMonth);
+            assert mFragment.getFragmentManager() != null;
+            TimeDialog timeDialog = new TimeDialog();
+            TimePickerDialog timePicker = timeDialog.getInstance();
+            timePicker.show(mFragment.getFragmentManager(), "TimePickerDialog");
         }
     }
 }

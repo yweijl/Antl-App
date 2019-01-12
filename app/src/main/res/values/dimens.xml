@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="recycler_add_date_offset">20dp</dimen>
+    <dimen name="recycler_event_overview_offset">65dp</dimen>
 </resources>
