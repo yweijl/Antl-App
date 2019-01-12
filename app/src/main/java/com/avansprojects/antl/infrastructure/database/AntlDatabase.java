@@ -126,6 +126,7 @@ public abstract class AntlDatabase extends RoomDatabase {
             user.lastName = mUserDto.getLastName();
             user.email = mUserDto.getEmail();
             user.phoneNumber = mUserDto.getPhoneNumber();
+            user.webServerId = mUserDto.getExternalId();
 
             mUserDao.insert(user);
 

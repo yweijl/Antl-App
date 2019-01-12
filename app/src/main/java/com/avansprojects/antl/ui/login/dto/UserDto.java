@@ -18,6 +18,9 @@ public class UserDto {
     @SerializedName("phoneNumber")
     private String phoneNumber;
 
+    @SerializedName("externalId")
+    private String externalId;
+
     public String getUserName() {
         return userName;
     }
@@ -36,5 +39,9 @@ public class UserDto {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public String getExternalId() {
+        return externalId;
     }
 }
