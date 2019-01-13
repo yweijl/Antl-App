@@ -109,6 +109,14 @@ public final class Authentication {
                     result = response.toString();
                     Log.i("UserResult", result);
 
+                    result = response.body().getExternalId();
+                    SharedPreferences.Editor edit;
+                    edit = AntlApp.getContext().getSharedPreferences("antlPrefs", Context.MODE_PRIVATE).edit();
+                    edit.putString("code", result);
+                    Log.i("Code:", result);
+                    edit.commit();
+
+
                     new AntlDatabase.SetMainUser(AntlDatabase.getDatabase(AntlApp.getContext()), response.body()).execute();
 
                 }

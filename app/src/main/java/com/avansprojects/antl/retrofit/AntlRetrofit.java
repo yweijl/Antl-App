@@ -16,9 +16,11 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class AntlRetrofit {
 
     private Retrofit mRetrofit;
+    private OkHttpClient mOkHttpClient;
     private final static AntlRetrofit mInstance = new AntlRetrofit();
 
     private AntlRetrofit() {
+        mOkHttpClient = provideOkHttpClient();
         Gson gson = new GsonBuilder()
                 .setLenient().create();
 
@@ -26,7 +28,7 @@ public class AntlRetrofit {
                 .baseUrl("http://10.0.2.2:64151")
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(provideOkHttpClient())
+                .client(mOkHttpClient)
                 .build();
     }
 

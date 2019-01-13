@@ -19,6 +19,12 @@ public class Contact {
         this.id = id;
     }
 
+    public Contact(Contact contact){
+        this.id = contact.id;
+        this.userName = contact.userName;
+        this.webServerId = contact.webServerId;
+    }
+
     public String getUserName() {
         return userName;
     }
