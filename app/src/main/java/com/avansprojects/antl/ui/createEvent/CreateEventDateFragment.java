@@ -9,13 +9,16 @@ import android.widget.Button;
 import com.avansprojects.antl.R;
 import com.avansprojects.antl.helpers.BottomOffsetDecoration;
 import com.avansprojects.antl.helpers.DatePickerFactory;
+import com.avansprojects.antl.infrastructure.entities.EventDate;
 import com.avansprojects.antl.listeners.DatePickerListener;
 
 import java.util.Date;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,6 +38,8 @@ public class CreateEventDateFragment extends Fragment implements DatePickerListe
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         setRecyclerView();
         setDatePickerButton();
+        mViewModel = ViewModelProviders.of(this).get(CreateEventViewModel.class);
+        mViewModel.getEventDates().observe(this, eventDates -> mAdapter.setEvents(eventDates));
     }
 
     private void setDatePickerButton() {
@@ -56,13 +61,13 @@ public class CreateEventDateFragment extends Fragment implements DatePickerListe
     }
 
     @Override
-    public void getDateTimeFromPicker(Date date) {
-        mAdapter.addItem(date);
+    public void addDateToListFromDatePicker(Date date) {
+        EventDate eventDate = new EventDate(date);
+        mAdapter.addItem(eventDate);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(CreateEventViewModel.class);
     }
 }

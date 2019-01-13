@@ -22,9 +22,7 @@ public class EventDateRepository {
         mAllEventDates = mEventDateDao.getAllEventDates();
     }
 
-    public void insert(EventDate eventDate) {
-        new EventDateRepository.insertAsyncTask(mEventDateDao).execute(eventDate);
-    }
+    public void insert(EventDate eventDate) {new insertAsyncTask(mEventDateDao).execute(eventDate);}
 
     public LiveData<List<EventDate>> getAllEvents() {
         return mAllEventDates;
@@ -32,15 +30,15 @@ public class EventDateRepository {
 
     private static class insertAsyncTask extends AsyncTask<EventDate, Void, Void> {
 
-        private EventDate _AsyncTaskDao;
+        private EventDateDao mAsyncTaskDao;
 
-        insertAsyncTask(EventDate dao) {
-            _AsyncTaskDao = dao;
+        insertAsyncTask(EventDateDao dao) {
+            mAsyncTaskDao = dao;
         }
 
         @Override
         protected Void doInBackground(final EventDate... params) {
-            _AsyncTaskDao.insert(params[0]);
+            mAsyncTaskDao.insert(params[0]);
             return null;
         }
     }

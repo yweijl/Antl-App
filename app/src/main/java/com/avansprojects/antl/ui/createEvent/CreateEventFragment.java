@@ -18,10 +18,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import com.avansprojects.antl.R;
-import com.avansprojects.antl.infrastructure.entities.Event;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.Date;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
@@ -56,7 +53,6 @@ public class CreateEventFragment extends Fragment {
         setEventButtons();
         setEventAdapter();
     }
-
 
     private void setEventAdapter() {
         mPager = getView().findViewById(R.id.CreateEventPager);
@@ -122,23 +118,11 @@ public class CreateEventFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
-    private Date getEventDate(){
-
-        return new Date();
-    }
-
     private void saveEvent() {
-
-        Event event = createEventFromInput();
-        mViewModel.insert(event);
-    }
-
-    private Event createEventFromInput() {
-        return new Event(
-                mNameTextView.getText().toString(),
-                getEventDate(),
-                "Tijdelijke locatie",
-                mPictureLocation);
+        String name = mNameTextView.getText().toString();
+        String description = mDescriptionTextView.getText().toString();
+        String location = "locatie";
+        mViewModel.saveEvent();
     }
 
     private void setButtonVisibility(int position) {

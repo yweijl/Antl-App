@@ -55,7 +55,7 @@ public class DatePickerFactory {
         @Override
         public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
             mTime = CalendarHelper.setTime(hourOfDay, minute);
-            mListener.getDateTimeFromPicker(getDateTime());
+            mListener.addDateToListFromDatePicker(getDateTime());
         }
     }
 

@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 
 import com.avansprojects.antl.AntlApp;
 import com.avansprojects.antl.R;
+import com.avansprojects.antl.helpers.BottomOffsetDecoration;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -57,32 +58,14 @@ public class EventOverviewFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
         float offsetPx = getResources().getDimension(R.dimen.recycler_event_overview_offset);
-        BottomOffsetDecoration bottomOffsetDecoration = new BottomOffsetDecoration((int) offsetPx);
+        BottomOffsetDecoration bottomOffsetDecoration = new BottomOffsetDecoration((int) offsetPx, 3);
         mRecyclerView.addItemDecoration(bottomOffsetDecoration);
 
         // Update the cached copy of the words in the adapter.
         _ViewModel.getAllEvents().observe(this, adapter::setEvents);
     }
 
-    static class BottomOffsetDecoration extends RecyclerView.ItemDecoration {
-        private int mBottomOffset;
 
-        public BottomOffsetDecoration(int bottomOffset) {
-            mBottomOffset = bottomOffset;
-        }
-
-        @Override
-        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-            super.getItemOffsets(outRect, view, parent, state);
-            int dataSize = state.getItemCount();
-            int position = parent.getChildAdapterPosition(view);
-            if (dataSize >= 3 && position == dataSize - 1) {
-                outRect.set(0, 0, 0, mBottomOffset);
-            } else {
-                outRect.set(0, 0, 0, 0);
-            }
-        }
-    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

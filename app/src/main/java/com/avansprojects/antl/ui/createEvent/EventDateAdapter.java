@@ -7,16 +7,22 @@ import android.widget.TextView;
 
 import com.avansprojects.antl.R;
 import com.avansprojects.antl.helpers.CalendarHelper;
+import com.avansprojects.antl.infrastructure.entities.EventDate;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class EventDateAdapter extends RecyclerView.Adapter<EventDateAdapter.EventDateCardViewHolder> {
+
+    private List<EventDate> mEventDateList;
+
+    public EventDateAdapter() {
+        mEventDateList = new ArrayList<>();
+    }
 
     class EventDateCardViewHolder extends RecyclerView.ViewHolder {
         private final TextView mEventDate;
@@ -37,13 +43,7 @@ public class EventDateAdapter extends RecyclerView.Adapter<EventDateAdapter.Even
         }
     }
 
-    private List<Date> mEventDateList = new ArrayList<>();
-
-    public List<Date> getEventDates(){
-        return mEventDateList;
-    }
-
-    public void addItem(Date date) {
+    public void addItem(EventDate date) {
         mEventDateList.add(date);
         notifyItemInserted(mEventDateList.size());
     }
@@ -57,14 +57,19 @@ public class EventDateAdapter extends RecyclerView.Adapter<EventDateAdapter.Even
 
     @Override
     public void onBindViewHolder(EventDateCardViewHolder holder, int position) {
-            Date date = mEventDateList.get(position);
-            holder.mEventDate.setText(CalendarHelper.DateTimeToString(date));
+            EventDate date = mEventDateList.get(position);
+
+            holder.mEventDate.setText(CalendarHelper.DateTimeToString(date.getEventDate()));
     }
 
-    void setEvents(List<Date> dateList){
+    void setEvents(List<EventDate> dateList){
         Collections.sort(dateList);
         mEventDateList = dateList;
         notifyDataSetChanged();
+    }
+
+    List<EventDate> getEvents(){
+        return  mEventDateList;
     }
 
     @Override

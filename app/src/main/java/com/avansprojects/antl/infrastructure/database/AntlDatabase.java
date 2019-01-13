@@ -65,11 +65,13 @@ public abstract class AntlDatabase extends RoomDatabase {
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
 
         private final EventDao _EventDao;
+        private final EventDateDao mEventDateDao;
         private final RelationshipDao _RelationshipDao;
         private final UserDao _UserDao;
 
         PopulateDbAsync(AntlDatabase db) {
             _EventDao = db.eventDao();
+            mEventDateDao = db.eventDateDao();
             _RelationshipDao = db.relationshipDao();
             _UserDao = db.userDao();
         }

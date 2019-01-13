@@ -4,6 +4,7 @@ package com.avansprojects.antl.infrastructure.entities;
 import java.util.Date;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "events")
@@ -18,6 +19,10 @@ public class Event implements Comparable<Event> {
     private String location;
     @ColumnInfo(name = "eventPicture")
     private int eventPicture;
+
+    @Ignore
+    public Event() {
+    }
 
     public Event(String name, Date mainDateTime, String location, int eventPicture) {
         this.name = name;
