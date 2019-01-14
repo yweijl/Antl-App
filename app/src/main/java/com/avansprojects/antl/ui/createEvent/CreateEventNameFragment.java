@@ -27,12 +27,4 @@ public class CreateEventNameFragment extends Fragment {
 
         return rootView;
     }
-
-    @Override
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        mViewModel = ViewModelProviders.of(this).get(CreateEventViewModel.class);
-        mViewModel.getEvent().observe(this, event ->{
-            event.setName(((TextView) getActivity().findViewById(R.id.enterEventName)).getText().toString());
-        });
-    }
 }

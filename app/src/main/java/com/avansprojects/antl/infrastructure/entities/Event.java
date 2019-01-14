@@ -1,6 +1,5 @@
 package com.avansprojects.antl.infrastructure.entities;
 
-
 import java.util.Date;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -13,22 +12,28 @@ public class Event implements Comparable<Event> {
     private int id;
     @ColumnInfo(name = "name")
     private String name;
+    @ColumnInfo(name = "description")
+    private String description;
     @ColumnInfo(name = "main_date_time")
     private Date mainDateTime;
     @ColumnInfo(name = "location")
     private String location;
     @ColumnInfo(name = "eventPicture")
     private int eventPicture;
+    @ColumnInfo(name = "owner_web_server_id")
+    private long eventOwnerId;
 
     @Ignore
     public Event() {
     }
 
-    public Event(String name, Date mainDateTime, String location, int eventPicture) {
+    public Event(String name, Date mainDateTime, String location, String description, int eventPicture, long eventOwnerId) {
         this.name = name;
         this.mainDateTime = mainDateTime;
         this.location = location;
         this.eventPicture = eventPicture;
+        this.description = description;
+        this.eventOwnerId =  eventOwnerId;
     }
 
     public String getName() {
@@ -69,6 +74,22 @@ public class Event implements Comparable<Event> {
 
     public void setEventPicture(int eventPicture) {
         this.eventPicture = eventPicture;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public long getEventOwnerId() {
+        return eventOwnerId;
+    }
+
+    public void setEventOwnerId(long eventOwnerId) {
+        this.eventOwnerId = eventOwnerId;
     }
 
     @Override

@@ -30,7 +30,6 @@ public class CreateEventFragment extends Fragment {
     private PagerAdapter mPagerAdapter;
     private TextView mNameTextView;
     private TextView mDescriptionTextView;
-    private TextView mDateTextView;
     private Button mNextButton;
     private Button mSaveButton;
     private ImageButton mBackButton;
@@ -101,11 +100,6 @@ public class CreateEventFragment extends Fragment {
             case 1:
                 mDescriptionTextView = mPager.findViewById(R.id.enterEventDescription);
             break;
-            case 2:
-                mDateTextView = mPager.findViewById(R.id.eventDate);
-            break;
-            case 3:
-                break;
             default:
                 break;
         }
@@ -114,15 +108,16 @@ public class CreateEventFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(CreateEventViewModel.class);
+        mViewModel = ViewModelProviders.of(getActivity()).get(CreateEventViewModel.class);
         setHasOptionsMenu(true);
     }
 
     private void saveEvent() {
-        String name = mNameTextView.getText().toString();
-        String description = mDescriptionTextView.getText().toString();
-        String location = "locatie";
-        mViewModel.saveEvent();
+        mViewModel.saveEvent(
+                mNameTextView.getText().toString(),
+                mDescriptionTextView.getText().toString(),
+                "locatie",
+                mPictureLocation);
     }
 
     private void setButtonVisibility(int position) {

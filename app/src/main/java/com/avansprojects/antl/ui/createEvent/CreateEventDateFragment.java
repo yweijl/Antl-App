@@ -11,19 +11,18 @@ import com.avansprojects.antl.helpers.BottomOffsetDecoration;
 import com.avansprojects.antl.helpers.DatePickerFactory;
 import com.avansprojects.antl.infrastructure.entities.EventDate;
 import com.avansprojects.antl.listeners.DatePickerListener;
+import com.avansprojects.antl.listeners.ViewModelListener;
 
 import java.util.Date;
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class CreateEventDateFragment extends Fragment implements DatePickerListener {
+public class CreateEventDateFragment extends Fragment implements DatePickerListener, ViewModelListener {
 
     private EventDateAdapter mAdapter;
     private CreateEventViewModel mViewModel;
@@ -38,8 +37,6 @@ public class CreateEventDateFragment extends Fragment implements DatePickerListe
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         setRecyclerView();
         setDatePickerButton();
-        mViewModel = ViewModelProviders.of(this).get(CreateEventViewModel.class);
-        mViewModel.getEventDates().observe(this, eventDates -> mAdapter.setEvents(eventDates));
     }
 
     private void setDatePickerButton() {
@@ -51,7 +48,7 @@ public class CreateEventDateFragment extends Fragment implements DatePickerListe
 
     private void setRecyclerView() {
         RecyclerView mRecyclerView = getView().findViewById(R.id.eventDateRecyclerView);
-        mAdapter = new EventDateAdapter();
+        mAdapter = new EventDateAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
@@ -69,5 +66,11 @@ public class CreateEventDateFragment extends Fragment implements DatePickerListe
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        mViewModel = ViewModelProviders.of(getActivity()).get(CreateEventViewModel.class);
+    }
+
+    @Override
+    public void dataIsChanged() {
+        mViewModel.setEventDates(mAdapter.getEventDates());
     }
 }

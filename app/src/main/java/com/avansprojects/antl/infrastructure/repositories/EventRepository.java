@@ -6,9 +6,9 @@ import android.os.AsyncTask;
 import com.avansprojects.antl.infrastructure.daos.EventDao;
 import com.avansprojects.antl.infrastructure.database.AntlDatabase;
 import com.avansprojects.antl.infrastructure.entities.Event;
+import com.avansprojects.antl.listeners.AsyncTaskListener;
 
 import java.util.List;
-
 import androidx.lifecycle.LiveData;
 
 public class EventRepository {
@@ -25,13 +25,16 @@ public class EventRepository {
     public void insert(Event event) {
         new insertAsyncTask(mEventDao).execute(event);
     }
+    public void insertRetrieveId(Event event, AsyncTaskListener listener) {
+        new insertRetrieveIdAsyncTask(listener, mEventDao).execute(event);
+    }
 
     public LiveData<List<Event>> getAllEvents() {
         return mAllEvents;
     }
 
-    private static class insertAsyncTask extends AsyncTask<Event, Void, Void> {
-
+    private static class insertAsyncTask extends AsyncTask<Event, Void, Void>{
+        private AsyncTaskListener mAsyncTaskListener;
         private EventDao mAsyncTaskDao;
 
         insertAsyncTask(EventDao dao) {
@@ -42,6 +45,26 @@ public class EventRepository {
         protected Void doInBackground(final Event... params) {
             mAsyncTaskDao.insert(params[0]);
             return null;
+        }
+    }
+
+    private static class insertRetrieveIdAsyncTask extends AsyncTask<Event, Void, Long>{
+        private AsyncTaskListener mAsyncTaskListener;
+        private EventDao mAsyncTaskDao;
+
+        insertRetrieveIdAsyncTask(AsyncTaskListener listener, EventDao dao) {
+            mAsyncTaskListener = listener;
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Long doInBackground(final Event... params) {
+            return mAsyncTaskDao.insertRetrieveId(params[0]);
+        }
+
+        @Override
+        protected void onPostExecute(Long result){
+            mAsyncTaskListener.entityIdInsertListener(result);
         }
     }
 }

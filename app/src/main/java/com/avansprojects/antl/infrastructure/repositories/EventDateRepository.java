@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import com.avansprojects.antl.infrastructure.daos.EventDateDao;
 import com.avansprojects.antl.infrastructure.database.AntlDatabase;
 import com.avansprojects.antl.infrastructure.entities.EventDate;
-
 import java.util.List;
 
 import androidx.lifecycle.LiveData;
@@ -22,23 +21,24 @@ public class EventDateRepository {
         mAllEventDates = mEventDateDao.getAllEventDates();
     }
 
-    public void insert(EventDate eventDate) {new insertAsyncTask(mEventDateDao).execute(eventDate);}
+    public void insertAll(List<EventDate> eventDates) {new insertAllAsyncTask(mEventDateDao).execute(eventDates);}
 
     public LiveData<List<EventDate>> getAllEvents() {
         return mAllEventDates;
     }
 
-    private static class insertAsyncTask extends AsyncTask<EventDate, Void, Void> {
+    private static class insertAllAsyncTask extends AsyncTask<List<EventDate>, Void, Void> {
 
         private EventDateDao mAsyncTaskDao;
 
-        insertAsyncTask(EventDateDao dao) {
+        insertAllAsyncTask(EventDateDao dao) {
             mAsyncTaskDao = dao;
         }
 
         @Override
-        protected Void doInBackground(final EventDate... params) {
-            mAsyncTaskDao.insert(params[0]);
+        protected Void doInBackground(List<EventDate>... params) {
+            List<EventDate> eventDateList = params[0];
+            mAsyncTaskDao.insertAll(eventDateList);
             return null;
         }
     }

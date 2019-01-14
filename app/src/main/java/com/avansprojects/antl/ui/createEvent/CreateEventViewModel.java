@@ -6,15 +6,14 @@ import com.avansprojects.antl.infrastructure.entities.Event;
 import com.avansprojects.antl.infrastructure.entities.EventDate;
 import com.avansprojects.antl.infrastructure.repositories.EventDateRepository;
 import com.avansprojects.antl.infrastructure.repositories.EventRepository;
-
+import com.avansprojects.antl.listeners.AsyncTaskListener;
 import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-public class CreateEventViewModel extends AndroidViewModel {
+public class CreateEventViewModel extends AndroidViewModel implements AsyncTaskListener {
 
     private EventRepository mEventRepository;
     private EventDateRepository mEventDateRepository;
@@ -46,28 +45,38 @@ public class CreateEventViewModel extends AndroidViewModel {
         return mLiveEventDateData;
     }
 
-    public void setEventDates(List<EventDate> eventDates) {
+    void setEventDates(List<EventDate> eventDates) {
+        if (mLiveEventDateData == null){
+            mLiveEventDateData = new MutableLiveData<>();
+        }
         mLiveEventDateData.setValue(eventDates);
     }
 
-    void insert(Event event, List<EventDate> eventDates) {
-        mEventRepository.insert(event);
-        insertAll(eventDates);
+    private void insertEvent(Event event) {
+        mEventRepository.insertRetrieveId(event, this);
     }
 
-    void insert(Event event) {
-        mEventRepository.insert(event);
-    }
+    private void insertEventDates(int id) {
+        List<EventDate> eventDates = mLiveEventDateData.getValue();
 
-    void insertAll(List<EventDate> eventDates) {
         for (EventDate eventDate: eventDates
-             ) {
-            mEventDateRepository.insert(eventDate);
+             ) { eventDate.setEventId(id);
         }
+        mEventDateRepository.insertAll(eventDates);
     }
 
-    public void saveEvent() {
-        Event event = mEvent.getValue();
-        insert(mEvent.getValue(), mLiveEventDateData.getValue());
+    void saveEvent(String name, String description, String location, int PictureLocation) {
+        Event event = new Event();
+        event.setName(name);
+        event.setEventPicture(PictureLocation);
+        event.setDescription(description);
+        event.setLocation(location);
+        event.setMainDateTime(mLiveEventDateData.getValue().get(0).getEventDate());
+        insertEvent(event);
+    }
+
+    @Override
+    public void entityIdInsertListener(long id) {
+        insertEventDates((int)id);
     }
 }

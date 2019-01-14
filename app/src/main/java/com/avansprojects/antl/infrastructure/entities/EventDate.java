@@ -19,12 +19,11 @@ public class EventDate implements Comparable<EventDate> {
     @PrimaryKey(autoGenerate = true)
     private int id;
     @ColumnInfo(name = "event_id")
-    private int eventId;
+    private long eventId;
     @ColumnInfo(name = "event_date")
     private Date eventDate;
 
-
-    public EventDate(int id, int eventId, Date eventDate) {
+    public EventDate(int id, long eventId, Date eventDate) {
         this.id = id;
         this.eventId = eventId;
         this.eventDate = eventDate;
@@ -43,11 +42,11 @@ public class EventDate implements Comparable<EventDate> {
         this.id = id;
     }
 
-    public int getEventId() {
+    public long getEventId() {
         return eventId;
     }
 
-    public void setEventId(int eventId) {
+    public void setEventId(long eventId) {
         this.eventId = eventId;
     }
 

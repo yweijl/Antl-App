@@ -79,13 +79,14 @@ public abstract class AntlDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(final Void... params) {
             _EventDao.deleteAll();
-            Event event = new Event("New years Eve", CalendarHelper.setDate(2018,12,31), "den haag", R.drawable.newyear);
+            mEventDateDao.deleteAll();
+            Event event = new Event("New years Eve", CalendarHelper.setDate(2018,12,31),"den haag", "hoi",  R.drawable.newyear, 21);
             _EventDao.insert(event);
-            event = new Event("berlin trip", CalendarHelper.setDate(2019, 2,10), "Berlijn", R.drawable.event);
+            event = new Event("berlin trip", CalendarHelper.setDate(2019, 2,10), "Berlijn", "hoi", R.drawable.event, 22);
             _EventDao.insert(event);
-            event = new Event("B-day Party", CalendarHelper.setDate(2019,6,9), "Den Haag", R.drawable.presentation);
+            event = new Event("B-day Party", CalendarHelper.setDate(2019,6,9), "Den Haag", "hoi", R.drawable.presentation, 23);
             _EventDao.insert(event);
-            event = new Event("Bordspellen dag", CalendarHelper.setDate(2018,12,25), "Den Haag", R.drawable.boardgame);
+            event = new Event("Bordspellen dag", CalendarHelper.setDate(2018,12,25), "Den Haag", "hoi", R.drawable.boardgame, 24);
             _EventDao.insert(event);
 
             _RelationshipDao.deleteAll();

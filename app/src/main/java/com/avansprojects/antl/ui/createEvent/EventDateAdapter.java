@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.avansprojects.antl.R;
 import com.avansprojects.antl.helpers.CalendarHelper;
 import com.avansprojects.antl.infrastructure.entities.EventDate;
+import com.avansprojects.antl.listeners.ViewModelListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,8 +20,10 @@ import androidx.recyclerview.widget.RecyclerView;
 public class EventDateAdapter extends RecyclerView.Adapter<EventDateAdapter.EventDateCardViewHolder> {
 
     private List<EventDate> mEventDateList;
+    private ViewModelListener mListener;
 
-    public EventDateAdapter() {
+    public EventDateAdapter(ViewModelListener listener) {
+        mListener = listener;
         mEventDateList = new ArrayList<>();
     }
 
@@ -38,13 +41,14 @@ public class EventDateAdapter extends RecyclerView.Adapter<EventDateAdapter.Even
                 mEventDateList.remove(getAdapterPosition());
                 notifyItemRemoved(getAdapterPosition() - 1);
                 notifyItemRangeChanged(getAdapterPosition(), mEventDateList.size());
-                notifyDataSetChanged();
+                setEvents();
             });
         }
     }
 
     public void addItem(EventDate date) {
         mEventDateList.add(date);
+        setEvents();
         notifyItemInserted(mEventDateList.size());
     }
 
@@ -58,17 +62,16 @@ public class EventDateAdapter extends RecyclerView.Adapter<EventDateAdapter.Even
     @Override
     public void onBindViewHolder(EventDateCardViewHolder holder, int position) {
             EventDate date = mEventDateList.get(position);
-
             holder.mEventDate.setText(CalendarHelper.DateTimeToString(date.getEventDate()));
     }
 
-    void setEvents(List<EventDate> dateList){
-        Collections.sort(dateList);
-        mEventDateList = dateList;
+    void setEvents(){
+        Collections.sort(mEventDateList);
+        mListener.dataIsChanged();
         notifyDataSetChanged();
     }
 
-    List<EventDate> getEvents(){
+    List<EventDate> getEventDates(){
         return  mEventDateList;
     }
 

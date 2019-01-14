@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 @Dao
@@ -19,8 +20,8 @@ public interface EventDateDao {
     @Insert
     void insert(EventDate EventDate);
 
-    @Insert
-    void insertAll(EventDate... eventDates);
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertAll(List<EventDate> eventDates);
 
     @Delete
     void delete(EventDate eventDate);
