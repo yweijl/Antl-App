@@ -39,11 +39,7 @@
         android:id="@+id/destination_register"
         android:name="com.avansprojects.antl.ui.login.RegisterFragment"
         android:label="Register"
-        tools:layout="@layout/register_fragment">
-        <action
-            android:id="@+id/to_destination_login"
-            app:destination="@id/destination_login" />
-    </fragment>
+        tools:layout="@layout/register_fragment"></fragment>
     <fragment
         android:id="@+id/destination_friend_add"
         android:name="com.avansprojects.antl.ui.friendAddMenu.friendAdd"
@@ -63,4 +59,9 @@
             app:destination="@id/destination_events"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" /></fragment>
+    <fragment
+        android:id="@+id/destination_profile"
+        android:name="com.avansprojects.antl.ui.profile.profileFragment"
+        android:label="profile"
+        tools:layout="@layout/profile_fragment" />
 </navigation>

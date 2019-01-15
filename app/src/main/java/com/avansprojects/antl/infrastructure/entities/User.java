@@ -9,9 +9,9 @@ public class User {
     @PrimaryKey
     public int id;
     @ColumnInfo(name = "user_name")
-    public String userName;
+    private String userName;
     @ColumnInfo(name = "phone_number")
-    public long phoneNumber;
+    public String phoneNumber;
     @ColumnInfo(name = "email")
     public String email;
     @ColumnInfo(name = "first_name")
@@ -19,11 +19,17 @@ public class User {
     @ColumnInfo(name = "last_name")
     public String lastName;
     @ColumnInfo(name = "web_server_id")
-    public long webServerId;
-    @ColumnInfo(name = "gender")
-    public String gender;
+    public String webServerId;
 
     public User(int id){
         this.id = id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

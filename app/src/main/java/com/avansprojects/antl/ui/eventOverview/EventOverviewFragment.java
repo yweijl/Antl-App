@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import com.avansprojects.antl.AntlApp;
 import com.avansprojects.antl.R;
 import com.avansprojects.antl.helpers.BottomOffsetDecoration;
+import com.avansprojects.antl.helpers.Authentication;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -38,16 +39,10 @@ public class EventOverviewFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
-        // Remove login page from backstack
-        // Navigation.findNavController(getView()).popBackStack(R.id.destination_events, false);
-
         // Check if logged in
-        String token = AntlApp.getContext().getSharedPreferences("antlPrefs", MODE_PRIVATE).getString("token", "");
-//        if (token.isEmpty())
-//        {
-//            Navigation.findNavController(getView()).navigate(R.id.go_to_login);
-//        }
+        if (!Authentication.verify(getView())) return;
 
+        // Do rest
         BottomNavigationView menu = getActivity().findViewById(R.id.bottom_nav);
         menu.setVisibility(View.VISIBLE);
 
@@ -64,8 +59,6 @@ public class EventOverviewFragment extends Fragment {
         // Update the cached copy of the words in the adapter.
         _ViewModel.getAllEvents().observe(this, adapter::setEvents);
     }
-
-
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

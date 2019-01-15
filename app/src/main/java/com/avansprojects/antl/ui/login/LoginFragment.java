@@ -50,11 +50,6 @@ public class LoginFragment extends Fragment {
 
         Button registerButton = getView().findViewById(R.id.register_button);
         registerButton.setOnClickListener(view -> {
-            SharedPreferences.Editor edit;
-            edit = AntlApp.getContext().getSharedPreferences("antlPrefs", Context.MODE_PRIVATE).edit();
-            edit.putString("token", "");
-            edit.commit();
-
             Navigation.findNavController(view).navigate(R.id.to_destination_register);
         });
 

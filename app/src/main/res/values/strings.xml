@@ -42,4 +42,5 @@
     <string name="button_to_remove_a_date_to_the_event">button to remove a date to the event</string>
     <string name="click_the_button_to_add_a_date">Add a date</string>
     <string name="insert_a_date">Insert A Date</string>
+    <string name="logout">Logout</string>
 </resources>

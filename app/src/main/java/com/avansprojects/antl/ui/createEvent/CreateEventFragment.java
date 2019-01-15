@@ -20,6 +20,9 @@ import android.widget.TextView;
 import com.avansprojects.antl.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.Date;
+import java.util.Objects;
+
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class CreateEventFragment extends Fragment {
