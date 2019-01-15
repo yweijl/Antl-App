@@ -100,6 +100,9 @@ public class CreateEventFragment extends Fragment {
             case 1:
                 mDescriptionTextView = mPager.findViewById(R.id.enterEventDescription);
             break;
+            case 2:
+                break;
+            case 3:
             default:
                 break;
         }
@@ -116,8 +119,7 @@ public class CreateEventFragment extends Fragment {
         mViewModel.saveEvent(
                 mNameTextView.getText().toString(),
                 mDescriptionTextView.getText().toString(),
-                "locatie",
-                mPictureLocation);
+                "locatie");
     }
 
     private void setButtonVisibility(int position) {

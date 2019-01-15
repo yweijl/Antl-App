@@ -1,6 +1,8 @@
 package com.avansprojects.antl.infrastructure.database;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.net.Uri;
 import android.os.AsyncTask;
 import com.avansprojects.antl.R;
 import com.avansprojects.antl.helpers.CalendarHelper;
@@ -76,17 +78,21 @@ public abstract class AntlDatabase extends RoomDatabase {
             _UserDao = db.userDao();
         }
 
+        public String getURLForResource (int resourceId) {
+            return Uri.parse("android.resource://"+R.class.getPackage().getName()+"/" +resourceId).toString();
+        }
+
         @Override
         protected Void doInBackground(final Void... params) {
-            _EventDao.deleteAll();
             mEventDateDao.deleteAll();
-            Event event = new Event("New years Eve", CalendarHelper.setDate(2018,12,31),"den haag", "hoi",  R.drawable.newyear, 21);
+            _EventDao.deleteAll();
+            Event event = new Event("New years Eve", CalendarHelper.setDate(2018,12,31),"den haag", "hoi",  getURLForResource(R.drawable.newyear), 21);
             _EventDao.insert(event);
-            event = new Event("berlin trip", CalendarHelper.setDate(2019, 2,10), "Berlijn", "hoi", R.drawable.event, 22);
+            event = new Event("berlin trip", CalendarHelper.setDate(2019, 2,10), "Berlijn", "hoi", getURLForResource(R.drawable.event), 22);
             _EventDao.insert(event);
-            event = new Event("B-day Party", CalendarHelper.setDate(2019,6,9), "Den Haag", "hoi", R.drawable.presentation, 23);
+            event = new Event("B-day Party", CalendarHelper.setDate(2019,6,9), "Den Haag", "hoi", getURLForResource(R.drawable.presentation), 23);
             _EventDao.insert(event);
-            event = new Event("Bordspellen dag", CalendarHelper.setDate(2018,12,25), "Den Haag", "hoi", R.drawable.boardgame, 24);
+            event = new Event("Bordspellen dag", CalendarHelper.setDate(2018,12,25), "Den Haag", "hoi", getURLForResource(R.drawable.boardgame), 24);
             _EventDao.insert(event);
 
             _RelationshipDao.deleteAll();

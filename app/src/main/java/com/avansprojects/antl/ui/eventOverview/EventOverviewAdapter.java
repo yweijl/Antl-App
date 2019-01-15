@@ -60,7 +60,7 @@ public class EventOverviewAdapter extends RecyclerView.Adapter<EventOverviewAdap
             holder.day.setText(CalendarHelper.getDayFromDate(current.getMainDateTime()));
             holder.month.setText(CalendarHelper.getCurrentMonthAbbreviationFromDate(current.getMainDateTime()));
             holder.attendingUsers.setText("13");
-            GlideApp.with(_fragment).load(current.getEventPicture()).centerCrop().into(holder.picture);
+            GlideApp.with(_fragment).load(current.getPicturePath()).centerCrop().into(holder.picture);
 
         } else {
             holder.eventName.setText("No Events");

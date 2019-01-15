@@ -19,6 +19,7 @@ public class CreateEventViewModel extends AndroidViewModel implements AsyncTaskL
     private EventDateRepository mEventDateRepository;
     private MutableLiveData<List<EventDate>> mLiveEventDateData;
     private MutableLiveData<Event> mEvent;
+    private String mPicturePath;
 
 
     public CreateEventViewModel(@NonNull Application application) {
@@ -26,6 +27,16 @@ public class CreateEventViewModel extends AndroidViewModel implements AsyncTaskL
         mEventRepository = new EventRepository(application);
         mEventDateRepository = new EventDateRepository(application);
             }
+
+    void saveEvent(String name, String description, String location) {
+        Event event = new Event();
+        event.setName(name);
+        event.setPicturePath(mPicturePath);
+        event.setDescription(description);
+        event.setLocation(location);
+        event.setMainDateTime(mLiveEventDateData.getValue().get(0).getEventDate());
+        insertEvent(event);
+    }
 
     public LiveData<Event> getEvent() {
         if (mEvent == null) {
@@ -65,18 +76,16 @@ public class CreateEventViewModel extends AndroidViewModel implements AsyncTaskL
         mEventDateRepository.insertAll(eventDates);
     }
 
-    void saveEvent(String name, String description, String location, int PictureLocation) {
-        Event event = new Event();
-        event.setName(name);
-        event.setEventPicture(PictureLocation);
-        event.setDescription(description);
-        event.setLocation(location);
-        event.setMainDateTime(mLiveEventDateData.getValue().get(0).getEventDate());
-        insertEvent(event);
-    }
-
     @Override
     public void entityIdInsertListener(long id) {
         insertEventDates((int)id);
+    }
+
+    public String getmPicturePath() {
+        return mPicturePath;
+    }
+
+    public void setmPicturePath(String mPicturePath) {
+        this.mPicturePath = mPicturePath;
     }
 }
