@@ -52,7 +52,7 @@ public class profileFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
         Button logoutButton = getActivity().findViewById(R.id.logoutButton);
-        logoutButton.setOnClickListener(view -> Authentication.logout());
+        logoutButton.setOnClickListener(view -> Authentication.logout(view));
 
         userNameTextView = getActivity().findViewById(R.id.editUserName);
         firstNameTextView = getActivity().findViewById(R.id.editFirstName);

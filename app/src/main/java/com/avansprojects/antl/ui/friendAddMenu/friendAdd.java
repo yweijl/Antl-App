@@ -47,6 +47,9 @@ public class friendAdd extends Fragment {
 
         Button addButton = getActivity().findViewById(R.id.next_button);
         addButton.setOnClickListener(v -> mViewModel.addFriend(Integer.parseInt(textView.getText().toString())));
+
+        Button shareButton = getActivity().findViewById(R.id.share);
+        shareButton.setOnClickListener(v -> mViewModel.share(v));
     }
 
 }
