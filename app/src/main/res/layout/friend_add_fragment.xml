@@ -45,7 +45,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="Please enter friend code"
+            android:text="@string/friend_code_input_label"
             android:textColor="@color/AntlAccentLight"
             android:textSize="30dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +53,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/editFriendCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -62,12 +62,35 @@
             android:layout_marginBottom="8dp"
             android:ems="10"
             android:inputType="number"
-            android:text="FriendCode"
+            android:text="@string/friendcode"
             android:textColor="@color/AntlAccentLight"
             app:layout_constraintBottom_toTopOf="@+id/next_button"
             app:layout_constraintEnd_toEndOf="@+id/textView2"
             app:layout_constraintStart_toStartOf="@+id/textView2"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <TextView
+            android:id="@+id/friendCodeLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/your_friend_code_label"
+            android:textColor="@color/AntlAccentLight"
+            android:layout_marginTop="8dp"
+            android:textSize="30dp"
+            app:layout_constraintEnd_toEndOf="@+id/editFriendCode"
+            app:layout_constraintStart_toStartOf="@+id/editFriendCode"
+            app:layout_constraintTop_toBottomOf="@+id/editFriendCode"/>
+
+        <TextView
+            android:id="@+id/friendCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Error"
+            android:textColor="@color/AntlAccentLight"
+            android:textSize="30dp"
+            app:layout_constraintEnd_toEndOf="@+id/friendCodeLabel"
+            app:layout_constraintStart_toStartOf="@+id/friendCodeLabel"
+            app:layout_constraintTop_toBottomOf="@+id/friendCodeLabel"/>
 
     </LinearLayout>
 

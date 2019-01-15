@@ -41,4 +41,7 @@
     <string name="save">save</string>
     <string name="button_to_remove_a_date_to_the_event">button to remove a date to the event</string>
     <string name="logout">Logout</string>
+    <string name="friend_code_input_label">Please enter friend code</string>
+    <string name="friendcode">FriendCode</string>
+    <string name="your_friend_code_label">Your friend code:</string>
 </resources>
