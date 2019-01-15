@@ -21,7 +21,7 @@ import com.avansprojects.antl.R;
 public class friendAdd extends Fragment {
 
     private FriendAddViewModel mViewModel;
-    private TextView textView;
+    private TextView mExternalFriendCode;
     private TextView mFriendCode;
     private TextView mEditFriendCode;
 
@@ -39,14 +39,14 @@ public class friendAdd extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(FriendAddViewModel.class);
-        textView = getActivity().findViewById(R.id.editFriendCode);
+        mExternalFriendCode = getActivity().findViewById(R.id.editFriendCode);
         mFriendCode = getActivity().findViewById(R.id.friendCode);
 
-        textView.setText(friendAddArgs.fromBundle(getArguments()).getIncomingFriendCode());
+        mExternalFriendCode.setText(friendAddArgs.fromBundle(getArguments()).getIncomingFriendCode());
         mFriendCode.setText(AntlApp.getContext().getSharedPreferences("antlPrefs", Context.MODE_PRIVATE).getString("code", "Error"));
 
         Button addButton = getActivity().findViewById(R.id.next_button);
-        addButton.setOnClickListener(v -> mViewModel.addFriend(Integer.parseInt(textView.getText().toString())));
+        addButton.setOnClickListener(v -> mViewModel.addFriend(v, mExternalFriendCode.getText().toString()));
 
         Button shareButton = getActivity().findViewById(R.id.share);
         shareButton.setOnClickListener(v -> mViewModel.share(v));
