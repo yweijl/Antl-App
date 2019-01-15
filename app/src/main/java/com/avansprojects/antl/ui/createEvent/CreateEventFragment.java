@@ -25,6 +25,7 @@ import com.avansprojects.antl.infrastructure.entities.Event;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Date;
+import java.util.Objects;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
@@ -90,7 +91,7 @@ public class CreateEventFragment extends Fragment {
             bindTextViews(mPager.getCurrentItem());
             InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(INPUT_METHOD_SERVICE);
             if (imm.isActive()){
-                imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+                imm.hideSoftInputFromWindow(Objects.requireNonNull(getActivity().getCurrentFocus()).getWindowToken(), 0);
             }
             int newPosition = setNewViewPagerPosition(+1);
             setButtonVisibility(newPosition);

@@ -40,4 +40,5 @@
     <string name="antl">Antl.</string>
     <string name="save">save</string>
     <string name="button_to_remove_a_date_to_the_event">button to remove a date to the event</string>
+    <string name="logout">Logout</string>
 </resources>
