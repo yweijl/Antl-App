@@ -6,42 +6,65 @@ import android.os.AsyncTask;
 import com.avansprojects.antl.infrastructure.daos.EventDao;
 import com.avansprojects.antl.infrastructure.database.AntlDatabase;
 import com.avansprojects.antl.infrastructure.entities.Event;
+import com.avansprojects.antl.listeners.AsyncTaskListener;
 
 import java.util.List;
-
 import androidx.lifecycle.LiveData;
 
 public class EventRepository {
 
-    private EventDao _EventDao;
-    private LiveData<List<Event>> _AllEvents;
+    private EventDao mEventDao;
+    private LiveData<List<Event>> mAllEvents;
 
     public EventRepository(Application application) {
         AntlDatabase db = AntlDatabase.getDatabase(application);
-        _EventDao = db.eventDao();
-        _AllEvents = _EventDao.getAllEvents();
+        mEventDao = db.eventDao();
+        mAllEvents = mEventDao.getAllEvents();
     }
 
     public void insert(Event event) {
-        new insertAsyncTask(_EventDao).execute(event);
+        new insertAsyncTask(mEventDao).execute(event);
+    }
+    public void insertRetrieveId(Event event, AsyncTaskListener listener) {
+        new insertRetrieveIdAsyncTask(listener, mEventDao).execute(event);
     }
 
     public LiveData<List<Event>> getAllEvents() {
-        return _AllEvents;
+        return mAllEvents;
     }
 
-    private static class insertAsyncTask extends AsyncTask<Event, Void, Void> {
-
-        private EventDao _AsyncTaskDao;
+    private static class insertAsyncTask extends AsyncTask<Event, Void, Void>{
+        private AsyncTaskListener mAsyncTaskListener;
+        private EventDao mAsyncTaskDao;
 
         insertAsyncTask(EventDao dao) {
-            _AsyncTaskDao = dao;
+            mAsyncTaskDao = dao;
         }
 
         @Override
         protected Void doInBackground(final Event... params) {
-            _AsyncTaskDao.insert(params[0]);
+            mAsyncTaskDao.insert(params[0]);
             return null;
+        }
+    }
+
+    private static class insertRetrieveIdAsyncTask extends AsyncTask<Event, Void, Long>{
+        private AsyncTaskListener mAsyncTaskListener;
+        private EventDao mAsyncTaskDao;
+
+        insertRetrieveIdAsyncTask(AsyncTaskListener listener, EventDao dao) {
+            mAsyncTaskListener = listener;
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Long doInBackground(final Event... params) {
+            return mAsyncTaskDao.insertRetrieveId(params[0]);
+        }
+
+        @Override
+        protected void onPostExecute(Long result){
+            mAsyncTaskListener.entityIdInsertListener(result);
         }
     }
 }

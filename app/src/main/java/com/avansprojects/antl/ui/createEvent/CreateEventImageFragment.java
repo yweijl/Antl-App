@@ -24,12 +24,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
 public class CreateEventImageFragment extends Fragment {
 
-    String mCurrentPhotoPath;
-    static final int REQUEST_TAKE_PHOTO = 1;
+    private String mCurrentPhotoPath;
+    private static final int REQUEST_TAKE_PHOTO = 1;
     private ImageView mImageView;
+    private CreateEventViewModel mViewModel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -42,27 +44,30 @@ public class CreateEventImageFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        mViewModel = ViewModelProviders.of(getActivity()).get(CreateEventViewModel.class);
+
         mImageView = Objects.requireNonNull(getView()).findViewById(R.id.addPictureImage);
         Button button = Objects.requireNonNull(getActivity()).findViewById(R.id.addImage);
         button.setOnClickListener(x -> {
-            try {
-                createImageFile();
-                dispatchTakePictureIntent();
-                galleryAddPic();
-                GlideApp.with(this).load(mCurrentPhotoPath).centerCrop().into(mImageView);
-            } catch (IOException ex){
-                System.out.printf("Error %s", ex);
-            }
+            dispatchTakePictureIntent();
+            GlideApp.with(this).load(mCurrentPhotoPath).centerCrop().into(mImageView);
+            galleryAddPic();
+            mViewModel.setmPicturePath(mCurrentPhotoPath);
         });
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
     }
 
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = Objects.requireNonNull(getActivity()).getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File storageDir = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
                 ".jpg",         /* suffix */
@@ -88,7 +93,7 @@ public class CreateEventImageFragment extends Fragment {
             }
             // Continue only if the File was successfully created
             if (photoFile != null) {
-                Uri photoURI = FileProvider.getUriForFile(Objects.requireNonNull(getContext()),
+                Uri photoURI = FileProvider.getUriForFile(getContext(),
                         "com.avansprojects.antl.fileprovider",
                         photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
@@ -102,7 +107,6 @@ public class CreateEventImageFragment extends Fragment {
         File f = new File(mCurrentPhotoPath);
         Uri contentUri = Uri.fromFile(f);
         mediaScanIntent.setData(contentUri);
-        Objects.requireNonNull(getActivity()).sendBroadcast(mediaScanIntent);
+        getActivity().sendBroadcast(mediaScanIntent);
     }
 }
-

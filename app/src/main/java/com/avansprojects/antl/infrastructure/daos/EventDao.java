@@ -20,6 +20,9 @@ public interface EventDao {
     void insert(Event event);
 
     @Insert
+    long insertRetrieveId(Event event);
+
+    @Insert
     void insertAll(Event... events);
 
     @Delete

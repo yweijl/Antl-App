@@ -23,7 +23,7 @@
     <string name="create_event_name_hint">Enter event here</string>
     <string name="create_event_description">What is the event about?</string>
     <string name="create_event_description_hint">Enter description here</string>
-    <string name="create_event_date">At which date is the event being held?</string>
+    <string name="create_event_date">Add dates to event here</string>
     <string name="create_event_multiple_dates">Do you want to add extra date options to the event?</string>
     <string name="create_event_next_button">Next</string>
 
@@ -40,5 +40,7 @@
     <string name="antl">Antl.</string>
     <string name="save">save</string>
     <string name="button_to_remove_a_date_to_the_event">button to remove a date to the event</string>
+    <string name="click_the_button_to_add_a_date">Add a date</string>
+    <string name="insert_a_date">Insert A Date</string>
     <string name="logout">Logout</string>
 </resources>

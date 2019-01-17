@@ -1,11 +1,12 @@
 package com.avansprojects.antl.ui.eventOverview;
 
 import androidx.lifecycle.ViewModelProviders;
+
+import android.graphics.Rect;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 
 import com.avansprojects.antl.AntlApp;
 import com.avansprojects.antl.R;
+import com.avansprojects.antl.helpers.BottomOffsetDecoration;
 import com.avansprojects.antl.helpers.Authentication;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -49,6 +51,10 @@ public class EventOverviewFragment extends Fragment {
         EventOverviewAdapter adapter = new EventOverviewAdapter(this);
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+        float offsetPx = getResources().getDimension(R.dimen.recycler_event_overview_offset);
+        BottomOffsetDecoration bottomOffsetDecoration = new BottomOffsetDecoration((int) offsetPx, 3);
+        mRecyclerView.addItemDecoration(bottomOffsetDecoration);
 
         // Update the cached copy of the words in the adapter.
         _ViewModel.getAllEvents().observe(this, adapter::setEvents);

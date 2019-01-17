@@ -1,6 +1,7 @@
 package com.avansprojects.antl.infrastructure.database;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -9,10 +10,12 @@ import com.avansprojects.antl.R;
 import com.avansprojects.antl.helpers.CalendarHelper;
 import com.avansprojects.antl.infrastructure.daos.ContactDao;
 import com.avansprojects.antl.infrastructure.daos.EventDao;
+import com.avansprojects.antl.infrastructure.daos.EventDateDao;
 import com.avansprojects.antl.infrastructure.daos.UserDao;
 import com.avansprojects.antl.infrastructure.entities.Contact;
 import com.avansprojects.antl.infrastructure.entities.DateConverter;
 import com.avansprojects.antl.infrastructure.entities.Event;
+import com.avansprojects.antl.infrastructure.entities.EventDate;
 import com.avansprojects.antl.infrastructure.entities.Group;
 import com.avansprojects.antl.infrastructure.entities.User;
 import com.avansprojects.antl.infrastructure.entities.UserEvent;
@@ -27,7 +30,7 @@ import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 @Database(entities = {User.class, Event.class, Contact.class,
-                      Group.class, UserEvent.class,
+                      Group.class, UserEvent.class, EventDate.class,
                       UserGroup.class}, version = 1, exportSchema = false)
 @TypeConverters({DateConverter.class})
 
@@ -36,6 +39,7 @@ public abstract class AntlDatabase extends RoomDatabase {
     public abstract UserDao userDao();
     public abstract EventDao eventDao();
     public abstract ContactDao contactDao();
+    public abstract EventDateDao eventDateDao();
 
     private static volatile AntlDatabase INSTANCE;
 
@@ -75,25 +79,32 @@ public abstract class AntlDatabase extends RoomDatabase {
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
 
         private final EventDao _EventDao;
+        private final EventDateDao mEventDateDao;
         private final UserDao _UserDao;
         private final ContactDao _ContactDao;
 
         PopulateDbAsync(AntlDatabase db) {
             _EventDao = db.eventDao();
+            mEventDateDao = db.eventDateDao();
             _UserDao = db.userDao();
             _ContactDao = db.contactDao();
         }
 
+        public String getURLForResource (int resourceId) {
+            return Uri.parse("android.resource://"+R.class.getPackage().getName()+"/" +resourceId).toString();
+        }
+
         @Override
         protected Void doInBackground(final Void... params) {
+             mEventDateDao.deleteAll();
             _EventDao.deleteAll();
-            Event event = new Event("New years Eve", CalendarHelper.setDate(2018,12,31), "den haag", R.drawable.newyear);
+            Event event = new Event("New years Eve", CalendarHelper.setDate(2018,12,31),"den haag", "hoi",  getURLForResource(R.drawable.newyear), 21);
             _EventDao.insert(event);
-            event = new Event("berlin trip", CalendarHelper.setDate(2019, 2,10), "Berlijn", R.drawable.event);
+            event = new Event("berlin trip", CalendarHelper.setDate(2019, 2,10), "Berlijn", "hoi", getURLForResource(R.drawable.event), 22);
             _EventDao.insert(event);
-            event = new Event("B-day Party", CalendarHelper.setDate(2019,6,9), "Den Haag", R.drawable.presentation);
+            event = new Event("B-day Party", CalendarHelper.setDate(2019,6,9), "Den Haag", "hoi", getURLForResource(R.drawable.presentation), 23);
             _EventDao.insert(event);
-            event = new Event("Bordspellen dag", CalendarHelper.setDate(2018,12,25), "Den Haag", R.drawable.boardgame);
+            event = new Event("Bordspellen dag", CalendarHelper.setDate(2018,12,25), "Den Haag", "hoi", getURLForResource(R.drawable.boardgame), 24);
             _EventDao.insert(event);
 
             _UserDao.deleteAll();

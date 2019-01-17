@@ -1,9 +1,9 @@
 package com.avansprojects.antl.infrastructure.entities;
 
-
 import java.util.Date;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "events")
@@ -12,18 +12,28 @@ public class Event implements Comparable<Event> {
     private int id;
     @ColumnInfo(name = "name")
     private String name;
+    @ColumnInfo(name = "description")
+    private String description;
     @ColumnInfo(name = "main_date_time")
     private Date mainDateTime;
     @ColumnInfo(name = "location")
     private String location;
-    @ColumnInfo(name = "eventPicture")
-    private int eventPicture;
+    @ColumnInfo(name = "PicturePath")
+    private String PicturePath;
+    @ColumnInfo(name = "owner_web_server_id")
+    private long eventOwnerId;
 
-    public Event(String name, Date mainDateTime, String location, int eventPicture) {
+    @Ignore
+    public Event() {
+    }
+
+    public Event(String name, Date mainDateTime, String location, String description, String PicturePath, long eventOwnerId) {
         this.name = name;
         this.mainDateTime = mainDateTime;
         this.location = location;
-        this.eventPicture = eventPicture;
+        this.PicturePath = PicturePath;
+        this.description = description;
+        this.eventOwnerId =  eventOwnerId;
     }
 
     public String getName() {
@@ -58,12 +68,28 @@ public class Event implements Comparable<Event> {
         this.id = id;
     }
 
-    public int getEventPicture() {
-        return eventPicture;
+    public String getPicturePath() {
+        return PicturePath;
     }
 
-    public void setEventPicture(int eventPicture) {
-        this.eventPicture = eventPicture;
+    public void setPicturePath(String picturePath) {
+        this.PicturePath = picturePath;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public long getEventOwnerId() {
+        return eventOwnerId;
+    }
+
+    public void setEventOwnerId(long eventOwnerId) {
+        this.eventOwnerId = eventOwnerId;
     }
 
     @Override
