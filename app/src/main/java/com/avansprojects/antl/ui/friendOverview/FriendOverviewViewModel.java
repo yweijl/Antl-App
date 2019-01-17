@@ -67,7 +67,6 @@ public class FriendOverviewViewModel extends AndroidViewModel {
                             Log.e("Contacts", e.getMessage());
                         }
                     }
-
                 }
             }
 

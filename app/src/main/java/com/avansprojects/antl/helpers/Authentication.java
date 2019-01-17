@@ -30,12 +30,14 @@ import static android.content.Context.MODE_PRIVATE;
 
 public final class Authentication {
 
-    public static void logout() {
+    public static void logout(View view) {
         SharedPreferences.Editor edit;
         edit = AntlApp.getContext().getSharedPreferences("antlPrefs", Context.MODE_PRIVATE).edit();
         edit.putString("token", "");
+        edit.putString("code", "");
         edit.commit();
         new AntlDatabase.DropDatabaseAsync();
+        Navigation.findNavController(view).navigate(R.id.go_to_login);
     }
 
     public static boolean verify(View view) {
@@ -43,7 +45,7 @@ public final class Authentication {
         String token = AntlApp.getContext().getSharedPreferences("antlPrefs", MODE_PRIVATE).getString("token", "");
         if (token.isEmpty())
         {
-            Navigation.findNavController(view).navigate(R.id.go_to_login);
+            logout(view);
             return false;
         }
 

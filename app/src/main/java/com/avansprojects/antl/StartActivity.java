@@ -1,5 +1,7 @@
 package com.avansprojects.antl;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toolbar;
@@ -22,6 +24,16 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.start_activity);
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         setupBottomBarNav(navController);
+
+        Intent appLinkIntent = getIntent();
+        String appLinkAction = appLinkIntent.getAction();
+        Uri appLinkData = appLinkIntent.getData();
+        if (appLinkData != null)
+        {
+            String friendCode = appLinkData.getLastPathSegment();
+            navController.navigate(NavGraphDirections.webFriendAdd().setIncomingFriendCode(friendCode));
+        }
+
     }
 
     private void setupBottomBarNav(NavController navController)

@@ -44,7 +44,12 @@
         android:id="@+id/destination_friend_add"
         android:name="com.avansprojects.antl.ui.friendAddMenu.friendAdd"
         android:label="friend_add_fragment"
-        tools:layout="@layout/friend_add_fragment" />
+        tools:layout="@layout/friend_add_fragment" >
+        <argument
+            android:name="IncomingFriendCode"
+            android:defaultValue="FriendCode"
+            app:argType="string" />
+    </fragment>
     <action
         android:id="@+id/go_to_login"
         app:destination="@+id/destination_login"
@@ -53,7 +58,12 @@
         android:id="@+id/Destination_create_event"
         android:name="com.avansprojects.antl.ui.createEvent.CreateEventFragment"
         android:label="create_event"
-        tools:layout="@layout/create_event_name_fragment"><action android:id="@+id/action_Destination_create_event_pop" app:popUpTo="@id/Destination_create_event" app:popUpToInclusive="true" app:exitAnim="@anim/nav_default_exit_anim"/>
+        tools:layout="@layout/create_event_name_fragment">
+        <action
+            android:id="@+id/action_Destination_create_event_pop"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@+id/Destination_create_event"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_Destination_create_event_to_destination_events"
             app:destination="@id/destination_events"
@@ -63,5 +73,5 @@
         android:id="@+id/destination_profile"
         android:name="com.avansprojects.antl.ui.profile.profileFragment"
         android:label="profile"
-        tools:layout="@layout/profile_fragment" />
+        tools:layout="@layout/profile_fragment" /><action android:id="@+id/web_friend_add" app:destination="@id/destination_friend_add"/>
 </navigation>

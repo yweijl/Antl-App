@@ -106,13 +106,6 @@ public abstract class AntlDatabase extends RoomDatabase {
             _EventDao.insert(event);
             event = new Event("Bordspellen dag", CalendarHelper.setDate(2018,12,25), "Den Haag", "hoi", getURLForResource(R.drawable.boardgame), 24);
             _EventDao.insert(event);
-
-            _UserDao.deleteAll();
-
-            _ContactDao.deleteAll();
-            Contact userTwo = new Contact(3);
-            userTwo.userName = "Test";
-            _ContactDao.insert(userTwo);
             return null;
         }
     }

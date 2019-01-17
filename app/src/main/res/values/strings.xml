@@ -43,4 +43,7 @@
     <string name="click_the_button_to_add_a_date">Add a date</string>
     <string name="insert_a_date">Insert A Date</string>
     <string name="logout">Logout</string>
+    <string name="friend_code_input_label">Please enter friend code</string>
+    <string name="friendcode">FriendCode</string>
+    <string name="your_friend_code_label">Your friend code:</string>
 </resources>
