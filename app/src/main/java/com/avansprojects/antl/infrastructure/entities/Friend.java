@@ -5,9 +5,9 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity (tableName = ("contacts"), indices = {@Index(value = {"web_server_id"},
+@Entity (tableName = ("friends"), indices = {@Index(value = {"web_server_id"},
         unique = true)})
-public class Contact {
+public class Friend {
     @PrimaryKey
     public int id;
     @ColumnInfo(name = "user_name")
@@ -15,14 +15,14 @@ public class Contact {
     @ColumnInfo(name = "web_server_id")
     public String webServerId;
 
-    public Contact(int id){
+    public Friend(int id){
         this.id = id;
     }
 
-    public Contact(Contact contact){
-        this.id = contact.id;
-        this.userName = contact.userName;
-        this.webServerId = contact.webServerId;
+    public Friend(Friend friend){
+        this.id = friend.id;
+        this.userName = friend.userName;
+        this.webServerId = friend.webServerId;
     }
 
     public String getUserName() {

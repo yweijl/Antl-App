@@ -32,7 +32,7 @@ public class FriendAddViewModel extends ViewModel {
             return;
         }
 
-        FriendRequestDto friendRequestDto = new FriendRequestDto(mUserCode, friendCode);
+        FriendRequestDto friendRequestDto = new FriendRequestDto(friendCode);
 
         Retrofit retrofit = AntlRetrofit.getRetrofit();
 

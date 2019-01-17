@@ -6,14 +6,12 @@ import android.database.sqlite.SQLiteConstraintException;
 import android.util.Log;
 
 import com.avansprojects.antl.AntlApp;
-import com.avansprojects.antl.infrastructure.database.AntlDatabase;
-import com.avansprojects.antl.infrastructure.entities.Contact;
+import com.avansprojects.antl.infrastructure.entities.Friend;
 import com.avansprojects.antl.infrastructure.repositories.ContactRepository;
 import com.avansprojects.antl.retrofit.AntlRetrofit;
 import com.avansprojects.antl.ui.login.dto.FriendDto;
 import com.avansprojects.antl.ui.login.services.FriendService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -30,7 +28,7 @@ public class FriendOverviewViewModel extends AndroidViewModel {
     // TODO: Implement the ViewModel
 
     private ContactRepository mContactRepository;
-    private LiveData<List<Contact>> allContacts;
+    private LiveData<List<Friend>> allContacts;
 
     public FriendOverviewViewModel(@NonNull Application application) {
         super(application);
@@ -44,7 +42,7 @@ public class FriendOverviewViewModel extends AndroidViewModel {
         SharedPreferences sharedPrefs = AntlApp.getContext().getSharedPreferences("antlPrefs", MODE_PRIVATE);
 
         FriendService service = retrofit.create(FriendService.class);
-        Call<List<FriendDto>> call = service.getFriends("Bearer " + sharedPrefs.getString("token", ""), sharedPrefs.getString("code", "") );
+        Call<List<FriendDto>> call = service.getFriends("Bearer " + sharedPrefs.getString("token", ""));
         retrofit2.Response<FriendDto> result = null;
         call.enqueue(new Callback<List<FriendDto>>() {
             @Override
@@ -58,7 +56,7 @@ public class FriendOverviewViewModel extends AndroidViewModel {
                     Log.i("UserResult", result);
                     for (FriendDto friend:response.body()
                          ) {
-                        Contact contact = new Contact(i++);
+                        Friend contact = new Friend(i++);
                         contact.userName = friend.getUserName();
                         contact.webServerId = friend.getExternalId();
                         try {
@@ -78,9 +76,9 @@ public class FriendOverviewViewModel extends AndroidViewModel {
 
     }
 
-    public LiveData<List<Contact>> getAllContacts() {
+    public LiveData<List<Friend>> getAllContacts() {
         return allContacts;
     }
 
-    public void insert(Contact relationship) { mContactRepository.insert(relationship); }
+    public void insert(Friend relationship) { mContactRepository.insert(relationship); }
 }

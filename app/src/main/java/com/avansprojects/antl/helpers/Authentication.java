@@ -2,17 +2,13 @@ package com.avansprojects.antl.helpers;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
 
 import com.auth0.android.jwt.JWT;
 import com.avansprojects.antl.AntlApp;
 import com.avansprojects.antl.R;
-import com.avansprojects.antl.infrastructure.daos.UserDao;
 import com.avansprojects.antl.infrastructure.database.AntlDatabase;
-import com.avansprojects.antl.infrastructure.entities.Contact;
-import com.avansprojects.antl.infrastructure.entities.User;
 import com.avansprojects.antl.retrofit.AntlRetrofit;
 import com.avansprojects.antl.ui.login.dto.LoginRequestDTO;
 import com.avansprojects.antl.ui.login.dto.UserDto;
@@ -78,10 +74,10 @@ public final class Authentication {
 
                     JWT jwt = new JWT(result);
 
-                    Log.i("Claim: ", jwt.getClaim("UUID").asString());
+                    Log.i("Claim: ", jwt.getClaim("EID").asString());
 
                     // create applicationUser
-                    createApplicationUser(Integer.parseInt(jwt.getClaim("UUID").asString()));
+                    createApplicationUser(jwt.getClaim("EID").asString());
 
                     NavController navController = Navigation.findNavController(view);
                     navController.navigateUp();
@@ -96,7 +92,7 @@ public final class Authentication {
         });
     }
 
-    private static void createApplicationUser(int id) {
+    private static void createApplicationUser(String id) {
         Retrofit retrofit = AntlRetrofit.getRetrofit();
 
         UserService service = retrofit.create(UserService.class);

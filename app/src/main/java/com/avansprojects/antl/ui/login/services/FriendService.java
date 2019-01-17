@@ -14,9 +14,9 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface FriendService {
-    @GET("/api/Relationship/user/{code}")
-    Call<List<FriendDto>> getFriends(@Header("authorization") String token, @Path("code") String code);
+    @GET("/api/Friendship/get")
+    Call<List<FriendDto>> getFriends(@Header("authorization") String token);
 
-    @POST("/api/Relationship")
+    @POST("/api/Friendship")
     Call<FriendRequestDto> addFriend(@Header("authorization") String token, @Body FriendRequestDto dto);
 }
