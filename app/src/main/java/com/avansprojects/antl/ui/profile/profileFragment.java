@@ -51,8 +51,9 @@ public class profileFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
+
         Button logoutButton = getActivity().findViewById(R.id.logoutButton);
-        logoutButton.setOnClickListener(view -> Authentication.logout(view));
+        logoutButton.setOnClickListener(Authentication::logout);
 
         userNameTextView = getActivity().findViewById(R.id.editUserName);
         firstNameTextView = getActivity().findViewById(R.id.editFirstName);
