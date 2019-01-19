@@ -11,6 +11,6 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface UserService {
-    @GET("/api/user/{id}")
-    Call<UserDto> getUser(@Header("authorization") String token, @Path("id") int userId);
+    @GET("/api/User/{id}")
+    Call<UserDto> getUser(@Header("authorization") String token, @Path("id") String userId);
 }

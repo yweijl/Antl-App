@@ -22,4 +22,9 @@
     <style name="ToolbarTheme" parent="ThemeOverlay.MaterialComponents.ActionBar">
         <item name="android:textColorPrimary">@android:color/white</item>
     </style>
+
+    <style name="AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColor">@color/AntlText</item>
+        <item name="android:background">@color/AntlAccentLight</item>
+    </style>
 </resources>

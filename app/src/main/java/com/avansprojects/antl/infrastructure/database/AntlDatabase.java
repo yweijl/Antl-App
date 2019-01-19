@@ -8,11 +8,11 @@ import android.util.Log;
 import com.avansprojects.antl.AntlApp;
 import com.avansprojects.antl.R;
 import com.avansprojects.antl.helpers.CalendarHelper;
-import com.avansprojects.antl.infrastructure.daos.ContactDao;
+import com.avansprojects.antl.infrastructure.daos.FriendDao;
 import com.avansprojects.antl.infrastructure.daos.EventDao;
 import com.avansprojects.antl.infrastructure.daos.EventDateDao;
 import com.avansprojects.antl.infrastructure.daos.UserDao;
-import com.avansprojects.antl.infrastructure.entities.Contact;
+import com.avansprojects.antl.infrastructure.entities.Friend;
 import com.avansprojects.antl.infrastructure.entities.DateConverter;
 import com.avansprojects.antl.infrastructure.entities.Event;
 import com.avansprojects.antl.infrastructure.entities.EventDate;
@@ -29,7 +29,7 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {User.class, Event.class, Contact.class,
+@Database(entities = {User.class, Event.class, Friend.class,
                       Group.class, UserEvent.class, EventDate.class,
                       UserGroup.class}, version = 1, exportSchema = false)
 @TypeConverters({DateConverter.class})
@@ -38,7 +38,7 @@ public abstract class AntlDatabase extends RoomDatabase {
 
     public abstract UserDao userDao();
     public abstract EventDao eventDao();
-    public abstract ContactDao contactDao();
+    public abstract FriendDao contactDao();
     public abstract EventDateDao eventDateDao();
 
     private static volatile AntlDatabase INSTANCE;
@@ -81,13 +81,13 @@ public abstract class AntlDatabase extends RoomDatabase {
         private final EventDao _EventDao;
         private final EventDateDao mEventDateDao;
         private final UserDao _UserDao;
-        private final ContactDao _ContactDao;
+        private final FriendDao _FriendDao;
 
         PopulateDbAsync(AntlDatabase db) {
             _EventDao = db.eventDao();
             mEventDateDao = db.eventDateDao();
             _UserDao = db.userDao();
-            _ContactDao = db.contactDao();
+            _FriendDao = db.contactDao();
         }
 
         public String getURLForResource (int resourceId) {
@@ -130,7 +130,7 @@ public abstract class AntlDatabase extends RoomDatabase {
             user.lastName = mUserDto.getLastName();
             user.email = mUserDto.getEmail();
             user.phoneNumber = mUserDto.getPhoneNumber();
-            user.webServerId = mUserDto.getExternalId();
+            user.externalId = mUserDto.getExternalId();
 
             mUserDao.insert(user);
 

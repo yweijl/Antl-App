@@ -18,8 +18,8 @@ public class User {
     public String firstName;
     @ColumnInfo(name = "last_name")
     public String lastName;
-    @ColumnInfo(name = "web_server_id")
-    public String webServerId;
+    @ColumnInfo(name = "external_Id")
+    public String externalId;
 
     public User(int id){
         this.id = id;

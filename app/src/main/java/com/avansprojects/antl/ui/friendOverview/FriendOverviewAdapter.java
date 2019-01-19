@@ -4,7 +4,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.avansprojects.antl.R;
-import com.avansprojects.antl.infrastructure.entities.Contact;
+import com.avansprojects.antl.infrastructure.entities.Friend;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class FriendOverviewAdapter extends RecyclerView.Adapter<FriendCardViewHolder> {
 
-    private List<Contact> mContactList;
+    private List<Friend> mFriendList;
     private Fragment _fragment;
 
     public FriendOverviewAdapter(Fragment fragment) {
@@ -30,9 +30,9 @@ public class FriendOverviewAdapter extends RecyclerView.Adapter<FriendCardViewHo
 
     @Override
     public void onBindViewHolder(FriendCardViewHolder holder, int position) {
-        if (mContactList != null) {
+        if (mFriendList != null) {
 
-            Contact current = mContactList.get(position);
+            Friend current = mFriendList.get(position);
             holder.friendName.setText(String.valueOf(current.getUserName()));
 
         } else {
@@ -40,16 +40,16 @@ public class FriendOverviewAdapter extends RecyclerView.Adapter<FriendCardViewHo
         }
     }
 
-    void setRelationships(List<Contact> relationships){
-        mContactList = relationships;
+    void setRelationships(List<Friend> relationships){
+        mFriendList = relationships;
         notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount()
     {
-        if (mContactList != null)
-            return mContactList.size();
+        if (mFriendList != null)
+            return mFriendList.size();
         else return 0;
     }
 }

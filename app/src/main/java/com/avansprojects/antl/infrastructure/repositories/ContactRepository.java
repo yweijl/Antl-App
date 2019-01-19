@@ -3,9 +3,9 @@ package com.avansprojects.antl.infrastructure.repositories;
 import android.app.Application;
 import android.os.AsyncTask;
 
-import com.avansprojects.antl.infrastructure.daos.ContactDao;
+import com.avansprojects.antl.infrastructure.daos.FriendDao;
 import com.avansprojects.antl.infrastructure.database.AntlDatabase;
-import com.avansprojects.antl.infrastructure.entities.Contact;
+import com.avansprojects.antl.infrastructure.entities.Friend;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import androidx.lifecycle.LiveData;
 
 public class ContactRepository {
 
-    private ContactDao mContacts;
-    private LiveData<List<Contact>> mAllContacts;
+    private FriendDao mContacts;
+    private LiveData<List<Friend>> mAllContacts;
 
     public ContactRepository(Application application) {
         AntlDatabase db = AntlDatabase.getDatabase(application);
@@ -22,26 +22,26 @@ public class ContactRepository {
         mAllContacts = mContacts.getAll();
     }
 
-    public void insert(Contact contact) {
-        new insertAsyncTask(mContacts).execute(contact);
+    public void insert(Friend friend) {
+        new insertAsyncTask(mContacts).execute(friend);
     }
 
     public void deleteAll(){new deleteAsyncTask(mContacts).execute();}
 
-    public LiveData<List<Contact>> getAllRelationships() {
+    public LiveData<List<Friend>> getAllRelationships() {
         return  mAllContacts;
     }
 
-    private static class insertAsyncTask extends AsyncTask<Contact, Void, Void> {
+    private static class insertAsyncTask extends AsyncTask<Friend, Void, Void> {
 
-        private ContactDao _AsyncTaskDao;
+        private FriendDao _AsyncTaskDao;
 
-        insertAsyncTask(ContactDao dao) {
+        insertAsyncTask(FriendDao dao) {
             _AsyncTaskDao = dao;
         }
 
         @Override
-        protected Void doInBackground(final Contact... params) {
+        protected Void doInBackground(final Friend... params) {
             _AsyncTaskDao.insert(params[0]);
             return null;
         }
@@ -49,9 +49,9 @@ public class ContactRepository {
 
     private static class deleteAsyncTask extends AsyncTask<Void, Void, Void> {
 
-        private ContactDao _AsyncTaskDao;
+        private FriendDao _AsyncTaskDao;
 
-        deleteAsyncTask(ContactDao dao){_AsyncTaskDao = dao;}
+        deleteAsyncTask(FriendDao dao){_AsyncTaskDao = dao;}
 
         @Override
         protected Void doInBackground(Void... voids) {
