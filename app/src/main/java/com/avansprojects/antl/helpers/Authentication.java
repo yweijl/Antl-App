@@ -78,10 +78,10 @@ public final class Authentication {
 
                     JWT jwt = new JWT(result);
 
-                    Log.i("Claim: ", jwt.getClaim("UUID").asString());
+                    Log.i("Claim: ", jwt.getClaim("EID").asString());
 
                     // create applicationUser
-                    createApplicationUser(Integer.parseInt(jwt.getClaim("UUID").asString()));
+                    createApplicationUser(jwt.getClaim("EID").asString());
 
                     NavController navController = Navigation.findNavController(view);
                     navController.navigateUp();

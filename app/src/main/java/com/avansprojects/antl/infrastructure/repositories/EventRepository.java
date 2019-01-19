@@ -34,7 +34,6 @@ public class EventRepository {
     }
 
     private static class insertAsyncTask extends AsyncTask<Event, Void, Void>{
-        private AsyncTaskListener mAsyncTaskListener;
         private EventDao mAsyncTaskDao;
 
         insertAsyncTask(EventDao dao) {
@@ -59,7 +58,7 @@ public class EventRepository {
 
         @Override
         protected Long doInBackground(final Event... params) {
-            return mAsyncTaskDao.insertRetrieveId(params[0]);
+                return mAsyncTaskDao.insertRetrieveId(params[0]);
         }
 
         @Override

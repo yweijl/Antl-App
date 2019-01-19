@@ -2,13 +2,24 @@ package com.avansprojects.antl.infrastructure.repositories;
 
 import android.app.Application;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.avansprojects.antl.infrastructure.daos.EventDateDao;
 import com.avansprojects.antl.infrastructure.database.AntlDatabase;
+import com.avansprojects.antl.infrastructure.dtos.CreateEventDto;
 import com.avansprojects.antl.infrastructure.entities.EventDate;
+import com.avansprojects.antl.infrastructure.interfaces.IEventApi;
+import com.avansprojects.antl.retrofit.AntlRetrofit;
+import com.avansprojects.antl.ui.login.dto.RegistrationRequestDTO;
+import com.avansprojects.antl.ui.login.services.LoginService;
+
 import java.util.List;
 
 import androidx.lifecycle.LiveData;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class EventDateRepository {
 
@@ -25,6 +36,25 @@ public class EventDateRepository {
 
     public LiveData<List<EventDate>> getAllEvents() {
         return mAllEventDates;
+    }
+
+    public void post(CreateEventDto eventDto) {
+        Retrofit retrofit = AntlRetrofit.getRetrofit();
+
+        IEventApi service = retrofit.create(IEventApi.class);
+        Call<String> call = service.Post(eventDto);
+        retrofit2.Response<String> result = null;
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                java.lang.String result = response.toString();
+                Log.d(this.getClass().toString(), "Message received: " + result);
+            }
+            @Override
+            public void onFailure(Call<String> call, Throwable throwable) {
+                Log.e(this.getClass().toString(), throwable.toString());
+            }
+        });
     }
 
     private static class insertAllAsyncTask extends AsyncTask<List<EventDate>, Void, Void> {
