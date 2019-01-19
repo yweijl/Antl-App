@@ -2,17 +2,14 @@ package com.avansprojects.antl.helpers;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.auth0.android.jwt.JWT;
 import com.avansprojects.antl.AntlApp;
 import com.avansprojects.antl.R;
-import com.avansprojects.antl.infrastructure.daos.UserDao;
 import com.avansprojects.antl.infrastructure.database.AntlDatabase;
-import com.avansprojects.antl.infrastructure.entities.Contact;
-import com.avansprojects.antl.infrastructure.entities.User;
 import com.avansprojects.antl.retrofit.AntlRetrofit;
 import com.avansprojects.antl.ui.login.dto.LoginRequestDTO;
 import com.avansprojects.antl.ui.login.dto.UserDto;
@@ -59,6 +56,7 @@ public final class Authentication {
         LoginService service = retrofit.create(LoginService.class);
         Call<String> call = service.login(loginRequest);
         retrofit2.Response<String> result = null;
+
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
@@ -85,23 +83,30 @@ public final class Authentication {
 
                     NavController navController = Navigation.findNavController(view);
                     navController.navigateUp();
-
+                }
+                else {
+                    Toast toast = Toast.makeText(AntlApp.getContext(), R.string.error_code_login, Toast.LENGTH_SHORT);
+                    toast.setText("Login failed with error code: " + response.code());
+                    toast.show();
                 }
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable throwable) {
-                Log.e(this.getClass().toString(), throwable.toString());
+                Toast toast = Toast.makeText(AntlApp.getContext(), R.string.error_code_login, Toast.LENGTH_SHORT);
+                toast.setText("Something went wrong, please try again later");
+                toast.show();
             }
         });
     }
 
-    private static void createApplicationUser(int id) {
+    private static void createApplicationUser(String id) {
         Retrofit retrofit = AntlRetrofit.getRetrofit();
 
         UserService service = retrofit.create(UserService.class);
         Call<UserDto> call = service.getUser("Bearer " + AntlApp.getContext().getSharedPreferences("antlPrefs", MODE_PRIVATE).getString("token", ""), id);
         retrofit2.Response<UserDto> result = null;
+
         call.enqueue(new Callback<UserDto>() {
             @Override
             public void onResponse(Call<UserDto> call, Response<UserDto> response) {
@@ -120,21 +125,18 @@ public final class Authentication {
 
 
                     new AntlDatabase.SetMainUser(AntlDatabase.getDatabase(AntlApp.getContext()), response.body()).execute();
-
+                }
+                else{
+                    Toast toast = Toast.makeText(AntlApp.getContext(), R.string.error_code_login, Toast.LENGTH_SHORT);
+                    toast.setText("Error code: " + response.code());
+                    toast.show();
                 }
             }
 
             @Override
             public void onFailure(Call<UserDto> call, Throwable throwable) {
-                Log.e(this.getClass().toString(), throwable.toString());
+                Log.e(this.toString(), "User could not be retrieved");
             }
         });
-
-
-
-//        UserDao userDao = AntlDatabase.getDatabase(AntlApp.getContext().getApplicationContext()).userDao();
-//        User user = new User(UserDto);
-//
-//        userDao.insert(user);
     }
 }

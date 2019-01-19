@@ -33,21 +33,8 @@ public class AntlRetrofit {
     }
 
     private OkHttpClient provideOkHttpClient() {
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-        OkHttpClient.Builder okhttpClientBuilder = new OkHttpClient.Builder();
-         okhttpClientBuilder.cookieJar(new JavaNetCookieJar(new CookieManager()));
-
-//        okhttpClientBuilder.connectTimeout(30, TimeUnit.SECONDS);
-//        okhttpClientBuilder.readTimeout(30, TimeUnit.SECONDS);
-//        okhttpClientBuilder.writeTimeout(30, TimeUnit.SECONDS);
-
-        okhttpClientBuilder.addInterceptor(logging);
-
-        return okhttpClientBuilder.build();
+       return OkHttpProvider.getOkHttpInstance();
     }
-
 
     private static AntlRetrofit Instance()
     {

@@ -46,4 +46,6 @@
     <string name="friend_code_input_label">Please enter friend code</string>
     <string name="friendcode">FriendCode</string>
     <string name="your_friend_code_label">Your friend code:</string>
+
+    <string name="error_code_login">Unable to login, please try again</string>
 </resources>
