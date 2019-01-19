@@ -18,5 +18,5 @@ public interface FriendService {
     Call<List<FriendDto>> getFriends(@Header("authorization") String token);
 
     @POST("/api/Friendship")
-    Call<FriendRequestDto> addFriend(@Header("authorization") String token, @Body FriendRequestDto dto);
+    Call<String> addFriend(@Header("authorization") String token, @Body FriendRequestDto dto);
 }
