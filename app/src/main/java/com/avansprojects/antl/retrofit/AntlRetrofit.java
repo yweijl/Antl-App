@@ -25,7 +25,7 @@ public class AntlRetrofit {
                 .setLenient().create();
 
             mRetrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:64151/")
+                .baseUrl("https://antlwebserver.azurewebsites.net/")
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(mOkHttpClient)

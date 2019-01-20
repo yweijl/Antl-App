@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.auth0.android.jwt.JWT;
@@ -49,7 +50,7 @@ public final class Authentication {
         return true;
     }
 
-    public static void login(View view, LoginRequestDTO loginRequest)
+    public static void login(View view, LoginRequestDTO loginRequest, ProgressBar progressBar)
     {
         Retrofit retrofit = AntlRetrofit.getRetrofit();
 
@@ -88,6 +89,7 @@ public final class Authentication {
                     Toast toast = Toast.makeText(AntlApp.getContext(), R.string.error_code_login, Toast.LENGTH_SHORT);
                     toast.setText("Login failed with error code: " + response.code());
                     toast.show();
+                    progressBar.setVisibility(View.GONE);
                 }
             }
 
@@ -96,6 +98,7 @@ public final class Authentication {
                 Toast toast = Toast.makeText(AntlApp.getContext(), R.string.error_code_login, Toast.LENGTH_SHORT);
                 toast.setText("Something went wrong, please try again later");
                 toast.show();
+                progressBar.setVisibility(View.GONE);
             }
         });
     }
