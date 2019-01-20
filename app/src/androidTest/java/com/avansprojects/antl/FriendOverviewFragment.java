@@ -174,16 +174,6 @@ withId(R.id.bottom_nav),
 isDisplayed()));
         bottomNavigationItemView2.perform(click());
         
-        ViewInteraction bottomNavigationItemView3 = onView(
-allOf(withId(R.id.destination_events), withContentDescription("events"),
-childAtPosition(
-childAtPosition(
-withId(R.id.bottom_nav),
-0),
-0),
-isDisplayed()));
-        bottomNavigationItemView3.perform(click());
-        
         ViewInteraction bottomNavigationItemView4 = onView(
 allOf(withId(R.id.destination_friends), withContentDescription("friends"),
 childAtPosition(
