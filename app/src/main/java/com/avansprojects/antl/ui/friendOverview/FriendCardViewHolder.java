@@ -42,7 +42,7 @@ public class FriendCardViewHolder extends RecyclerView.ViewHolder{
     public void confirmDelete(CardView v){
         final AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext(), R.style.AlertDialog);
         builder.setTitle("Delete friend")
-                .setMessage("ARE YOU SURE YOU WANT TO REMOVE " + String.valueOf(getAdapterPosition()))
+                .setMessage("ARE YOU SURE YOU WANT TO REMOVE " + friendName.getText().toString().toUpperCase() + " FROM YOUR LIST?")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
