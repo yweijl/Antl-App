@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.avansprojects.antl.R;
@@ -24,6 +25,7 @@ public class RegisterFragment extends Fragment {
     private TextView _User;
     private TextView _Password;
     private TextView _Email;
+    private ProgressBar mSpinner;
 
     public static RegisterFragment newInstance() {
         return new RegisterFragment();
@@ -44,6 +46,8 @@ public class RegisterFragment extends Fragment {
         _Password = getView().findViewById(R.id.password_edit_text);
         _Email = getView().findViewById(R.id.email_edit_text);
         _Email.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        mSpinner=getActivity().findViewById(R.id.progressBarRegister);
+        mSpinner.setVisibility(View.GONE);
 
         Button button = getView().findViewById(R.id.cancel_button);
         button.setOnClickListener(view -> Navigation.findNavController(view).navigateUp());
@@ -55,7 +59,8 @@ public class RegisterFragment extends Fragment {
             boolean correctEmail = mViewModel.setEmail(_Email.getText());
 
             if (correctEmail) {
-                mViewModel.Register();
+                mSpinner.setVisibility(View.VISIBLE);
+                mViewModel.Register(view, mSpinner);
             }
         });
     }
