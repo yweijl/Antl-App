@@ -1,0 +1,195 @@
+@startuml
+
+title __CREATEEVENT's Class Diagram__\n
+
+  package  {
+    package com.avansprojects.antl {
+      package com.avansprojects.antl.ui.createEvent {
+        class CreateEventDateFragment {
+            + onCreateView()
+            + onViewCreated()
+            - setDatePickerButton()
+            - setRecyclerView()
+            + addDateToListFromDatePicker()
+            + onActivityCreated()
+            + dataIsChanged()
+        }
+      }
+    }
+  }
+  
+
+  package  {
+    package com.avansprojects.antl {
+      package com.avansprojects.antl.ui.createEvent {
+        class CreateEventDescriptionFragment {
+            + onCreateView()
+        }
+      }
+    }
+  }
+  
+
+  package  {
+    package com.avansprojects.antl {
+      package com.avansprojects.antl.ui.createEvent {
+        class CreateEventFragment {
+            {static} - NUM_PAGES : int
+            - mPager : ViewPager
+            - mPagerAdapter : PagerAdapter
+            - mNameTextView : TextView
+            - mDescriptionTextView : TextView
+            - mNextButton : Button
+            - mSaveButton : Button
+            - mBackButton : ImageButton
+            {static} + newInstance()
+            + onCreateView()
+            + onViewCreated()
+            - setEventAdapter()
+            - setEventButtons()
+            - bindTextViews()
+            + onActivityCreated()
+            - saveEvent()
+            - setButtonVisibility()
+            - setNewViewPagerPosition()
+        }
+      }
+    }
+  }
+  
+
+  package  {
+    package com.avansprojects.antl {
+      package com.avansprojects.antl.ui.createEvent {
+        class ScreenSlidePagerAdapter {
+            + ScreenSlidePagerAdapter()
+            + getItem()
+            + getCount()
+        }
+      }
+    }
+  }
+  
+
+  package  {
+    package com.avansprojects.antl {
+      package com.avansprojects.antl.ui.createEvent {
+        class CreateEventImageFragment {
+            - mCurrentPhotoPath : String
+            {static} - REQUEST_TAKE_PHOTO : int
+            - mImageView : ImageView
+            + onCreateView()
+            + onViewCreated()
+            + onActivityCreated()
+            - createImageFile()
+            - dispatchTakePictureIntent()
+            - galleryAddPic()
+        }
+      }
+    }
+  }
+  
+
+  package  {
+    package com.avansprojects.antl {
+      package com.avansprojects.antl.ui.createEvent {
+        class CreateEventNameFragment {
+            + onCreateView()
+        }
+      }
+    }
+  }
+  
+
+  package  {
+    package com.avansprojects.antl {
+      package com.avansprojects.antl.ui.createEvent {
+        class CreateEventViewModel {
+            - mLiveEventDateData : MutableLiveData<List<EventDate>>
+            - mEvent : MutableLiveData<Event>
+            - mPicturePath : String
+            + CreateEventViewModel()
+            ~ saveEvent()
+            + getEvent()
+            + setEvent()
+            + getEventDates()
+            ~ setEventDates()
+            - insertEvent()
+            - insertEventDates()
+            + entityIdInsertListener()
+            + getmPicturePath()
+            + setmPicturePath()
+        }
+      }
+    }
+  }
+  
+
+  package  {
+    package com.avansprojects.antl {
+      package com.avansprojects.antl.ui.createEvent {
+        class EventDateAdapter {
+            - mEventDateList : List<EventDate>
+            + EventDateAdapter()
+            + addItem()
+            + onCreateViewHolder()
+            + onBindViewHolder()
+            ~ setEvents()
+            ~ getEventDates()
+            + getItemCount()
+        }
+      }
+    }
+  }
+  
+
+  package  {
+    package com.avansprojects.antl {
+      package com.avansprojects.antl.ui.createEvent {
+        class EventDateCardViewHolder {
+            - mEventDate : TextView
+            - mRemoveDateButton : Button
+            ~ EventDateCardViewHolder()
+        }
+      }
+    }
+  }
+  
+
+  CreateEventDateFragment -up-|> DatePickerListener
+  CreateEventDateFragment -up-|> ViewModelListener
+  CreateEventDateFragment -up-|> Fragment
+  CreateEventDateFragment o-- EventDateAdapter : mAdapter
+  CreateEventDateFragment o-- CreateEventViewModel : mViewModel
+  SavedState -up-|> Parcelable
+  CreateEventDescriptionFragment -up-|> Fragment
+  SavedState -up-|> Parcelable
+  CreateEventFragment -up-|> Fragment
+  CreateEventFragment o-- CreateEventViewModel : mViewModel
+  CreateEventFragment +-down- ScreenSlidePagerAdapter
+  ScreenSlidePagerAdapter -up-|> FragmentStatePagerAdapter
+  SavedState -up-|> Parcelable
+  CreateEventImageFragment -up-|> Fragment
+  CreateEventImageFragment o-- CreateEventViewModel : mViewModel
+  SavedState -up-|> Parcelable
+  CreateEventNameFragment -up-|> Fragment
+  CreateEventNameFragment o-- CreateEventViewModel : mViewModel
+  SavedState -up-|> Parcelable
+  CreateEventViewModel -up-|> AsyncTaskListener
+  CreateEventViewModel -up-|> AndroidViewModel
+  CreateEventViewModel o-- EventRepository : mEventRepository
+  CreateEventViewModel o-- EventDateRepository : mEventDateRepository
+  EventDateAdapter -up-|> Adapter
+  EventDateAdapter o-- ViewModelListener : mListener
+  EventDateAdapter +-down- EventDateCardViewHolder
+  EventDateCardViewHolder -up-|> ViewHolder
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
