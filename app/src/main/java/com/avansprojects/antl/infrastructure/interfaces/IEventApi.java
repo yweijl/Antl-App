@@ -19,7 +19,7 @@ public interface IEventApi {
     @GET("/api/event/{id}")
     Call<EventDateDto> get(@Body CreateEventDto request);
 
-    @POST("/api/event/sync/get/")
+    @POST("/api/event/sync/")
     Call<List<CreateEventDto>> syncGetList(@Body UpdateEventDto updateEventDto);
 
     @GET("/api/event/sync/")

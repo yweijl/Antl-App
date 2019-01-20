@@ -20,9 +20,6 @@ import android.widget.TextView;
 import com.avansprojects.antl.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.Date;
-import java.util.Objects;
-
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class CreateEventFragment extends Fragment {
@@ -36,7 +33,6 @@ public class CreateEventFragment extends Fragment {
     private Button mNextButton;
     private Button mSaveButton;
     private ImageButton mBackButton;
-    private int mPictureLocation;
 
     public static CreateEventFragment newInstance() {
         return new CreateEventFragment();

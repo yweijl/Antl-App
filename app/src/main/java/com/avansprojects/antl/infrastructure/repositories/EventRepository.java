@@ -19,6 +19,7 @@ import com.avansprojects.antl.retrofit.AntlRetrofit;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -196,23 +197,20 @@ public class EventRepository implements CompareDataListener {
             for (EventSyncDto localEvent : mLocalEventSyncDtoList
             ) {
                 if (localEvent == null) break;
-                EventSyncDto temp = (EventSyncDto) mServerEvents.stream().filter(x -> x.externalId == localEvent.externalId);
-                if (localEvent.eventHash != temp.eventHash) {
+                if (mServerEvents.stream().anyMatch(x -> x.externalId == localEvent.externalId) &&
+                        mServerEvents.stream().anyMatch(x -> x.eventHash != localEvent.eventHash))
                     updateEventDto.externalIdList.add(localEvent.externalId);
-                }
-                mCompareDataListener.dataListener(updateEventDto);
             }
+
+            for (EventSyncDto serverEvent : mServerEvents
+            ) {
+                if (serverEvent == null) break;
+                if (!mLocalEventSyncDtoList.stream().anyMatch(x -> x.externalId == serverEvent.externalId))
+                    updateEventDto.externalIdList.add(serverEvent.externalId);
+            }
+            mCompareDataListener.dataListener(updateEventDto);
         }
     }
-
-//    private List<EventSyncDto> mapToEventSyncDto(List<Event> localEvents) {
-//        List<EventSyncDto> syncDtos = new ArrayList<>();
-//        for (Event event : localEvents
-//        ) {
-//            syncDtos.add(new EventSyncDto(event.getExternalId(), event.getHash()));
-//        }
-//        return syncDtos;
-//    }
 
     private void updateData(UpdateEventDto updateEventDto) {
         mEventApi.syncGetList(updateEventDto).enqueue(new Callback<List<CreateEventDto>>() {
@@ -230,7 +228,7 @@ public class EventRepository implements CompareDataListener {
         });
     }
 
-    private void updateLocalEvents(List<CreateEventDto> eventDtos) {
+    private void updateLocalEvents(@NonNull List<CreateEventDto> eventDtos) {
 
         for (CreateEventDto eventDto : eventDtos
         ) {
