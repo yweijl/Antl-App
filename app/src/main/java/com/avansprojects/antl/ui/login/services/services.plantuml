@@ -2,41 +2,35 @@
 
 title __SERVICES's Class Diagram__\n
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        package com.avansprojects.antl.ui.login.services {
-          interface FriendService {
-              {abstract} + getFriends()
-              {abstract} + addFriend()
-          }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      package com.avansprojects.antl.ui.login.services {
+        interface FriendService {
+            {abstract} + getFriends()
+            {abstract} + addFriend()
         }
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        package com.avansprojects.antl.ui.login.services {
-          interface LoginService {
-              {abstract} + login()
-              {abstract} + register()
-          }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      package com.avansprojects.antl.ui.login.services {
+        interface LoginService {
+            {abstract} + login()
+            {abstract} + register()
         }
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        package com.avansprojects.antl.ui.login.services {
-          interface UserService {
-              {abstract} + getUser()
-          }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      package com.avansprojects.antl.ui.login.services {
+        interface UserService {
+            {abstract} + getUser()
         }
       }
     }

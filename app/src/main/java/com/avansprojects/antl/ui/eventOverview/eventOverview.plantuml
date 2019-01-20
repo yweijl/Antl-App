@@ -2,63 +2,55 @@
 
 title __EVENTOVERVIEW's Class Diagram__\n
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.eventOverview {
-        class EventOverviewAdapter {
-            - _eventsList : List<Event>
-            - _fragment : Fragment
-            + EventOverviewAdapter()
-            + onCreateViewHolder()
-            + onBindViewHolder()
-            ~ setEvents()
-            + getItemCount()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.eventOverview {
+      class EventOverviewAdapter {
+          - _eventsList : List<Event>
+          - _fragment : Fragment
+          + EventOverviewAdapter()
+          + onCreateViewHolder()
+          + onBindViewHolder()
+          ~ setEvents()
+          + getItemCount()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.eventOverview {
-        class EventCardViewHolder {
-            - eventName : TextView
-            - location : TextView
-            - day : TextView
-            - month : TextView
-            - attendingUsers : TextView
-            - picture : ImageView
-            ~ EventCardViewHolder()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.eventOverview {
+      class EventCardViewHolder {
+          - eventName : TextView
+          - location : TextView
+          - day : TextView
+          - month : TextView
+          - attendingUsers : TextView
+          - picture : ImageView
+          ~ EventCardViewHolder()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.eventOverview {
-        class EventOverviewFragment {
-            {static} + newInstance()
-            + onCreateView()
-            + onViewCreated()
-            + onActivityCreated()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.eventOverview {
+      class EventOverviewFragment {
+          {static} + newInstance()
+          + onCreateView()
+          + onViewCreated()
+          + onActivityCreated()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.eventOverview {
-        class EventOverviewViewModel {
-            - _AllEvents : LiveData<List<Event>>
-            + EventOverviewViewModel()
-            + getAllEvents()
-            + insert()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.eventOverview {
+      class EventOverviewViewModel {
+          - _AllEvents : LiveData<List<Event>>
+          + EventOverviewViewModel()
+          + getAllEvents()
+          + insert()
       }
     }
   }

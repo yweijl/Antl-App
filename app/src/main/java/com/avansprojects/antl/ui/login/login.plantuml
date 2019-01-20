@@ -2,64 +2,58 @@
 
 title __LOGIN's Class Diagram__\n
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        class LoginFragment {
-            - mUser : TextView
-            - mPassword : TextView
-            {static} + newInstance()
-            + onCreateView()
-            + onActivityCreated()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      class LoginFragment {
+          - mUser : TextView
+          - mPassword : TextView
+          - mSpinner : ProgressBar
+          {static} + newInstance()
+          + onCreateView()
+          + onActivityCreated()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        class LoginViewModel {
-            - _userName : String
-            - _passWord : String
-            + Login()
-            + setUser()
-            + setPassword()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      class LoginViewModel {
+          - _userName : String
+          - _passWord : String
+          + Login()
+          + setUser()
+          + setPassword()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        class RegisterFragment {
-            - _User : TextView
-            - _Password : TextView
-            - _Email : TextView
-            {static} + newInstance()
-            + onCreateView()
-            + onActivityCreated()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      class RegisterFragment {
+          - _User : TextView
+          - _Password : TextView
+          - _Email : TextView
+          - mSpinner : ProgressBar
+          {static} + newInstance()
+          + onCreateView()
+          + onActivityCreated()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        class RegisterViewModel {
-            - _userName : String
-            - _email : String
-            - _passWord : String
-            + Register()
-            + setUserName()
-            + setPassword()
-            + setEmail()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      class RegisterViewModel {
+          - _userName : String
+          - _email : String
+          - _passWord : String
+          + Register()
+          + setUserName()
+          + setPassword()
+          + setEmail()
       }
     }
   }

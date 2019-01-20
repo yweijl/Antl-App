@@ -2,11 +2,9 @@
 
 title __ANTL's Class Diagram__\n
 
-  package  {
-    package com.avansprojects.antl {
-      class ExampleUnitTest {
-          + addition_isCorrect()
-      }
+  package com.avansprojects.antl {
+    class ExampleUnitTest {
+        + addition_isCorrect()
     }
   }
   

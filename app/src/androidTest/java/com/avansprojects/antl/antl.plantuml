@@ -2,17 +2,15 @@
 
 title __ANTL's Class Diagram__\n
 
-  package  {
-    package com.avansprojects.antl {
-      class LoginFragment {
-          - mIdlingResource : IdlingResource
-          + mActivityTestRule : ActivityTestRule<StartActivity>
-          + registerIdlingResource()
-          + unregisterIdlingResource()
-          + successfulLoginNavigatesToEventsOverview()
-          + unsuccessfulLoginShowsToast()
-          {static} - childAtPosition()
-      }
+  package com.avansprojects.antl {
+    class LoginFragment {
+        - mIdlingResource : IdlingResource
+        + mActivityTestRule : ActivityTestRule<StartActivity>
+        + registerIdlingResource()
+        + unregisterIdlingResource()
+        + successfulLoginNavigatesToEventsOverview()
+        + unsuccessfulLoginShowsToast()
+        {static} - childAtPosition()
     }
   }
   

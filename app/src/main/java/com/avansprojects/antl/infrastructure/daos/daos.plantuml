@@ -2,62 +2,54 @@
 
 title __DAOS's Class Diagram__\n
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.daos {
-        interface EventDao {
-            {abstract} + getAllEvents()
-            {abstract} + insert()
-            {abstract} + insertRetrieveId()
-            {abstract} + insertAll()
-            {abstract} + delete()
-            {abstract} + deleteAll()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.daos {
+      interface EventDao {
+          {abstract} + getAllEvents()
+          {abstract} + insert()
+          {abstract} + insertRetrieveId()
+          {abstract} + insertAll()
+          {abstract} + delete()
+          {abstract} + deleteAll()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.daos {
-        interface EventDateDao {
-            {abstract} + getAllEventDates()
-            {abstract} + insert()
-            {abstract} + insertAll()
-            {abstract} + delete()
-            {abstract} + deleteAll()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.daos {
+      interface EventDateDao {
+          {abstract} + getAllEventDates()
+          {abstract} + insert()
+          {abstract} + insertAll()
+          {abstract} + delete()
+          {abstract} + deleteAll()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.daos {
-        interface FriendDao {
-            {abstract} + getAll()
-            {abstract} + loadAllByIds()
-            {abstract} + insert()
-            {abstract} + deleteAll()
-            {abstract} + delete()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.daos {
+      interface FriendDao {
+          {abstract} + getAll()
+          {abstract} + loadAllByIds()
+          {abstract} + insert()
+          {abstract} + deleteAll()
+          {abstract} + delete()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.daos {
-        interface UserDao {
-            {abstract} + getAll()
-            {abstract} + loadAllByIds()
-            {abstract} + loadById()
-            {abstract} + insert()
-            {abstract} + deleteAll()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.daos {
+      interface UserDao {
+          {abstract} + getAll()
+          {abstract} + loadAllByIds()
+          {abstract} + loadById()
+          {abstract} + insert()
+          {abstract} + deleteAll()
       }
     }
   }

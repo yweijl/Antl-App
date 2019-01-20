@@ -2,797 +2,667 @@
 
 title __APP's Class Diagram__\n
 
-  package  {
-    package com.avansprojects.antl {
-      class AntlApp {
+  package com.avansprojects.antl {
+    class AntlApp {
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.database {
+      abstract class AntlDatabase {
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.database {
-        abstract class AntlDatabase {
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.database {
+      class AntlDatabase_Impl {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.retrofit {
+      class AntlRetrofit {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.listeners {
+      interface AsyncTaskListener {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.helpers {
+      class Authentication {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.entities {
+      enum Availability {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.entities {
+      class AvailabilityConverter {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    class BR {
+    }
+  }
+  
+
+  package androidx.databinding {
+    package androidx.databinding.library {
+      package androidx.databinding.library.baseAdapters {
+        class BR {
         }
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.database {
-        class AntlDatabase_Impl {
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.helpers {
+      class BottomOffsetDecoration {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    class BuildConfig {
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.helpers {
+      class CalendarHelper {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.repositories {
+      class ContactRepository {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.createEvent {
+      class CreateEventDateFragment {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.createEvent {
+      class CreateEventDescriptionFragment {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.createEvent {
+      class CreateEventFragment {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.createEvent {
+      class CreateEventFragmentDirections {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.createEvent {
+      class CreateEventImageFragment {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.createEvent {
+      class CreateEventNameFragment {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.createEvent {
+      class CreateEventViewModel {
+      }
+    }
+  }
+  
+
+  package androidx.databinding {
+    class DataBinderMapperImpl {
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    class DataBinderMapperImpl {
+    }
+  }
+  
+
+  package androidx.databinding {
+    interface DataBindingComponent {
+    }
+  }
+  
+
+  package android.databinding.layouts {
+    class DataBindingInfo {
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.entities {
+      class DateConverter {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.helpers {
+      class DatePickerFactory {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.listeners {
+      interface DatePickerListener {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.entities {
+      class Event {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.daos {
+      interface EventDao {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.daos {
+      class EventDao_Impl {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.entities {
+      class EventDate {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.createEvent {
+      class EventDateAdapter {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.daos {
+      interface EventDateDao {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.daos {
+      class EventDateDao_Impl {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.repositories {
+      class EventDateRepository {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.eventOverview {
+      class EventOverviewAdapter {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.eventOverview {
+      class EventOverviewFragment {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.eventOverview {
+      class EventOverviewFragmentDirections {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.eventOverview {
+      class EventOverviewViewModel {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.repositories {
+      class EventRepository {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.entities {
+      class Friend {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.friendAddMenu {
+      class FriendAddFragment {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.friendAddMenu {
+      class FriendAddFragmentArgs {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.friendAddMenu {
+      class FriendAddFragmentDirections {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.friendAddMenu {
+      class FriendAddViewModel {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.friendOverview {
+      class FriendCardViewHolder {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.daos {
+      interface FriendDao {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.daos {
+      class FriendDao_Impl {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      package com.avansprojects.antl.ui.login.dto {
+        class FriendDto {
         }
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.retrofit {
-        class AntlRetrofit {
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.friendOverview {
+      class FriendOverviewAdapter {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.friendOverview {
+      class FriendOverviewFragment {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.friendOverview {
+      class FriendOverviewFragmentDirections {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.friendOverview {
+      class FriendOverviewViewModel {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      package com.avansprojects.antl.ui.login.dto {
+        class FriendRequestDto {
         }
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.listeners {
-        interface AsyncTaskListener {
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      package com.avansprojects.antl.ui.login.services {
+        interface FriendService {
         }
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.helpers {
-        class Authentication {
-        }
+  package com.bumptech.glide {
+    class GeneratedAppGlideModuleImpl {
+    }
+  }
+  
+
+  package com.bumptech.glide {
+    class GeneratedRequestManagerFactory {
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.helpers {
+      class GlideApp {
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.entities {
-        enum Availability {
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.helpers {
+      class GlideOptions {
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.entities {
-        class AvailabilityConverter {
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.helpers {
+      class GlideRequest {
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      class BR {
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.helpers {
+      class GlideRequests {
       }
     }
   }
   
 
-  package  {
-    package androidx.databinding {
-      package androidx.databinding.library {
-        package androidx.databinding.library.baseAdapters {
-          class BR {
-          }
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.entities {
+      class Group {
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.helpers {
-        class BottomOffsetDecoration {
-        }
-      }
+  package com.avansprojects.antl {
+    class LoginFragment {
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      class BuildConfig {
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.helpers {
-        class CalendarHelper {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.repositories {
-        class ContactRepository {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.createEvent {
-        class CreateEventDateFragment {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.createEvent {
-        class CreateEventDescriptionFragment {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.createEvent {
-        class CreateEventFragment {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.createEvent {
-        class CreateEventFragmentDirections {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.createEvent {
-        class CreateEventImageFragment {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.createEvent {
-        class CreateEventNameFragment {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.createEvent {
-        class CreateEventViewModel {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      class DataBinderMapperImpl {
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.databinding {
-      class DataBinderMapperImpl {
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.databinding {
-      interface DataBindingComponent {
-      }
-    }
-  }
-  
-
-  package  {
-    package android.databinding.layouts {
-      class DataBindingInfo {
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.entities {
-        class DateConverter {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.helpers {
-        class DatePickerFactory {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.listeners {
-        interface DatePickerListener {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.friendOverview {
-        class DeleteFriendDialogue {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.entities {
-        class Event {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.daos {
-        interface EventDao {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.daos {
-        class EventDao_Impl {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.entities {
-        class EventDate {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.createEvent {
-        class EventDateAdapter {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.daos {
-        interface EventDateDao {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.daos {
-        class EventDateDao_Impl {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.repositories {
-        class EventDateRepository {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.eventOverview {
-        class EventOverviewAdapter {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.eventOverview {
-        package com.avansprojects.antl.ui.eventOverviewCard {
-          class EventOverviewCardViewModel {
-          }
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.eventOverview {
-        class EventOverviewFragment {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.eventOverview {
-        class EventOverviewFragmentDirections {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.eventOverview {
-        class EventOverviewViewModel {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.repositories {
-        class EventRepository {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.entities {
-        class Friend {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.friendAddMenu {
-        class FriendAddFragment {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.friendAddMenu {
-        class FriendAddFragmentArgs {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.friendAddMenu {
-        class FriendAddFragmentDirections {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.friendAddMenu {
-        class FriendAddViewModel {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.friendOverview {
-        class FriendCardViewHolder {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.daos {
-        interface FriendDao {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.daos {
-        class FriendDao_Impl {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        package com.avansprojects.antl.ui.login.dto {
-          class FriendDto {
-          }
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.friendOverview {
-        class FriendOverviewAdapter {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.friendOverview {
-        package com.avansprojects.antl.ui.friendOverviewCard {
-          class FriendOverviewCard {
-          }
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.friendOverview {
-        class FriendOverviewFragment {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.friendOverview {
-        class FriendOverviewFragmentDirections {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.friendOverview {
-        class FriendOverviewViewModel {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        package com.avansprojects.antl.ui.login.dto {
-          class FriendRequestDto {
-          }
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        package com.avansprojects.antl.ui.login.services {
-          interface FriendService {
-          }
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.bumptech.glide {
-      class GeneratedAppGlideModuleImpl {
-      }
-    }
-  }
-  
-
-  package  {
-    package com.bumptech.glide {
-      class GeneratedRequestManagerFactory {
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.helpers {
-        class GlideApp {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.helpers {
-        class GlideOptions {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.helpers {
-        class GlideRequest {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.helpers {
-        class GlideRequests {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.entities {
-        class Group {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
       class LoginFragment {
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        class LoginFragment {
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      class LoginFragmentDirections {
+      }
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      package com.avansprojects.antl.ui.login.dto {
+        class LoginRequestDTO {
         }
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        class LoginFragmentDirections {
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      package com.avansprojects.antl.ui.login.services {
+        interface LoginService {
         }
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        package com.avansprojects.antl.ui.login.dto {
-          class LoginRequestDTO {
-          }
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      class LoginViewModel {
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        package com.avansprojects.antl.ui.login.services {
-          interface LoginService {
-          }
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.helpers {
+      class MyAppGlideModule {
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        class LoginViewModel {
-        }
+  package com.avansprojects.antl {
+    class NavGraphDirections {
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.helpers {
+      class NonSwipeableViewPager {
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.helpers {
-        class MyAppGlideModule {
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.retrofit {
+      abstract class OkHttpProvider {
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      class NavGraphDirections {
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.profile {
+      class ProfileViewModel {
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.helpers {
-        class NonSwipeableViewPager {
-        }
-      }
+  package androidx.interpolator {
+    class R {
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.retrofit {
-        abstract class OkHttpProvider {
-        }
-      }
+  package com.google.android.material {
+    class R {
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.profile {
-        class ProfileViewModel {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.recyclerview {
+  package androidx.lifecycle {
+    package androidx.lifecycle.viewmodel {
       class R {
       }
     }
   }
   
 
-  package  {
-    package androidx.arch.core {
+  package com.removeme {
+    class R {
+    }
+  }
+  
+
+  package androidx.legacy.coreutils {
+    class R {
+    }
+  }
+  
+
+  package androidx.lifecycle {
+    class R {
+    }
+  }
+  
+
+  package androidx.lifecycle {
+    package androidx.lifecycle.service {
       class R {
       }
     }
   }
   
 
-  package  {
-    package androidx.viewpager {
-      class R {
-      }
+  package com.jakewharton.espresso.okhttp3 {
+    class R {
     }
   }
   
 
-  package  {
-    package androidx.navigation {
-      package androidx.navigation.ui {
+  package androidx.slidingpanelayout {
+    class R {
+    }
+  }
+  
+
+  package androidx.customview {
+    class R {
+    }
+  }
+  
+
+  package androidx.print {
+    class R {
+    }
+  }
+  
+
+  package androidx.fragment {
+    class R {
+    }
+  }
+  
+
+  package androidx.databinding {
+    package androidx.databinding.library {
+      package androidx.databinding.library.baseAdapters {
         class R {
         }
       }
@@ -800,81 +670,215 @@ title __APP's Class Diagram__\n
   }
   
 
-  package  {
-    package com.jakewharton.espresso.okhttp3 {
+  package androidx.vectordrawable {
+    class R {
+    }
+  }
+  
+
+  package com.bumptech.glide {
+    package com.bumptech.glide.gifdecoder {
       class R {
       }
     }
   }
   
 
-  package  {
-    package android_libs.ub_uiautomator {
+  package androidx.transition {
+    class R {
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    class R {
+    }
+  }
+  
+
+  package androidx.lifecycle {
+    package androidx.lifecycle.process {
       class R {
       }
     }
   }
   
 
-  package  {
-    package androidx.transition {
+  package androidx.appcompat {
+    class R {
+    }
+  }
+  
+
+  package androidx.documentfile {
+    class R {
+    }
+  }
+  
+
+  package androidx.legacy.v4 {
+    class R {
+    }
+  }
+  
+
+  package androidx.navigation {
+    package androidx.navigation.ui {
       class R {
       }
     }
   }
   
 
-  package  {
-    package androidx.cursoradapter {
+  package androidx.sqlite.db {
+    class R {
+    }
+  }
+  
+
+  package androidx.drawerlayout {
+    class R {
+    }
+  }
+  
+
+  package com.auth0.android.jwt {
+    class R {
+    }
+  }
+  
+
+  package androidx.recyclerview {
+    class R {
+    }
+  }
+  
+
+  package androidx.sqlite.db {
+    package androidx.sqlite.db.framework {
       class R {
       }
     }
   }
   
 
-  package  {
-    package androidx.versionedparcelable {
+  package androidx.recyclerview {
+    package androidx.recyclerview.selection {
       class R {
       }
     }
   }
   
 
-  package  {
-    package androidx.constraintlayout.widget {
+  package androidx.cursoradapter {
+    class R {
+    }
+  }
+  
+
+  package androidx.work {
+    class R {
+    }
+  }
+  
+
+  package androidx.coordinatorlayout {
+    class R {
+    }
+  }
+  
+
+  package androidx.localbroadcastmanager {
+    class R {
+    }
+  }
+  
+
+  package androidx.core {
+    class R {
+    }
+  }
+  
+
+  package androidx.swiperefreshlayout {
+    class R {
+    }
+  }
+  
+
+  package androidx.viewpager {
+    class R {
+    }
+  }
+  
+
+  package androidx.navigation {
+    package androidx.navigation.common {
       class R {
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
+  package androidx.media {
+    class R {
+    }
+  }
+  
+
+  package androidx.navigation {
+    package androidx.navigation.fragment {
       class R {
       }
     }
   }
   
 
-  package  {
-    package com.bumptech.glide {
+  package androidx.lifecycle {
+    package androidx.lifecycle.extensions {
       class R {
       }
     }
   }
   
 
-  package  {
-    package androidx.core {
+  package androidx.cardview {
+    class R {
+    }
+  }
+  
+
+  package androidx.versionedparcelable {
+    class R {
+    }
+  }
+  
+
+  package androidx.databinding {
+    package androidx.databinding.library {
       class R {
       }
     }
   }
   
 
-  package  {
-    package androidx.databinding {
-      package androidx.databinding.library {
+  package androidx.lifecycle {
+    package androidx.lifecycle.livedata {
+      class R {
+      }
+    }
+  }
+  
+
+  package androidx.arch.core {
+    class R {
+    }
+  }
+  
+
+  package androidx.lifecycle {
+    package androidx.lifecycle.livedata {
+      package androidx.lifecycle.livedata.core {
         class R {
         }
       }
@@ -882,513 +886,187 @@ title __APP's Class Diagram__\n
   }
   
 
-  package  {
-    package androidx.coordinatorlayout {
-      class R {
+  package android_libs.ub_uiautomator {
+    class R {
+    }
+  }
+  
+
+  package androidx.room {
+    class R {
+    }
+  }
+  
+
+  package androidx.legacy.coreui {
+    class R {
+    }
+  }
+  
+
+  package androidx.navigation {
+    class R {
+    }
+  }
+  
+
+  package androidx.loader {
+    class R {
+    }
+  }
+  
+
+  package com.bumptech.glide {
+    class R {
+    }
+  }
+  
+
+  package androidx.constraintlayout.widget {
+    class R {
+    }
+  }
+  
+
+  package androidx.asynclayoutinflater {
+    class R {
+    }
+  }
+  
+
+  package com.wdullaer.materialdatetimepicker {
+    class R {
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      class RegisterFragment {
       }
     }
   }
   
 
-  package  {
-    package com.removeme {
-      class R {
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      class RegisterFragmentDirections {
       }
     }
   }
   
 
-  package  {
-    package androidx.appcompat {
-      class R {
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      class RegisterViewModel {
       }
     }
   }
   
 
-  package  {
-    package androidx.vectordrawable {
-      class R {
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.lifecycle {
-      package androidx.lifecycle.livedata {
-        package androidx.lifecycle.livedata.core {
-          class R {
-          }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      package com.avansprojects.antl.ui.login.dto {
+        class RegistrationRequestDTO {
         }
       }
     }
   }
   
 
-  package  {
-    package androidx.slidingpanelayout {
-      class R {
+  package com.avansprojects.antl {
+    class StartActivity {
+    }
+  }
+  
+
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.entities {
+      class User {
       }
     }
   }
   
 
-  package  {
-    package androidx.navigation {
-      class R {
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.daos {
+      interface UserDao {
       }
     }
   }
   
 
-  package  {
-    package androidx.documentfile {
-      class R {
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.daos {
+      class UserDao_Impl {
       }
     }
   }
   
 
-  package  {
-    package com.bumptech.glide {
-      package com.bumptech.glide.gifdecoder {
-        class R {
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      package com.avansprojects.antl.ui.login.dto {
+        class UserDto {
         }
       }
     }
   }
   
 
-  package  {
-    package androidx.asynclayoutinflater {
-      class R {
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.entities {
+      class UserEvent {
       }
     }
   }
   
 
-  package  {
-    package androidx.loader {
-      class R {
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.entities {
+      class UserGroup {
       }
     }
   }
   
 
-  package  {
-    package androidx.fragment {
-      class R {
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.repositories {
+      class UserRepository {
       }
     }
   }
   
 
-  package  {
-    package androidx.interpolator {
-      class R {
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.lifecycle {
-      package androidx.lifecycle.extensions {
-        class R {
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      package com.avansprojects.antl.ui.login.services {
+        interface UserService {
         }
       }
     }
   }
   
 
-  package  {
-    package androidx.room {
-      class R {
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.listeners {
+      interface ViewModelListener {
       }
     }
   }
   
 
-  package  {
-    package androidx.cardview {
-      class R {
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.profile {
+      class profileFragment {
       }
     }
   }
   
 
-  package  {
-    package androidx.sqlite.db {
-      class R {
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.navigation {
-      package androidx.navigation.common {
-        class R {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.legacy.coreutils {
-      class R {
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.work {
-      class R {
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.media {
-      class R {
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.lifecycle {
-      package androidx.lifecycle.process {
-        class R {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.navigation {
-      package androidx.navigation.fragment {
-        class R {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.legacy.coreui {
-      class R {
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.localbroadcastmanager {
-      class R {
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.databinding {
-      package androidx.databinding.library {
-        package androidx.databinding.library.baseAdapters {
-          class R {
-          }
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.wdullaer.materialdatetimepicker {
-      class R {
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.customview {
-      class R {
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.print {
-      class R {
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.drawerlayout {
-      class R {
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.swiperefreshlayout {
-      class R {
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.sqlite.db {
-      package androidx.sqlite.db.framework {
-        class R {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.legacy.v4 {
-      class R {
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.lifecycle {
-      package androidx.lifecycle.livedata {
-        class R {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.auth0.android.jwt {
-      class R {
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.lifecycle {
-      class R {
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.lifecycle {
-      package androidx.lifecycle.viewmodel {
-        class R {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.google.android.material {
-      class R {
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.lifecycle {
-      package androidx.lifecycle.service {
-        class R {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package androidx.recyclerview {
-      package androidx.recyclerview.selection {
-        class R {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        class RegisterFragment {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        class RegisterFragmentDirections {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        class RegisterViewModel {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        package com.avansprojects.antl.ui.login.dto {
-          class RegistrationRequestDTO {
-          }
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      class StartActivity {
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.entities {
-        class User {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.daos {
-        interface UserDao {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.daos {
-        class UserDao_Impl {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        package com.avansprojects.antl.ui.login.dto {
-          class UserDto {
-          }
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.entities {
-        class UserEvent {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.entities {
-        class UserGroup {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.repositories {
-        class UserRepository {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        package com.avansprojects.antl.ui.login.services {
-          interface UserService {
-          }
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.listeners {
-        interface ViewModelListener {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.profile {
-        class profileFragment {
-        }
-      }
-    }
-  }
-  
-
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.profile {
-        class profileFragmentDirections {
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.profile {
+      class profileFragmentDirections {
       }
     }
   }
@@ -1420,11 +1098,9 @@ title __APP's Class Diagram__\n
   CreateEventViewModel -up-|> AndroidViewModel
   CreateEventViewModel o-- EventRepository : mEventRepository
   CreateEventViewModel o-- EventDateRepository : mEventDateRepository
-  DataBinderMapperImpl -up-|> DataBinderMapper
   DataBinderMapperImpl -up-|> MergedDataBinderMapper
+  DataBinderMapperImpl -up-|> DataBinderMapper
   DatePickerFactory o-- DatePickerListener : mListener
-  DeleteFriendDialogue -up-|> DialogFragment
-  DeleteFriendDialogue o-- DeleteFriendDialogueListener : mListener
   Event -up-|> Comparable
   EventDao_Impl -up-|> EventDao
   EventDate -up-|> Comparable
@@ -1433,7 +1109,6 @@ title __APP's Class Diagram__\n
   EventDateDao_Impl -up-|> EventDateDao
   EventDateRepository o-- EventDateDao : mEventDateDao
   EventOverviewAdapter -up-|> Adapter
-  EventOverviewCardViewModel -up-|> ViewModel
   EventOverviewFragment -up-|> Fragment
   EventOverviewFragment o-- EventOverviewViewModel : _ViewModel
   EventOverviewFragmentDirections -up-|> NavGraphDirections
@@ -1448,11 +1123,10 @@ title __APP's Class Diagram__\n
   FriendCardViewHolder o-- FriendAddViewModel : mViewModel
   FriendDao_Impl -up-|> FriendDao
   FriendOverviewAdapter -up-|> Adapter
-  FriendOverviewCard -up-|> DeleteFriendDialogueListener
-  FriendOverviewCard -up-|> Fragment
-  FriendOverviewCard o-- FriendAddViewModel : mViewModel
+  FriendOverviewAdapter o-- FriendCardViewHolder : mCardViewHolder
   FriendOverviewFragment -up-|> Fragment
   FriendOverviewFragment o-- FriendOverviewViewModel : mViewModel
+  FriendOverviewFragment o-- FriendOverviewAdapter : mAdapter
   FriendOverviewFragmentDirections -up-|> NavGraphDirections
   FriendOverviewViewModel -up-|> AndroidViewModel
   FriendOverviewViewModel o-- ContactRepository : mContactRepository

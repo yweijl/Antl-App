@@ -2,24 +2,20 @@
 
 title __ANTL's Class Diagram__\n
 
-  package  {
-    package com.avansprojects.antl {
-      class AntlApp {
-          {static} + shared_preference : AntlApp
-          + onCreate()
-          {static} + getContext()
-      }
+  package com.avansprojects.antl {
+    class AntlApp {
+        {static} + shared_preference : AntlApp
+        + onCreate()
+        {static} + getContext()
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      class StartActivity {
-          ~ mBottomNav : BottomNavigationView
-          # onCreate()
-          - setupBottomBarNav()
-      }
+  package com.avansprojects.antl {
+    class StartActivity {
+        ~ mBottomNav : BottomNavigationView
+        # onCreate()
+        - setupBottomBarNav()
     }
   }
   

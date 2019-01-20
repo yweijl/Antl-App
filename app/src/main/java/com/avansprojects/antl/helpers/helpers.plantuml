@@ -2,134 +2,116 @@
 
 title __HELPERS's Class Diagram__\n
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.helpers {
-        class Authentication {
-            {static} + logout()
-            {static} + verify()
-            {static} + login()
-            {static} - createApplicationUser()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.helpers {
+      class Authentication {
+          {static} + logout()
+          {static} + verify()
+          {static} + login()
+          {static} - createApplicationUser()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.helpers {
-        class BottomOffsetDecoration {
-            - mBottomOffset : int
-            - mRecyclerViewSize : int
-            + BottomOffsetDecoration()
-            + getItemOffsets()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.helpers {
+      class BottomOffsetDecoration {
+          - mBottomOffset : int
+          - mRecyclerViewSize : int
+          + BottomOffsetDecoration()
+          + getItemOffsets()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.helpers {
-        class CalendarHelper {
-            {static} + getCurrentSeconds()
-            {static} + getCurrentMinutes()
-            {static} + getCurrentHours()
-            {static} + getCurrentDay()
-            {static} + getCurrentMonth()
-            {static} + getCurrentYear()
-            {static} + joinDateTime()
-            {static} + DateTimeToString()
-            {static} + getNumericMinutesFromDate()
-            {static} + getNumericHoursFromDate()
-            {static} + getNumericYearFromDate()
-            {static} + getNumericDayFromDate()
-            {static} + getNumericMonthFromDate()
-            {static} + getDayFromDate()
-            {static} + getCurrentMonthAbbreviationFromDate()
-            {static} + setDate()
-            {static} + setTime()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.helpers {
+      class CalendarHelper {
+          {static} + getCurrentSeconds()
+          {static} + getCurrentMinutes()
+          {static} + getCurrentHours()
+          {static} + getCurrentDay()
+          {static} + getCurrentMonth()
+          {static} + getCurrentYear()
+          {static} + joinDateTime()
+          {static} + DateTimeToString()
+          {static} + getNumericMinutesFromDate()
+          {static} + getNumericHoursFromDate()
+          {static} + getNumericYearFromDate()
+          {static} + getNumericDayFromDate()
+          {static} + getNumericMonthFromDate()
+          {static} + getDayFromDate()
+          {static} + getCurrentMonthAbbreviationFromDate()
+          {static} + setDate()
+          {static} + setTime()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.helpers {
-        class DatePickerFactory {
-            - mFragment : Fragment
-            - mDate : Date
-            - mTime : Date
-            + DatePickerFactory()
-            + getInstance()
-            + getDateTime()
-            + setTime()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.helpers {
+      class DatePickerFactory {
+          - mFragment : Fragment
+          - mDate : Date
+          - mTime : Date
+          + DatePickerFactory()
+          + getInstance()
+          + getDateTime()
+          + setTime()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.helpers {
-        class TimeDialog {
-            + getInstance()
-            + onTimeSet()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.helpers {
+      class TimeDialog {
+          + getInstance()
+          + onTimeSet()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.helpers {
-        class DateDialog {
-            + getInstance()
-            + onDateSet()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.helpers {
+      class DateDialog {
+          + getInstance()
+          + onDateSet()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.helpers {
-        class MyAppGlideModule {
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.helpers {
+      class MyAppGlideModule {
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.helpers {
-        class NonSwipeableViewPager {
-            + NonSwipeableViewPager()
-            + NonSwipeableViewPager()
-            + onInterceptTouchEvent()
-            + onTouchEvent()
-            - setMyScroller()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.helpers {
+      class NonSwipeableViewPager {
+          + NonSwipeableViewPager()
+          + NonSwipeableViewPager()
+          + onInterceptTouchEvent()
+          + onTouchEvent()
+          - setMyScroller()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.helpers {
-        class MyScroller {
-            + MyScroller()
-            + startScroll()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.helpers {
+      class MyScroller {
+          + MyScroller()
+          + startScroll()
       }
     }
   }

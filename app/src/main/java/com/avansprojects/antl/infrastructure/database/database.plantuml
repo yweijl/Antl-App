@@ -2,54 +2,46 @@
 
 title __DATABASE's Class Diagram__\n
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.database {
-        abstract class AntlDatabase {
-            {static} - INSTANCE : AntlDatabase
-            {static} - sRoomDatabaseCallback : Callback
-            {abstract} + userDao()
-            {abstract} + eventDao()
-            {abstract} + contactDao()
-            {abstract} + eventDateDao()
-            {static} + getDatabase()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.database {
+      abstract class AntlDatabase {
+          {static} - INSTANCE : AntlDatabase
+          {static} - sRoomDatabaseCallback : Callback
+          {abstract} + userDao()
+          {abstract} + eventDao()
+          {abstract} + contactDao()
+          {abstract} + eventDateDao()
+          {static} + getDatabase()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.database {
-        class DropDatabaseAsync {
-            # doInBackground()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.database {
+      class DropDatabaseAsync {
+          # doInBackground()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.database {
-        class PopulateDbAsync {
-            ~ PopulateDbAsync()
-            + getURLForResource()
-            # doInBackground()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.database {
+      class PopulateDbAsync {
+          ~ PopulateDbAsync()
+          + getURLForResource()
+          # doInBackground()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.database {
-        class SetMainUser {
-            + SetMainUser()
-            # doInBackground()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.database {
+      class SetMainUser {
+          + SetMainUser()
+          # doInBackground()
       }
     }
   }

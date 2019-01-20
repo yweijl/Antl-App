@@ -2,32 +2,28 @@
 
 title __FRIENDADDMENU's Class Diagram__\n
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.friendAddMenu {
-        class FriendAddFragment {
-            - mExternalFriendCode : TextView
-            - mFriendCode : TextView
-            - mEditFriendCode : TextView
-            {static} + newInstance()
-            + onCreateView()
-            + onActivityCreated()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.friendAddMenu {
+      class FriendAddFragment {
+          - mExternalFriendCode : TextView
+          - mFriendCode : TextView
+          - mEditFriendCode : TextView
+          {static} + newInstance()
+          + onCreateView()
+          + onActivityCreated()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.friendAddMenu {
-        class FriendAddViewModel {
-            - mUserCode : String
-            + FriendAddViewModel()
-            + addFriend()
-            + share()
-            + deleteFriend()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.friendAddMenu {
+      class FriendAddViewModel {
+          - mUserCode : String
+          + FriendAddViewModel()
+          + addFriend()
+          + share()
+          + deleteFriend()
       }
     }
   }

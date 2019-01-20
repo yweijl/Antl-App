@@ -2,86 +2,76 @@
 
 title __DTO's Class Diagram__\n
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        package com.avansprojects.antl.ui.login.dto {
-          class FriendDto {
-              - userName : String
-              - externalId : String
-              + getUserName()
-              + setUserName()
-              + getExternalId()
-          }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      package com.avansprojects.antl.ui.login.dto {
+        class FriendDto {
+            - userName : String
+            - externalId : String
+            + getUserName()
+            + setUserName()
+            + getExternalId()
         }
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        package com.avansprojects.antl.ui.login.dto {
-          class FriendRequestDto {
-              - friendId : String
-              + FriendRequestDto()
-          }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      package com.avansprojects.antl.ui.login.dto {
+        class FriendRequestDto {
+            - friendId : String
+            + FriendRequestDto()
         }
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        package com.avansprojects.antl.ui.login.dto {
-          class LoginRequestDTO {
-              - userName : String
-              - password : String
-              + LoginRequestDTO()
-          }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      package com.avansprojects.antl.ui.login.dto {
+        class LoginRequestDTO {
+            - userName : String
+            - password : String
+            + LoginRequestDTO()
         }
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        package com.avansprojects.antl.ui.login.dto {
-          class RegistrationRequestDTO {
-              - userName : String
-              - email : String
-              - password : String
-              + RegistrationRequestDTO()
-          }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      package com.avansprojects.antl.ui.login.dto {
+        class RegistrationRequestDTO {
+            - userName : String
+            - email : String
+            - password : String
+            + RegistrationRequestDTO()
         }
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.ui.login {
-        package com.avansprojects.antl.ui.login.dto {
-          class UserDto {
-              - userName : String
-              - firstName : String
-              - lastName : String
-              - email : String
-              - phoneNumber : String
-              - externalId : String
-              + getUserName()
-              + getFirstName()
-              + getLastName()
-              + getEmail()
-              + getPhoneNumber()
-              + getExternalId()
-          }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.ui.login {
+      package com.avansprojects.antl.ui.login.dto {
+        class UserDto {
+            - userName : String
+            - firstName : String
+            - lastName : String
+            - email : String
+            - phoneNumber : String
+            - externalId : String
+            + getUserName()
+            + getFirstName()
+            + getLastName()
+            + getEmail()
+            + getPhoneNumber()
+            + getExternalId()
         }
       }
     }

@@ -2,180 +2,161 @@
 
 title __ENTITIES's Class Diagram__\n
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.entities {
-        enum Availability {
-          Attending
-          NotAttending
-          Maybe
-          code
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.entities {
+      enum Availability {
+        Attending
+        NotAttending
+        Maybe
+        code
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.entities {
-        class AvailabilityConverter {
-            {static} + toAvailabilty()
-            {static} + toInteger()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.entities {
+      class AvailabilityConverter {
+          {static} + toAvailabilty()
+          {static} + toInteger()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.entities {
-        class DateConverter {
-            {static} + fromTimestamp()
-            {static} + dateToTimestamp()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.entities {
+      class DateConverter {
+          {static} + fromTimestamp()
+          {static} + dateToTimestamp()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.entities {
-        class Event {
-            - id : int
-            - name : String
-            - description : String
-            - mainDateTime : Date
-            - location : String
-            - PicturePath : String
-            - eventOwnerId : long
-            + Event()
-            + Event()
-            + getName()
-            + setName()
-            + getMainDateTime()
-            + setMainDateTime()
-            + getLocation()
-            + setLocation()
-            + getId()
-            + setId()
-            + getPicturePath()
-            + setPicturePath()
-            + getDescription()
-            + setDescription()
-            + getEventOwnerId()
-            + setEventOwnerId()
-            + compareTo()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.entities {
+      class Event {
+          - id : int
+          - name : String
+          - description : String
+          - mainDateTime : Date
+          - location : String
+          - PicturePath : String
+          - eventOwnerId : long
+          + Event()
+          + Event()
+          + getName()
+          + setName()
+          + getMainDateTime()
+          + setMainDateTime()
+          + getLocation()
+          + setLocation()
+          + getId()
+          + setId()
+          + getPicturePath()
+          + setPicturePath()
+          + getDescription()
+          + setDescription()
+          + getEventOwnerId()
+          + setEventOwnerId()
+          + compareTo()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.entities {
-        class EventDate {
-            - id : int
-            - eventId : long
-            - eventDate : Date
-            + EventDate()
-            + EventDate()
-            + getId()
-            + setId()
-            + getEventId()
-            + setEventId()
-            + getEventDate()
-            + setEventDate()
-            + compareTo()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.entities {
+      class EventDate {
+          - id : int
+          - eventId : long
+          - eventDate : Date
+          + EventDate()
+          + EventDate()
+          + getId()
+          + setId()
+          + getEventId()
+          + setEventId()
+          + getEventDate()
+          + setEventDate()
+          + compareTo()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.entities {
-        class Friend {
-            + id : int
-            + userName : String
-            + webServerId : String
-            + Friend()
-            + Friend()
-            + getUserName()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.entities {
+      class Friend {
+          + id : int
+          + userName : String
+          + webServerId : String
+          + Friend()
+          + Friend()
+          + getUserName()
+          + getWebServerId()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.entities {
-        class Group {
-            + id : int
-            + Name : String
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.entities {
+      class Group {
+          + id : int
+          + Name : String
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.entities {
-        class User {
-            + id : int
-            - userName : String
-            + phoneNumber : String
-            + email : String
-            + firstName : String
-            + lastName : String
-            + externalId : String
-            + User()
-            + getUserName()
-            + setUserName()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.entities {
+      class User {
+          + id : int
+          - userName : String
+          + phoneNumber : String
+          + email : String
+          + firstName : String
+          + lastName : String
+          + externalId : String
+          + User()
+          + getUserName()
+          + setUserName()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.entities {
-        class UserEvent {
-            - id : int
-            - userId : int
-            - eventId : int
-            - eventDate : Date
-            + UserEvent()
-            + getId()
-            + setId()
-            + getUserId()
-            + setUserId()
-            + getEventId()
-            + setEventId()
-            + getEventDate()
-            + setEventDate()
-            + getAvailability()
-            + setAvailability()
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.entities {
+      class UserEvent {
+          - id : int
+          - userId : int
+          - eventId : int
+          - eventDate : Date
+          + UserEvent()
+          + getId()
+          + setId()
+          + getUserId()
+          + setUserId()
+          + getEventId()
+          + setEventId()
+          + getEventDate()
+          + setEventDate()
+          + getAvailability()
+          + setAvailability()
       }
     }
   }
   
 
-  package  {
-    package com.avansprojects.antl {
-      package com.avansprojects.antl.infrastructure.entities {
-        class UserGroup {
-            + userId : int
-            + groupId : int
-        }
+  package com.avansprojects.antl {
+    package com.avansprojects.antl.infrastructure.entities {
+      class UserGroup {
+          + userId : int
+          + groupId : int
       }
     }
   }
