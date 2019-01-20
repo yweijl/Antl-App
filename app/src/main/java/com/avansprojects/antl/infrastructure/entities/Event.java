@@ -14,6 +14,8 @@ public class Event implements Comparable<Event> {
     private String ExternalId;
     @ColumnInfo(name = "name")
     private String name;
+    @ColumnInfo(name = "hash")
+    private int hash;
     @ColumnInfo(name = "description")
     private String description;
     @ColumnInfo(name = "main_date_time")
@@ -31,7 +33,7 @@ public class Event implements Comparable<Event> {
     public Event() {
     }
 
-    public Event(String name, String ExternalId, Date mainDateTime, String location, String description, String PicturePath, boolean isOwner) {
+    public Event(String name, String ExternalId, Date mainDateTime, String location, String description, String PicturePath, boolean isOwner, int hash) {
         this.name = name;
         this.mainDateTime = mainDateTime;
         this.location = location;
@@ -39,6 +41,7 @@ public class Event implements Comparable<Event> {
         this.description = description;
         this.ExternalId = ExternalId;
         this.isOwner = isOwner;
+        this.hash = hash;
     }
 
     public String getName() {
@@ -103,6 +106,14 @@ public class Event implements Comparable<Event> {
 
     public void setOwner(boolean owner) {
         isOwner = owner;
+    }
+
+    public int getHash() {
+        return hash;
+    }
+
+    public void setHash(int hash) {
+        this.hash = hash;
     }
 
     @Override

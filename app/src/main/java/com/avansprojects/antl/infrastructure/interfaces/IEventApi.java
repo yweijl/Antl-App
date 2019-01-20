@@ -2,6 +2,8 @@ package com.avansprojects.antl.infrastructure.interfaces;
 
 import com.avansprojects.antl.infrastructure.dtos.CreateEventDto;
 import com.avansprojects.antl.infrastructure.dtos.EventDateDto;
+import com.avansprojects.antl.infrastructure.dtos.EventSyncDto;
+import com.avansprojects.antl.infrastructure.dtos.UpdateEventDto;
 
 import java.util.List;
 
@@ -12,11 +14,14 @@ import retrofit2.http.POST;
 
 public interface IEventApi {
     @POST("/api/event")
-    Call<String> Post(@Body CreateEventDto request);
+    Call<EventSyncDto> post(@Body CreateEventDto request);
 
     @GET("/api/event/{id}")
-    Call<EventDateDto> Get(@Body CreateEventDto request);
+    Call<EventDateDto> get(@Body CreateEventDto request);
 
-    @GET("/api/event/get/{id}")
-    Call<List<EventDateDto>> GetList(@Body CreateEventDto request);
+    @POST("/api/event/sync/get/")
+    Call<List<CreateEventDto>> syncGetList(@Body UpdateEventDto updateEventDto);
+
+    @GET("/api/event/sync/")
+    Call<List<EventSyncDto>> sync();
 }

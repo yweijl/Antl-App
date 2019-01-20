@@ -19,27 +19,27 @@
     <string name="friend_overview_friend_name">Friend</string>
     <string name="antl_button_next">next</string>
 
-    <string name="create_event_name">What is the name of the mEvent?</string>
-    <string name="create_event_name_hint">Enter mEvent here</string>
-    <string name="create_event_description">What is the mEvent about?</string>
+    <string name="create_event_name">What is the name of the event?</string>
+    <string name="create_event_name_hint">Enter event here</string>
+    <string name="create_event_description">What is the event about?</string>
     <string name="create_event_description_hint">Enter description here</string>
-    <string name="create_event_date">Add dates to mEvent here</string>
-    <string name="create_event_multiple_dates">Do you want to add extra date options to the mEvent?</string>
+    <string name="create_event_date">Add dates to event here</string>
+    <string name="create_event_multiple_dates">Do you want to add extra date options to the event?</string>
     <string name="create_event_next_button">Next</string>
 
-    <string name="add_date_to_event_hint">Add a date to the mEvent here</string>
-    <string name="add_date_to_event"><u>Add dates to the mEvent:</u></string>
-    <string name="button_to_add_a_date_to_the_event">Button to add a date to the mEvent</string>
+    <string name="add_date_to_event_hint">Add a date to the event here</string>
+    <string name="add_date_to_event"><u>Add dates to the event:</u></string>
+    <string name="button_to_add_a_date_to_the_event">Button to add a date to the event</string>
 
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
-    <string name="create_event_previous_button_desc">Go to previous page of create mEvent</string>
+    <string name="create_event_previous_button_desc">Go to previous page of create event</string>
     <string name="eventsMenu">events</string>
     <string name="friendsMenu">friends</string>
     <string name="profileMenu">profile</string>
     <string name="antl">Antl.</string>
     <string name="save">save</string>
-    <string name="button_to_remove_a_date_to_the_event">button to remove a date to the mEvent</string>
+    <string name="button_to_remove_a_date_to_the_event">button to remove a date to the event</string>
     <string name="click_the_button_to_add_a_date">Add a date</string>
     <string name="insert_a_date">Insert A Date</string>
     <string name="logout">Logout</string>

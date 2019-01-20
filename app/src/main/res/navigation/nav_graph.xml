@@ -42,7 +42,7 @@
         tools:layout="@layout/register_fragment"></fragment>
     <fragment
         android:id="@+id/destination_friend_add"
-        android:name="com.avansprojects.antl.ui.friendAddMenu.friendAdd"
+        android:name="com.avansprojects.antl.ui.friendAddMenu.FriendAddFragment"
         android:label="friend_add_fragment"
         tools:layout="@layout/friend_add_fragment" >
         <argument

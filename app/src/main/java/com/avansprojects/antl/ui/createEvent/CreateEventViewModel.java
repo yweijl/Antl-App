@@ -9,6 +9,7 @@ import com.avansprojects.antl.infrastructure.entities.EventDate;
 import com.avansprojects.antl.infrastructure.repositories.EventDateRepository;
 import com.avansprojects.antl.infrastructure.repositories.EventRepository;
 import com.avansprojects.antl.listeners.AsyncTaskListener;
+import com.avansprojects.antl.listeners.UpdateEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-public class CreateEventViewModel extends AndroidViewModel implements AsyncTaskListener {
+public class CreateEventViewModel extends AndroidViewModel implements AsyncTaskListener, UpdateEventListener {
 
     private EventRepository mEventRepository;
     private EventDateRepository mEventDateRepository;
@@ -89,16 +90,14 @@ public class CreateEventViewModel extends AndroidViewModel implements AsyncTaskL
     }
 
     @Override
-    public void entityIdInsertListener(long id) {
+    public void insertEventDispatcher(long id) {
         insertEventDates((int)id);
         CreateEventDto eventDto = createEventDto();
-        mEventDateRepository.post(eventDto);
-
+        mEventRepository.post(eventDto, (int) id);
     }
 
     private CreateEventDto createEventDto() {
-        return new CreateEventDto(
-                "", mEvent.getName(),mEvent.getDescription()
+        return new CreateEventDto(mEvent.getName(),mEvent.getDescription()
                 , mEvent.getPicturePath(),mEvent.getMainDateTime(), mEvent.getLocation(),mEventDateDtoList,true
         );
     }
@@ -107,7 +106,17 @@ public class CreateEventViewModel extends AndroidViewModel implements AsyncTaskL
         return mPicturePath;
     }
 
-    public void setmPicturePath(String mPicturePath) {
+    void setmPicturePath(String mPicturePath) {
         this.mPicturePath = mPicturePath;
+    }
+
+    void syncData() {
+        mEventRepository.syncData(this);
+    }
+
+
+    @Override
+    public void updateEventDate(int eventId, List<EventDateDto> eventDateList) {
+        mEventDateRepository.updateExternalId(eventId, eventDateList);
     }
 }

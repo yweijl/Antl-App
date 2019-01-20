@@ -2,6 +2,7 @@ package com.avansprojects.antl.infrastructure.daos;
 
 import com.avansprojects.antl.infrastructure.entities.EventDate;
 
+import java.util.Date;
 import java.util.List;
 
 import androidx.lifecycle.LiveData;
@@ -28,4 +29,7 @@ public interface EventDateDao {
 
     @Query("Delete From event_dates")
     void deleteAll();
+
+    @Query("UPDATE event_dates SET event_date = :dateTime WHERE event_id = :eventId ")
+    void syncEventDates(int eventId, Date dateTime);
 }

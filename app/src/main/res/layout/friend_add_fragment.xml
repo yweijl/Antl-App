@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/AntlBackGround"
-    tools:context=".ui.friendAddMenu.friendAdd"
+    tools:context=".ui.friendAddMenu.FriendAddFragment"
     tools:layout_editor_absoluteY="25dp">
 
     <androidx.appcompat.widget.AppCompatButton

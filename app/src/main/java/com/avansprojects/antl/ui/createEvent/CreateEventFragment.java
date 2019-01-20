@@ -115,6 +115,7 @@ public class CreateEventFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(getActivity()).get(CreateEventViewModel.class);
+        mViewModel.syncData();
         setHasOptionsMenu(true);
     }
 

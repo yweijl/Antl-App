@@ -23,6 +23,8 @@ public class CreateEventDto {
     public List<EventDateDto> eventDates;
     @SerializedName("isOwner")
     public boolean isOwner;
+    @SerializedName("hash")
+    public String hash;
 
     /**
      * 
@@ -33,10 +35,23 @@ public class CreateEventDto {
      * @param name
      * @param eventDates
      * @param externalId
+     * @Param hash
      */
-    public CreateEventDto(String externalId, String name, String description, String imagePath, Date mainDateTime, String location, List<EventDateDto> eventDates, boolean isOwner) {
+    public CreateEventDto(String externalId, String name, String description, String imagePath, Date mainDateTime, String location, List<EventDateDto> eventDates, boolean isOwner, String hash) {
         super();
         this.externalId = externalId;
+        this.name = name;
+        this.description = description;
+        this.imagePath = imagePath;
+        this.mainDateTime = mainDateTime;
+        this.location = location;
+        this.eventDates = eventDates;
+        this.isOwner = isOwner;
+        this.hash = hash;
+    }
+
+    public CreateEventDto(String name, String description, String imagePath, Date mainDateTime, String location, List<EventDateDto> eventDates, boolean isOwner) {
+        super();
         this.name = name;
         this.description = description;
         this.imagePath = imagePath;

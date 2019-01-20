@@ -28,6 +28,8 @@ public class ContactRepository {
 
     public void deleteAll(){new deleteAsyncTask(mContacts).execute();}
 
+    public void deleteByName(String userName){new deleteSingleAsyncTask(mContacts).execute(userName);}
+
     public LiveData<List<Friend>> getAllRelationships() {
         return  mAllContacts;
     }
@@ -43,6 +45,22 @@ public class ContactRepository {
         @Override
         protected Void doInBackground(final Friend... params) {
             _AsyncTaskDao.insert(params[0]);
+            return null;
+        }
+    }
+
+
+    private static class deleteSingleAsyncTask extends AsyncTask<String, Void, Void> {
+
+        private FriendDao _AsyncTaskDao;
+
+        deleteSingleAsyncTask(FriendDao dao) {
+            _AsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final String... params) {
+            _AsyncTaskDao.delete(params[0]);
             return null;
         }
     }

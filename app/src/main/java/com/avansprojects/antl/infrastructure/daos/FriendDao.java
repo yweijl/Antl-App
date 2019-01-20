@@ -22,4 +22,7 @@ public interface FriendDao {
 
     @Query("Delete From friends")
     void deleteAll();
+
+    @Query("Delete From friends Where user_name is :username")
+    void delete(String username);
 }
