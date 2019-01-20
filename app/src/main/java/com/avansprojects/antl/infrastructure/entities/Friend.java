@@ -28,4 +28,8 @@ public class Friend {
     public String getUserName() {
         return userName;
     }
+
+    public String getWebServerId() {
+        return webServerId;
+    }
 }

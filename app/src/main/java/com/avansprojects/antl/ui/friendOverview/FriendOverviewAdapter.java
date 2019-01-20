@@ -18,6 +18,7 @@ public class FriendOverviewAdapter extends RecyclerView.Adapter<FriendCardViewHo
 
     private List<Friend> mFriendList;
     private Fragment _fragment;
+    private FriendCardViewHolder mCardViewHolder;
 
     public FriendOverviewAdapter(Fragment fragment) {
         _fragment = fragment;
@@ -27,7 +28,7 @@ public class FriendOverviewAdapter extends RecyclerView.Adapter<FriendCardViewHo
     public FriendCardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         CardView cardView = (CardView) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.friend_overview_card_fragment, parent, false);
-        return new FriendCardViewHolder(cardView, _fragment.getContext(), ViewModelProviders.of(_fragment).get(FriendAddViewModel.class));
+        return mCardViewHolder =  new FriendCardViewHolder(cardView, _fragment.getContext(), ViewModelProviders.of(_fragment).get(FriendAddViewModel.class));
     }
 
     @Override
@@ -36,13 +37,14 @@ public class FriendOverviewAdapter extends RecyclerView.Adapter<FriendCardViewHo
 
             Friend current = mFriendList.get(position);
             holder.friendName.setText(String.valueOf(current.getUserName()));
+            holder.mWebserverId = current.getWebServerId();
 
         } else {
             holder.friendName.setText("No Friends");
         }
     }
 
-    void setRelationships(List<Friend> relationships){
+    void setFriends(List<Friend> relationships){
         mFriendList = relationships;
         notifyDataSetChanged();
     }

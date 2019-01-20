@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class FriendCardViewHolder extends RecyclerView.ViewHolder{
     public final TextView friendName;
+    public String mWebserverId;
     private Context mContext;
     private CardView mCardView;
     private FriendAddViewModel mViewModel;
@@ -41,11 +42,11 @@ public class FriendCardViewHolder extends RecyclerView.ViewHolder{
     public void confirmDelete(CardView v){
         final AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext(), R.style.AlertDialog);
         builder.setTitle("Delete friend")
-                .setMessage("ARE YOU SURE YOU WANT TO REMOVE " + String.valueOf(getAdapterPosition()))
+                .setMessage("ARE YOU SURE YOU WANT TO REMOVE " + friendName.getText().toString().toUpperCase() + " FROM YOUR LIST?")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        mViewModel.deleteFriend(friendName.getText().toString());
+                        mViewModel.deleteFriend(friendName.getText().toString(), mWebserverId);
                     }
                 }
                 )
