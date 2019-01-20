@@ -10,12 +10,12 @@ import com.avansprojects.antl.AntlApp;
 import com.avansprojects.antl.helpers.Authentication;
 import com.avansprojects.antl.infrastructure.repositories.ContactRepository;
 import com.avansprojects.antl.retrofit.AntlRetrofit;
+import com.avansprojects.antl.ui.login.dto.FriendDto;
 import com.avansprojects.antl.ui.login.dto.FriendRequestDto;
 import com.avansprojects.antl.ui.login.services.FriendService;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.ViewModel;
 import androidx.navigation.Navigation;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -80,8 +80,31 @@ public class FriendAddViewModel extends AndroidViewModel {
         view.getContext().startActivity(sendIntent);
     }
 
-    public void deleteFriend(String friendName){
+    public void deleteFriend(String friendName, String externalId){
         ContactRepository friends = new ContactRepository(getApplication());
         friends.deleteByName(friendName);
+        FriendDto friendDto = new FriendDto();
+        friendDto.setExternalId(externalId);
+
+        Retrofit retrofit = AntlRetrofit.getRetrofit();
+
+        FriendService service = retrofit.create(FriendService.class);
+        Call<String> call = service.deleteFriend("Bearer " + AntlApp.getContext().getSharedPreferences("antlPrefs", Context.MODE_PRIVATE).getString("token", ""), friendDto);
+        retrofit2.Response<String> result = null;
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                String result = response.toString();
+
+                if (response.code() == 200) {
+                    result = response.body();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable throwable) {
+            }
+        });
     }
 }

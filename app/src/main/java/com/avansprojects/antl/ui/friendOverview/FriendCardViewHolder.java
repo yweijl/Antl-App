@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class FriendCardViewHolder extends RecyclerView.ViewHolder{
     public final TextView friendName;
+    public String mWebserverId;
     private Context mContext;
     private CardView mCardView;
     private FriendAddViewModel mViewModel;
@@ -45,7 +46,7 @@ public class FriendCardViewHolder extends RecyclerView.ViewHolder{
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        mViewModel.deleteFriend(friendName.getText().toString());
+                        mViewModel.deleteFriend(friendName.getText().toString(), mWebserverId);
                     }
                 }
                 )
