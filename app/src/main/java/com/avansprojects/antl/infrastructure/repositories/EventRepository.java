@@ -256,7 +256,11 @@ public class EventRepository implements CompareDataListener {
 
         @Override
         protected void onPostExecute(Integer result) {
-            mUpdateEventListener.updateEventDate(result, mEventDates);
+            if (result == null){
+                mUpdateEventListener.insertEvent();
+            } else {
+                mUpdateEventListener.updateEventDate(result, mEventDates);
+            }
         }
     }
 

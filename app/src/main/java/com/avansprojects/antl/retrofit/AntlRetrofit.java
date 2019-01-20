@@ -21,7 +21,7 @@ public class AntlRetrofit {
 
     private AntlRetrofit() {
         mOkHttpClient = provideOkHttpClient();
-        Gson gson = new GsonBuilder()
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
                 .setLenient().create();
 
             mRetrofit = new Retrofit.Builder()
