@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.avansprojects.antl.AntlApp;
@@ -26,6 +27,7 @@ public class LoginFragment extends Fragment {
     private LoginViewModel mViewModel;
     private TextView mUser;
     private TextView mPassword;
+    private ProgressBar mSpinner;
 
     public static LoginFragment newInstance() {
         return new LoginFragment();
@@ -44,6 +46,8 @@ public class LoginFragment extends Fragment {
         mViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
         mUser = getView().findViewById(R.id.username_text_input);
         mPassword = getView().findViewById(R.id.password_edit_text);
+        mSpinner=getActivity().findViewById(R.id.progressBar);
+        mSpinner.setVisibility(View.GONE);
 
         BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_nav);
         bottomNavigationView.setVisibility(View.GONE);
@@ -55,9 +59,10 @@ public class LoginFragment extends Fragment {
 
         Button loginButton = getView().findViewById(R.id.next_button);
         loginButton.setOnClickListener(view -> {
+            mSpinner.setVisibility(View.VISIBLE);
             mViewModel.setUser(mUser.getText());
             mViewModel.setPassword(mPassword.getText());
-            mViewModel.Login(view);
+            mViewModel.Login(view, mSpinner);
         });
     }
 }
