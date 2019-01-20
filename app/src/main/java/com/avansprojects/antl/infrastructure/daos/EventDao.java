@@ -39,7 +39,7 @@ public interface EventDao {
     void delete(Event event);
 
     @Query("UPDATE events SET main_date_time = :mainDate, location = :location, picture_path = :picturePath, description=:description, is_Owner=:isOwner, hash=:hash where external_id = :externalId")
-    void updateByExternalId(Date mainDate, String location, String picturePath, String description, boolean isOwner, String hash, String externalId);
+    void updateByExternalId(Date mainDate, String location, String picturePath, String description, boolean isOwner, int hash, String externalId);
 
     @Query("SELECT id FROM events WHERE external_id = :externalId")
     int getIdFromEvent(String externalId);

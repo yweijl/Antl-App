@@ -7,14 +7,13 @@ import android.util.Log;
 import com.avansprojects.antl.infrastructure.daos.EventDao;
 import com.avansprojects.antl.infrastructure.database.AntlDatabase;
 import com.avansprojects.antl.infrastructure.dtos.CreateEventDto;
-import com.avansprojects.antl.infrastructure.dtos.EventDateDto;
 import com.avansprojects.antl.infrastructure.dtos.EventSyncDto;
 import com.avansprojects.antl.infrastructure.dtos.UpdateEventDto;
 import com.avansprojects.antl.infrastructure.entities.Event;
 import com.avansprojects.antl.infrastructure.interfaces.IEventApi;
 import com.avansprojects.antl.listeners.AsyncTaskListener;
 import com.avansprojects.antl.listeners.CompareDataListener;
-import com.avansprojects.antl.listeners.UpdateEventListener;
+import com.avansprojects.antl.listeners.UpdateEventDateListener;
 import com.avansprojects.antl.retrofit.AntlRetrofit;
 
 import java.util.List;
@@ -32,7 +31,7 @@ public class EventRepository implements CompareDataListener {
     private LiveData<List<Event>> mAllEvents;
     private Retrofit mRetrofit;
     private IEventApi mEventApi;
-    private UpdateEventListener mUpdateEventListener;
+    private UpdateEventDateListener mUpdateEventDateListener;
 
     public EventRepository(Application application) {
         AntlDatabase db = AntlDatabase.getDatabase(application);
@@ -78,8 +77,8 @@ public class EventRepository implements CompareDataListener {
         return mAllEvents;
     }
 
-    public void syncData(UpdateEventListener eventListener) {
-        mUpdateEventListener = eventListener;
+    public void syncData(UpdateEventDateListener eventListener) {
+        mUpdateEventDateListener = eventListener;
         mEventApi.sync().enqueue(new Callback<List<EventSyncDto>>() {
             @Override
             public void onResponse(Call<List<EventSyncDto>> call, Response<List<EventSyncDto>> response) {
@@ -98,6 +97,49 @@ public class EventRepository implements CompareDataListener {
     @Override
     public void dataListener(UpdateEventDto updateEventDto) {
         updateData(updateEventDto);
+    }
+
+    @Override
+    public void insertEvent(CreateEventDto createEventDto) {
+        new insertEventWithDatesTask(mEventDao, mUpdateEventDateListener, createEventDto).execute();
+    }
+
+    private static class insertEventWithDatesTask extends AsyncTask<Void, Void, Long> {
+        private EventDao mAsyncTaskDao;
+        private CreateEventDto mEventDto;
+        private UpdateEventDateListener mUpdateEventDateListener;
+
+        insertEventWithDatesTask(EventDao dao,UpdateEventDateListener updateEventDateListener, CreateEventDto eventDto) {
+            mAsyncTaskDao = dao;
+            mEventDto = eventDto;
+            mUpdateEventDateListener = updateEventDateListener;
+        }
+
+        @Override
+        protected Long doInBackground(Void... voids) {
+            Event event = new Event(
+                    mEventDto.name,
+                    mEventDto.externalId,
+                    mEventDto.mainDateTime,
+                    mEventDto.location,
+                    mEventDto.description,
+                    mEventDto.imagePath,
+                    mEventDto.isOwner,
+                    mEventDto.hash);
+            return mAsyncTaskDao.insertRetrieveId(event);
+        }
+
+        @Override
+        protected void onPostExecute(Long result) {
+            if (mEventDto.eventDates == null) return;
+            mUpdateEventDateListener.insertEventDate(result, mEventDto.eventDates);
+        }
+    }
+
+    @Override
+    public void updateEvent(int id, CreateEventDto createEventDto) {
+        new updateLocalEventTask(mEventDao, createEventDto).execute();
+        mUpdateEventDateListener.updateEventDate(id, createEventDto.eventDates);
     }
 
     private static class insertAsyncTask extends AsyncTask<Event, Void, Void> {
@@ -160,7 +202,6 @@ public class EventRepository implements CompareDataListener {
         }
 
         new compareDataTask(mEventDao,this ,serverEvents).execute();
-//            List<EventSyncDto> syncDtoList = mapToEventSyncDto(localEvents);
     }
 
     private static class compareDataTask extends AsyncTask<Void, Void, List<EventSyncDto>> {
@@ -232,34 +273,33 @@ public class EventRepository implements CompareDataListener {
 
         for (CreateEventDto eventDto : eventDtos
         ) {
-            new updateLocalEventTask(mEventDao, eventDto).execute();
-            new getIdFromEventTask(mEventDao, eventDto.eventDates, mUpdateEventListener).execute(eventDto.externalId);
+            new getIdFromEventTask(mEventDao, eventDto, this).execute();
         }
     }
 
-    private static class getIdFromEventTask extends AsyncTask<String, Void, Integer> {
+    private static class getIdFromEventTask extends AsyncTask<Void, Void, Integer> {
         private EventDao mAsyncTaskDao;
-        List<EventDateDto> mEventDates;
-        private UpdateEventListener mUpdateEventListener;
+        private CreateEventDto mEvent;
+        private CompareDataListener mCompareDataListener;
 
-        getIdFromEventTask(EventDao dao, List<EventDateDto> eventDates, UpdateEventListener eventListener) {
+        getIdFromEventTask(EventDao dao, CreateEventDto event, CompareDataListener eventListener) {
             mAsyncTaskDao = dao;
-            mEventDates = eventDates;
-            mUpdateEventListener = eventListener;
+            mEvent = event;
+            mCompareDataListener = eventListener;
         }
 
         @Override
-        protected Integer doInBackground(String... params) {
-            mAsyncTaskDao.getIdFromEvent(params[0]);
+        protected Integer doInBackground(Void... params) {
+            mAsyncTaskDao.getIdFromEvent(mEvent.externalId);
             return null;
         }
 
         @Override
         protected void onPostExecute(Integer result) {
             if (result == null){
-                mUpdateEventListener.insertEvent();
+                mCompareDataListener.insertEvent(mEvent);
             } else {
-                mUpdateEventListener.updateEventDate(result, mEventDates);
+                mCompareDataListener.updateEvent(result, mEvent);
             }
         }
     }

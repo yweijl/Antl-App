@@ -9,7 +9,7 @@ import com.avansprojects.antl.infrastructure.entities.EventDate;
 import com.avansprojects.antl.infrastructure.repositories.EventDateRepository;
 import com.avansprojects.antl.infrastructure.repositories.EventRepository;
 import com.avansprojects.antl.listeners.AsyncTaskListener;
-import com.avansprojects.antl.listeners.UpdateEventListener;
+import com.avansprojects.antl.listeners.UpdateEventDateListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-public class CreateEventViewModel extends AndroidViewModel implements AsyncTaskListener, UpdateEventListener {
+public class CreateEventDateViewModel extends AndroidViewModel implements AsyncTaskListener, UpdateEventDateListener {
 
     private EventRepository mEventRepository;
     private EventDateRepository mEventDateRepository;
@@ -29,7 +29,7 @@ public class CreateEventViewModel extends AndroidViewModel implements AsyncTaskL
     private String mPicturePath;
 
 
-    public CreateEventViewModel(@NonNull Application application) {
+    public CreateEventDateViewModel(@NonNull Application application) {
         super(application);
         mEventRepository = new EventRepository(application);
         mEventDateRepository = new EventDateRepository(application);
@@ -116,7 +116,26 @@ public class CreateEventViewModel extends AndroidViewModel implements AsyncTaskL
 
 
     @Override
-    public void updateEventDate(int eventId, List<EventDateDto> eventDateList) {
-        mEventDateRepository.updateExternalId(eventId, eventDateList);
+    public void updateEventDate(long eventId, List<EventDateDto> eventDateList) {
+        mEventDateRepository.updateExternalId((int) eventId, eventDateList);
+    }
+
+    @Override
+    public void insertEventDate(long eventId, List<EventDateDto> eventDateList) {
+        if (eventDateList == null) return;
+        List<EventDate> eventDates = mapToEventDate((int)eventId, eventDateList);
+        mEventDateRepository.insertAll(eventDates);
+    }
+
+    private List<EventDate> mapToEventDate(int eventId, List<EventDateDto> eventDateList) {
+        List<EventDate> eventDates = new ArrayList<>();
+        for (EventDateDto eventDate: eventDateList
+             ) {
+            EventDate temp = new EventDate();
+            temp.setEventId(eventId);
+            temp.setEventDate(eventDate.dateTime);
+            eventDates.add(temp);
+        }
+        return eventDates;
     }
 }

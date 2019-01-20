@@ -24,7 +24,7 @@ import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class CreateEventFragment extends Fragment {
 
-    private CreateEventViewModel mViewModel;
+    private CreateEventDateViewModel mViewModel;
     private static final int NUM_PAGES = 4;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
@@ -110,7 +110,7 @@ public class CreateEventFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(getActivity()).get(CreateEventViewModel.class);
+        mViewModel = ViewModelProviders.of(getActivity()).get(CreateEventDateViewModel.class);
         mViewModel.syncData();
         setHasOptionsMenu(true);
     }

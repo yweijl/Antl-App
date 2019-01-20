@@ -30,6 +30,9 @@ public class EventDate implements Comparable<EventDate> {
     }
 
     @Ignore
+    public EventDate() {}
+
+    @Ignore
     public EventDate(Date eventDate) {
         this.eventDate = eventDate;
     }
