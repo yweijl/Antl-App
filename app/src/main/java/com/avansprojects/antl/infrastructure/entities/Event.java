@@ -10,30 +10,38 @@ import androidx.room.PrimaryKey;
 public class Event implements Comparable<Event> {
     @PrimaryKey(autoGenerate = true)
     private int id;
+    @ColumnInfo(name = "external_id")
+    private String ExternalId;
     @ColumnInfo(name = "name")
     private String name;
+    @ColumnInfo(name = "hash")
+    private int hash;
     @ColumnInfo(name = "description")
     private String description;
     @ColumnInfo(name = "main_date_time")
     private Date mainDateTime;
     @ColumnInfo(name = "location")
     private String location;
-    @ColumnInfo(name = "PicturePath")
+    @ColumnInfo(name = "picture_path")
     private String PicturePath;
-    @ColumnInfo(name = "owner_web_server_id")
-    private long eventOwnerId;
+    @ColumnInfo(name = "is_owner")
+    private boolean isOwner;
+
+
 
     @Ignore
     public Event() {
     }
 
-    public Event(String name, Date mainDateTime, String location, String description, String PicturePath, long eventOwnerId) {
+    public Event(String name, String ExternalId, Date mainDateTime, String location, String description, String PicturePath, boolean isOwner, int hash) {
         this.name = name;
         this.mainDateTime = mainDateTime;
         this.location = location;
         this.PicturePath = PicturePath;
         this.description = description;
-        this.eventOwnerId =  eventOwnerId;
+        this.ExternalId = ExternalId;
+        this.isOwner = isOwner;
+        this.hash = hash;
     }
 
     public String getName() {
@@ -84,12 +92,28 @@ public class Event implements Comparable<Event> {
         this.description = description;
     }
 
-    public long getEventOwnerId() {
-        return eventOwnerId;
+    public String getExternalId() {
+        return ExternalId;
     }
 
-    public void setEventOwnerId(long eventOwnerId) {
-        this.eventOwnerId = eventOwnerId;
+    public void setExternalId(String externalId) {
+        ExternalId = externalId;
+    }
+
+    public boolean isOwner() {
+        return isOwner;
+    }
+
+    public void setOwner(boolean owner) {
+        isOwner = owner;
+    }
+
+    public int getHash() {
+        return hash;
+    }
+
+    public void setHash(int hash) {
+        this.hash = hash;
     }
 
     @Override

@@ -21,11 +21,11 @@ public class AntlRetrofit {
 
     private AntlRetrofit() {
         mOkHttpClient = provideOkHttpClient();
-        Gson gson = new GsonBuilder()
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
                 .setLenient().create();
 
             mRetrofit = new Retrofit.Builder()
-                .baseUrl("https://antlwebserver.azurewebsites.net/")
+                .baseUrl("https://antlwebserver.azurewebsites.net")
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(mOkHttpClient)

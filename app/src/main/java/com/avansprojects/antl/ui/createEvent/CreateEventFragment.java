@@ -20,14 +20,11 @@ import android.widget.TextView;
 import com.avansprojects.antl.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.Date;
-import java.util.Objects;
-
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class CreateEventFragment extends Fragment {
 
-    private CreateEventViewModel mViewModel;
+    private CreateEventDateViewModel mViewModel;
     private static final int NUM_PAGES = 4;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
@@ -36,7 +33,6 @@ public class CreateEventFragment extends Fragment {
     private Button mNextButton;
     private Button mSaveButton;
     private ImageButton mBackButton;
-    private int mPictureLocation;
 
     public static CreateEventFragment newInstance() {
         return new CreateEventFragment();
@@ -114,7 +110,8 @@ public class CreateEventFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(getActivity()).get(CreateEventViewModel.class);
+        mViewModel = ViewModelProviders.of(getActivity()).get(CreateEventDateViewModel.class);
+        mViewModel.syncData();
         setHasOptionsMenu(true);
     }
 

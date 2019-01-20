@@ -31,7 +31,7 @@ public class CreateEventImageFragment extends Fragment {
     private String mCurrentPhotoPath;
     private static final int REQUEST_TAKE_PHOTO = 1;
     private ImageView mImageView;
-    private CreateEventViewModel mViewModel;
+    private CreateEventDateViewModel mViewModel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -45,7 +45,7 @@ public class CreateEventImageFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        mViewModel = ViewModelProviders.of(getActivity()).get(CreateEventViewModel.class);
+        mViewModel = ViewModelProviders.of(getActivity()).get(CreateEventDateViewModel.class);
 
         mImageView = Objects.requireNonNull(getView()).findViewById(R.id.addPictureImage);
         Button button = Objects.requireNonNull(getActivity()).findViewById(R.id.addImage);

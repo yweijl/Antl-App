@@ -25,7 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class CreateEventDateFragment extends Fragment implements DatePickerListener, ViewModelListener {
 
     private EventDateAdapter mAdapter;
-    private CreateEventViewModel mViewModel;
+    private CreateEventDateViewModel mViewModel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -66,7 +66,7 @@ public class CreateEventDateFragment extends Fragment implements DatePickerListe
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(getActivity()).get(CreateEventViewModel.class);
+        mViewModel = ViewModelProviders.of(getActivity()).get(CreateEventDateViewModel.class);
     }
 
     @Override

@@ -98,13 +98,13 @@ public abstract class AntlDatabase extends RoomDatabase {
         protected Void doInBackground(final Void... params) {
              mEventDateDao.deleteAll();
             _EventDao.deleteAll();
-            Event event = new Event("New years Eve", CalendarHelper.setDate(2018,12,31),"den haag", "hoi",  getURLForResource(R.drawable.newyear), 21);
+            Event event = new Event("New years Eve", "1234-1234-1234", CalendarHelper.setDate(2018,12,31),"den haag", "hoi",  getURLForResource(R.drawable.newyear),true,1);
             _EventDao.insert(event);
-            event = new Event("berlin trip", CalendarHelper.setDate(2019, 2,10), "Berlijn", "hoi", getURLForResource(R.drawable.event), 22);
+            event = new Event("berlin trip","1234-1234-1234", CalendarHelper.setDate(2019, 2,10), "Berlijn", "hoi", getURLForResource(R.drawable.event),true, 1);
             _EventDao.insert(event);
-            event = new Event("B-day Party", CalendarHelper.setDate(2019,6,9), "Den Haag", "hoi", getURLForResource(R.drawable.presentation), 23);
+            event = new Event("B-day Party","1234-1234-1234", CalendarHelper.setDate(2019,6,9), "Den Haag", "hoi", getURLForResource(R.drawable.presentation),false, 1);
             _EventDao.insert(event);
-            event = new Event("Bordspellen dag", CalendarHelper.setDate(2018,12,25), "Den Haag", "hoi", getURLForResource(R.drawable.boardgame), 24);
+            event = new Event("Bordspellen dag","1234-1234-1234", CalendarHelper.setDate(2018,12,25), "Den Haag", "hoi", getURLForResource(R.drawable.boardgame),false,1);
             _EventDao.insert(event);
             return null;
         }
