@@ -21,6 +21,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class FriendOverviewFragment extends Fragment {
 
     private FriendOverviewViewModel mViewModel;
+    private FriendOverviewAdapter mAdapter;
 
     public static FriendOverviewFragment newInstance() {
         return new FriendOverviewFragment();
@@ -36,12 +37,12 @@ public class FriendOverviewFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
         mViewModel = ViewModelProviders.of(this).get(FriendOverviewViewModel.class);
         RecyclerView mRecyclerView = getView().findViewById(R.id.friendRecyclerView);
-        FriendOverviewAdapter adapter = new FriendOverviewAdapter(this);
-        mRecyclerView.setAdapter(adapter);
+        mAdapter = new FriendOverviewAdapter(this);
+        mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
         // Update the cached copy of the words in the adapter.
-        mViewModel.getAllContacts().observe(this, adapter::setRelationships);
+        mViewModel.getAllContacts().observe(this, mAdapter::setFriends);
     }
 
     @Override
