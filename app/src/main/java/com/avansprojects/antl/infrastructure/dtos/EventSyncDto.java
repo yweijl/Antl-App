@@ -8,7 +8,7 @@ public class EventSyncDto {
     @SerializedName("externalId")
     @ColumnInfo(name = "external_id")
     public String externalId;
-    @SerializedName("Hash")
+    @SerializedName("hash")
     @ColumnInfo(name = "hash")
     public int eventHash;
 
