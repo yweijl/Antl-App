@@ -235,13 +235,12 @@ public class EventRepository implements CompareDataListener {
 
         private void compareData(){
             UpdateEventDto updateEventDto = new UpdateEventDto();
-            for (EventSyncDto localEvent : mLocalEventSyncDtoList
-            ) {
-                if (localEvent == null) break;
-                if (mServerEvents.stream().anyMatch(x -> x.externalId == localEvent.externalId) &&
-                        mServerEvents.stream().anyMatch(x -> x.eventHash != localEvent.eventHash))
-                    updateEventDto.externalIdList.add(localEvent.externalId);
-            }
+//            for (EventSyncDto localEvent : mLocalEventSyncDtoList
+//            ) {
+//                if (localEvent == null) break;
+//                if (mServerEvents.stream().anyMatch(x -> x.externalId == localEvent.externalId && x.eventHash != localEvent.eventHash))
+//                    updateEventDto.externalIdList.add(localEvent.externalId);
+//            }
 
             for (EventSyncDto serverEvent : mServerEvents
             ) {

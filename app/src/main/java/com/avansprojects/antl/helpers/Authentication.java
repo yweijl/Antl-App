@@ -34,7 +34,7 @@ public final class Authentication {
         edit.putString("token", "");
         edit.putString("code", "");
         edit.commit();
-        new AntlDatabase.DropDatabaseAsync();
+        new AntlDatabase.DropDatabaseAsync().execute();
         Navigation.findNavController(view).navigate(R.id.go_to_login);
     }
 
