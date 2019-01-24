@@ -59,7 +59,6 @@ public class profileFragment extends Fragment {
         firstNameTextView = getActivity().findViewById(R.id.editFirstName);
         lastNameTextView = getActivity().findViewById(R.id.editLastName);
         emailTextView = getActivity().findViewById(R.id.editEmail);
-        phoneNumberTextView = getActivity().findViewById(R.id.editPhoneNumber);
 
 
         final Observer<List<User>> messageObserver = users -> {
@@ -69,7 +68,6 @@ public class profileFragment extends Fragment {
                 firstNameTextView.setText(mainUser.firstName);
                 lastNameTextView.setText(mainUser.lastName);
                 emailTextView.setText(mainUser.email);
-                phoneNumberTextView.setText(mainUser.phoneNumber);
             }
         };
 
