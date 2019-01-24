@@ -55,7 +55,7 @@ public class CalendarHelper {
 
     public static String DateTimeToString(Date date){
 
-        return new SimpleDateFormat("dd-MM-YYYY - HH:MM").format(date);
+        return new SimpleDateFormat("dd-MM-YYYY - HH:mm").format(date);
     }
 
     public static int getNumericMinutesFromDate(Date date){
