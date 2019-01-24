@@ -274,12 +274,6 @@ public class FriendOverviewFragment {
 
         ViewInteraction appCompatButton4 = onView(
                 allOf(withId(R.id.logoutButton), withText("Logout"),
-                        childAtPosition(
-                                allOf(withId(R.id.constraintLayout),
-                                        childAtPosition(
-                                                withId(R.id.nav_host_fragment),
-                                                0)),
-                                1),
                         isDisplayed()));
         appCompatButton4.perform(click());
     }
