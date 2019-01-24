@@ -1,4 +1,4 @@
-package com.avansprojects.antl.infrastructure.interfaces;
+package com.avansprojects.antl.infrastructure.services;
 
 import com.avansprojects.antl.infrastructure.dtos.CreateEventDto;
 import com.avansprojects.antl.infrastructure.dtos.EventDateDto;

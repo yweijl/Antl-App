@@ -1,7 +1,7 @@
-package com.avansprojects.antl.ui.login.services;
+package com.avansprojects.antl.infrastructure.services;
 
-import com.avansprojects.antl.ui.login.dto.LoginRequestDTO;
-import com.avansprojects.antl.ui.login.dto.RegistrationRequestDTO;
+import com.avansprojects.antl.infrastructure.dtos.LoginRequestDTO;
+import com.avansprojects.antl.infrastructure.dtos.RegistrationRequestDTO;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

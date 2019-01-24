@@ -32,6 +32,10 @@ public class UserRepository {
         return mUsers;
     }
 
+    public User getAppUser(){
+        return mUsers.getValue().get(0);
+    }
+
     private static class insertAsyncTask extends AsyncTask<User, Void, Void> {
 
         private UserDao _AsyncTaskDao;

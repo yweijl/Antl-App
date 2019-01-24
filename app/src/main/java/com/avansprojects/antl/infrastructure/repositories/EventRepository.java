@@ -10,7 +10,7 @@ import com.avansprojects.antl.infrastructure.dtos.CreateEventDto;
 import com.avansprojects.antl.infrastructure.dtos.EventSyncDto;
 import com.avansprojects.antl.infrastructure.dtos.UpdateEventDto;
 import com.avansprojects.antl.infrastructure.entities.Event;
-import com.avansprojects.antl.infrastructure.interfaces.IEventApi;
+import com.avansprojects.antl.infrastructure.services.IEventApi;
 import com.avansprojects.antl.listeners.AsyncTaskListener;
 import com.avansprojects.antl.listeners.CompareDataListener;
 import com.avansprojects.antl.listeners.UpdateEventDateListener;

@@ -33,7 +33,6 @@ public class profileFragment extends Fragment {
     private TextView firstNameTextView;
     private TextView lastNameTextView;
     private TextView emailTextView;
-    private TextView phoneNumberTextView;
 
     private List<User> mUserList;
 

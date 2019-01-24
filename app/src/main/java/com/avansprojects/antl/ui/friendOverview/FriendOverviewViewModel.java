@@ -9,8 +9,8 @@ import com.avansprojects.antl.AntlApp;
 import com.avansprojects.antl.infrastructure.entities.Friend;
 import com.avansprojects.antl.infrastructure.repositories.ContactRepository;
 import com.avansprojects.antl.retrofit.AntlRetrofit;
-import com.avansprojects.antl.ui.login.dto.FriendDto;
-import com.avansprojects.antl.ui.login.services.FriendService;
+import com.avansprojects.antl.infrastructure.dtos.FriendDto;
+import com.avansprojects.antl.infrastructure.services.FriendService;
 
 import java.util.List;
 
