@@ -54,15 +54,6 @@
             app:layout_constraintStart_toStartOf="@+id/firstName"
             app:layout_constraintTop_toTopOf="@+id/editLastName" />
 
-        <TextView
-            android:id="@+id/phoneNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Phone number"
-            android:textColor="@color/AntlAccentLight"
-            app:layout_constraintStart_toStartOf="@+id/lastName"
-            app:layout_constraintTop_toTopOf="@+id/editPhoneNumber" />
-
 
         <EditText
             android:id="@+id/editUserName"
@@ -114,17 +105,6 @@
             android:textColor="@color/AntlAccentLight"
             app:layout_constraintEnd_toEndOf="@+id/editFirstName"
             app:layout_constraintTop_toBottomOf="@+id/editFirstName" />
-
-        <EditText
-            android:id="@+id/editPhoneNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:ems="10"
-            android:inputType="phone"
-            android:textColor="@color/AntlAccentLight"
-            app:layout_constraintEnd_toEndOf="@+id/editLastName"
-            app:layout_constraintTop_toBottomOf="@+id/editLastName" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
