@@ -20,7 +20,7 @@ import com.avansprojects.antl.infrastructure.entities.Group;
 import com.avansprojects.antl.infrastructure.entities.User;
 import com.avansprojects.antl.infrastructure.entities.UserEvent;
 import com.avansprojects.antl.infrastructure.entities.UserGroup;
-import com.avansprojects.antl.ui.login.dto.UserDto;
+import com.avansprojects.antl.infrastructure.dtos.UserDto;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;

@@ -1,4 +1,4 @@
-package com.avansprojects.antl.ui.login.dto;
+package com.avansprojects.antl.infrastructure.dtos;
 
 import com.google.gson.annotations.SerializedName;
 

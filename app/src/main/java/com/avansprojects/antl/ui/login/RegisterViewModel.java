@@ -8,8 +8,8 @@ import android.widget.Toast;
 import com.avansprojects.antl.AntlApp;
 import com.avansprojects.antl.R;
 import com.avansprojects.antl.retrofit.AntlRetrofit;
-import com.avansprojects.antl.ui.login.dto.RegistrationRequestDTO;
-import com.avansprojects.antl.ui.login.services.LoginService;
+import com.avansprojects.antl.infrastructure.dtos.RegistrationRequestDTO;
+import com.avansprojects.antl.infrastructure.services.LoginService;
 
 import androidx.lifecycle.ViewModel;
 import androidx.navigation.Navigation;

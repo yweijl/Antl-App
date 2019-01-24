@@ -1,4 +1,4 @@
-package com.avansprojects.antl.ui.login.dto;
+package com.avansprojects.antl.infrastructure.dtos;
 
 import android.provider.ContactsContract.CommonDataKinds.Email;
 

@@ -12,10 +12,10 @@ import com.avansprojects.antl.AntlApp;
 import com.avansprojects.antl.R;
 import com.avansprojects.antl.infrastructure.database.AntlDatabase;
 import com.avansprojects.antl.retrofit.AntlRetrofit;
-import com.avansprojects.antl.ui.login.dto.LoginRequestDTO;
-import com.avansprojects.antl.ui.login.dto.UserDto;
-import com.avansprojects.antl.ui.login.services.LoginService;
-import com.avansprojects.antl.ui.login.services.UserService;
+import com.avansprojects.antl.infrastructure.dtos.LoginRequestDTO;
+import com.avansprojects.antl.infrastructure.dtos.UserDto;
+import com.avansprojects.antl.infrastructure.services.LoginService;
+import com.avansprojects.antl.infrastructure.services.UserService;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
